@@ -286,7 +286,7 @@ padding:clamp(26px,5vw,40px);border:2px solid var(--turquoise);box-shadow:0 20px
 ============================================================ */
 .mc-felt .fit-list{width:fit-content;max-width:560px;margin:26px auto 0;display:grid;gap:14px;text-align:right}
 .mc-felt .fit-list li{display:flex;align-items:flex-start;gap:12px;font-weight:600;color:var(--ink);font-size:16px;line-height:1.55}
-.mc-felt .fit-list li::before{content:"✓";flex:none;width:28px;height:28px;border-radius:50%;background:var(--turquoise);color:var(--ink-deep);
+.mc-felt .fit-list li::before{content:"";flex:none;width:28px;height:28px;border-radius:50%;background:var(--turquoise);color:var(--ink-deep);
 display:grid;place-items:center;font-weight:900;font-size:14px;margin-top:-2px}
 
 /* ============================================================
@@ -494,6 +494,53 @@ animation:mcfRipple .6s ease-out forwards}
 .mc-felt.a11y-motion .mcf-stagger,.mc-felt.a11y-motion .fit-list li::before,.mc-felt.a11y-motion .num-badge,.mc-felt.a11y-motion .gift-num,.mc-felt.a11y-motion .price-card,.mc-felt.a11y-motion .price-new{animation:none!important}
 .mc-felt.a11y-motion .mcf-progress{display:none}
 .mc-felt.a11y-contrast .accent{background-image:linear-gradient(#000,#000)}
+/* ============================================================
+26. מחיר בסגירה, טופס רב מסר, וי מצטייר, סרגל תהליך בסילבוס
+============================================================ */
+.mc-felt .price-install.flush{font-size:clamp(30px,6.5vw,46px)}
+.mc-felt .mcf-price-alt{display:block;font-size:.5em;font-weight:800;color:var(--navy);margin-top:6px}
+
+.mc-felt .mcf-form-wrap{width:100%;max-width:900px;margin:22px auto 0;direction:rtl;min-height:120px;scroll-margin-top:24px}
+.mc-felt .mcf-form-target iframe{width:100%!important;max-width:100%!important;border:0;min-height:420px;display:block}
+.mc-felt .mcf-form-target form,.mc-felt .mcf-form-target table{width:100%!important;max-width:100%!important}
+.mc-felt .mcf-form-target input,.mc-felt .mcf-form-target select,.mc-felt .mcf-form-target textarea{max-width:100%;box-sizing:border-box}
+.mc-felt .mcf-form-loading{text-align:center;padding:36px 0;font-size:18px;color:var(--ink-soft)}
+.mc-felt .mcf-form-retry{display:none;text-align:center;padding:24px 0}
+.mc-felt .mcf-form-retry p{margin:0 auto 14px}
+
+/* וי שמצטייר בתוך העיגול ואז זז בעדינות */
+.mc-felt .fit-list li{position:relative}
+.mc-felt .fit-list li::after{content:"";position:absolute;right:0;top:-2px;width:28px;height:28px;pointer-events:none;
+background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cpath d='M8 14.5l4 4 8-9' fill='none' stroke='%23241406' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+@keyframes mcfDraw{from{clip-path:inset(0 72% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes mcfNudge{0%,86%,100%{transform:none}90%{transform:translateY(-3px) rotate(-8deg)}94%{transform:translateY(0) rotate(4deg)}}
+.mc-felt.mcf-js .fit-list.in li::after{animation:mcfDraw .55s ease-out both,mcfNudge 4.5s ease-in-out infinite;
+animation-delay:calc(var(--i,0) * 110ms + 450ms),calc(var(--i,0) * 450ms + 2.2s)}
+.mc-felt.mcf-js .fit-list.in li::before{animation:mcfPop .5s var(--ease) both,mcfNudge 4.5s ease-in-out infinite;
+animation-delay:calc(var(--i,0) * 110ms + 200ms),calc(var(--i,0) * 450ms + 2.2s)}
+
+/* סרגל תהליך מעל כרטיסי הסילבוס */
+.mc-felt .mcf-steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);align-items:center;justify-items:center;
+max-width:840px;margin:28px auto 0;height:44px}
+@media (min-width:621px){.mc-felt .mcf-steps{--grid-w:min(900px,calc(100vw - 32px));width:var(--grid-w);max-width:none;margin-inline:calc((100% - var(--grid-w)) / 2)}}
+@media (max-width:620px){.mc-felt .mcf-steps{max-width:360px}}
+.mc-felt .mcf-steps-track{position:absolute;top:50%;right:16.666%;left:16.666%;height:6px;margin-top:-3px;border-radius:6px;background:rgba(var(--ink-rgb),.12);overflow:hidden}
+.mc-felt .mcf-steps-fill{position:absolute;inset:0;background:linear-gradient(to left,var(--turquoise),var(--navy));transform-origin:100% 50%;transform:scaleX(0);transition:transform .25s linear}
+.mc-felt .mcf-step-dot{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+background:var(--paper-bright);border:3px solid rgba(var(--ink-rgb),.15);color:var(--ink-soft);font-weight:900;font-size:16px;line-height:1;
+cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.mc-felt .mcf-step-dot.on{background:var(--navy);border-color:var(--navy);color:#fff;transform:scale(1.08)}
+.mc-felt .mcf-step-dot.open{box-shadow:0 0 0 6px rgba(var(--turquoise-rgb),.3)}
+@media (hover:hover) and (pointer:fine){.mc-felt .mcf-step-dot:hover{transform:scale(1.15)}}
+.mc-felt .syl-grid{margin-top:14px}
+.mc-felt .syl-card.mcf-active{border-color:rgba(var(--turquoise-rgb),.7)}
+
+@media (prefers-reduced-motion:reduce){
+.mc-felt .fit-list li::before,.mc-felt .fit-list li::after{animation:none!important}
+.mc-felt .mcf-steps-fill,.mc-felt .mcf-step-dot{transition:none}
+}
+.mc-felt.a11y-motion .fit-list li::before,.mc-felt.a11y-motion .fit-list li::after{animation:none!important}
+.mc-felt.a11y-motion .mcf-steps-fill,.mc-felt.a11y-motion .mcf-step-dot{transition:none}
 </style>
 
 <div class="mcf-progress" aria-hidden="true"></div>
@@ -535,7 +582,7 @@ animation:mcfRipple .6s ease-out forwards}
 </ul>
 
 <div class="cta-wrap reveal">
-<a class="cta hero-cta ravxx_var_hero.cta" href="#pricing">
+<a class="cta hero-cta ravxx_var_hero.cta" href="#mcf-form">
 <span class="ravxx_var_hero.cta_caption">אני רוצה לשריין מקום בסדנה »</span>
 </a>
 </div>
@@ -669,6 +716,10 @@ animation:mcfRipple .6s ease-out forwards}
 <h2 class="reveal"><span class="hand-mark">הסילבוס<svg class="hand-stroke hand-stroke-loop" viewBox="0 0 120 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12 Q 30 4, 60 10 T 116 9" fill="none" stroke="var(--gold)" stroke-width="5" stroke-linecap="round"/></svg></span></h2>
 <p class="reveal">הנה הדרך שנעבור יחד בסדנא, צעד אחר צעד</p>
 
+<div class="mcf-steps reveal" aria-hidden="true">
+<span class="mcf-steps-track"><span class="mcf-steps-fill"></span></span>
+<span class="mcf-step-dot" data-step="0">1</span><span class="mcf-step-dot" data-step="1">2</span><span class="mcf-step-dot" data-step="2">3</span>
+</div>
 <div class="syl-grid reveal">
 <details class="syl-card">
 <summary>
@@ -776,7 +827,7 @@ animation:mcfRipple .6s ease-out forwards}
 <div class="mockup reveal mcf-frame mcf-natural"><span class="mcf-ph">[מוקאפ של הסדנה: לעיצוב בהמשך]</span><img class="mcf-img ravxx_var_offer.mockup" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מוקאפ הסדנה" loading="lazy"></div>
 
 <div class="cta-wrap reveal">
-<a class="cta navy cta-main ravxx_var_offer.cta" href="#signup" id="main-cta">
+<a class="cta navy cta-main ravxx_var_offer.cta" href="#mcf-form" id="main-cta">
 <span class="ravxx_var_offer.cta_caption">שרייני לי מקום בסדנת הליבוד עכשיו »</span>
 </a>
 <p class="consent">לחיצה על הכפתור מעבירה לעמוד תשלום מאובטח. <span class="fill">[קישור אמיתי לעמוד התשלום יתווסף בתיאום עם דקלה]</span></p>
@@ -843,12 +894,116 @@ animation:mcfRipple .6s ease-out forwards}
 <p class="reveal wide">את <span class="accent">החום הזה שאת יוצרת בעצמך</span>.</p>
 <p class="reveal wide sig ravxx_var_closing.signature">אני מחכה לפגוש אותך במפגש הראשון,<br>באהבה גדולה.</p>
 
-<div class="price-card reveal">
-<div class="price-install flush ravxx_var_closing.price">370 ₪ בלבד · או 3×123 ₪</div>
-<div class="cta-wrap">
-<a class="cta ravxx_var_closing.cta" href="#pricing"><span class="ravxx_var_closing.cta_caption">אני רוצה להצטרף לסדנה »</span></a>
+<div class="price-card mcf-form-card reveal">
+<div class="price-install flush ravxx_var_closing.price">370 ₪ בלבד<br><span class="mcf-price-alt">או 3×123 ₪</span></div>
+
+<!-- ===== טופס ההרשמה: טופס רב מסר (מוטמע פעם אחת בלבד, כל הכפתורים בדף גוללים אליו) ===== -->
+<!--
+  טעינה מחוזקת של טופס רב מסר:
+  1. הסקריפט של רב מסר נטען בתוך המסגרת של הטופס עצמו.
+  2. כל מה שהסקריפט כותב לדף (document.write) נכנס למסגרת, גם אם זה קורה באיחור.
+  3. אם הטופס נוצר במקום אחר בדף, הוא מועבר אוטומטית לכאן.
+  4. אם הטעינה נכשלת, יש עד 3 ניסיונות נוספים.
+-->
+<div class="mcf-form-wrap" id="mcf-form">
+<div class="mcf-form-target"></div>
+<div class="mcf-form-loading">הטופס נטען...</div>
+<div class="mcf-form-retry">
+<p>הטופס לא נטען. נסי לרענן את הדף:</p>
+<button type="button" class="cta" onclick="location.reload()">רענון הדף</button>
 </div>
-<p class="consent">טופס הרשמה סופי ועמוד תשלום מאובטח <span class="fill">[יחוברו בתיאום עם דקלה]</span>. לחיצה על הכפתור מהווה הסכמה לתנאי השימוש ולמדיניות הפרטיות.</p>
+</div>
+<script>
+(function(){
+  var SRC = 'https://form2.ravpage.co.il/02e3c7f671e66f6629542c2fccfd67b56AC75B8C';
+  var MAX_TRIES = 4, WAIT_MS = 12000;
+  var wrap = document.currentScript && document.currentScript.previousElementSibling;
+  if (!wrap || !wrap.classList.contains('mcf-form-wrap') || window.__mcfFormStarted) return;
+  window.__mcfFormStarted = true;
+  var target = wrap.querySelector('.mcf-form-target');
+  var loading = wrap.querySelector('.mcf-form-loading');
+  var retry = wrap.querySelector('.mcf-form-retry');
+
+  // מעתיק תגית script כדי שהדפדפן יריץ אותה (סקריפט שנכנס דרך innerHTML לא רץ)
+  function cloneScript(old){
+    var s = document.createElement('script');
+    for (var i = 0; i < old.attributes.length; i++) s.setAttribute(old.attributes[i].name, old.attributes[i].value);
+    if (!old.src) s.text = old.text;
+    return s;
+  }
+  function insertHTML(html){
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    var scripts = [];
+    while (tmp.firstChild) {
+      var n = tmp.firstChild;
+      target.appendChild(n);
+      if (n.nodeType === 1) {
+        if (n.tagName === 'SCRIPT') scripts.push(n);
+        else scripts = scripts.concat(Array.prototype.slice.call(n.querySelectorAll('script')));
+      }
+    }
+    scripts.forEach(function(old){ old.parentNode.replaceChild(cloneScript(old), old); });
+  }
+
+  // אחרי שהדף נטען document.write מוחק את כל הדף, לכן מפנים אותו למסגרת של הטופס
+  var buf = '', flushTimer = null;
+  function write(){
+    buf += Array.prototype.join.call(arguments, '');
+    clearTimeout(flushTimer);
+    flushTimer = setTimeout(function(){ var h = buf; buf = ''; if (h) insertHTML(h); }, 0);
+  }
+  document.write = write;
+  document.writeln = function(){ write(Array.prototype.join.call(arguments, '') + '\n'); };
+
+  // אם רב מסר יוצר את הטופס במקום אחר בדף, מעבירים אותו לכאן
+  var RAV = /ravpage|responder|ravmesser|rav-messer/i;
+  function isRav(el){
+    var u = el.getAttribute('src') || el.getAttribute('action') || '';
+    return RAV.test(u);
+  }
+  function adopt(){
+    var els = document.querySelectorAll('iframe, form');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (!target.contains(el) && isRav(el)) target.appendChild(el);
+    }
+  }
+  if (window.MutationObserver) {
+    new MutationObserver(adopt).observe(document.documentElement, {childList: true, subtree: true});
+  }
+
+  function hasForm(){ adopt(); return target.querySelector('iframe, form, input'); }
+
+  var tries = 0, watch = null;
+  function load(){
+    tries++;
+    var s = document.createElement('script');
+    s.src = SRC + (tries > 1 ? (SRC.indexOf('?') < 0 ? '?' : '&') + 'r=' + Date.now() : '');
+    s.charset = 'UTF-8';
+    s.async = false;
+    s.onerror = function(){ next(); };
+    target.appendChild(s);
+    var start = Date.now();
+    clearInterval(watch);
+    watch = setInterval(function(){
+      if (hasForm()) { clearInterval(watch); loading.style.display = 'none'; retry.style.display = 'none'; return; }
+      if (Date.now() - start > WAIT_MS) next();
+    }, 400);
+  }
+  function next(){
+    clearInterval(watch);
+    if (hasForm()) { loading.style.display = 'none'; return; }
+    if (tries < MAX_TRIES) { setTimeout(load, 800); return; }
+    loading.style.display = 'none';
+    retry.style.display = 'block';
+  }
+  load();
+})();
+</script>
+<!-- ===== סוף טופס ההרשמה ===== -->
+
+<p class="consent">לחיצה על הכפתור מהווה הסכמה לתנאי השימוש ולמדיניות הפרטיות.</p>
 </div>
 </div>
 </section>
@@ -868,7 +1023,7 @@ animation:mcfRipple .6s ease-out forwards}
 
 <div class="sticky" data-mcf="sticky">
 <span class="s-price ravxx_var_sticky.price">370 ₪<small>או 3×123 ₪</small></span>
-<a class="cta ravxx_var_sticky.cta" href="#pricing"><span class="ravxx_var_sticky.cta_caption">לשריון מקום »</span></a>
+<a class="cta ravxx_var_sticky.cta" href="#mcf-form"><span class="ravxx_var_sticky.cta_caption">לשריון מקום »</span></a>
 </div>
 
 <button type="button" class="a11y-btn" data-mcf="a11y-btn" aria-label="פתיחת תפריט נגישות" aria-expanded="false" aria-controls="mcfA11yPanel">
@@ -1028,13 +1183,15 @@ if (opening && single) Array.prototype.forEach.call(items, function(o){ if (o !=
 animate(opening);
 });
 d._mcfClose = function(){ animate(false); };
+d._mcfOpen = function(){ if (!d.open) sum.click(); };
+d.addEventListener('toggle', function(){ root.dispatchEvent(new CustomEvent('mcf:acc')); });
 });
 }
 accordion('.faq-item', '.faq-a', true);
 accordion('.syl-card', '.syl-card-body', false);
 
 /* הטיה עדינה של כרטיסים בתנועת עכבר */
-if (finePointer) Array.prototype.forEach.call(qa('.gift-card, .syl-card, .price-card'), function(card){
+if (finePointer) Array.prototype.forEach.call(qa('.gift-card, .syl-card, .price-card:not(.mcf-form-card)'), function(card){
 card.classList.add('mcf-tilt');
 card.addEventListener('mousemove', function(e){
 if (still()) return;
@@ -1059,6 +1216,44 @@ btnEl.appendChild(rip);
 setTimeout(function(){ if (rip.parentNode) rip.parentNode.removeChild(rip); }, 650);
 });
 });
+
+/* סרגל התהליך בסילבוס: מתמלא בגלילה, נקודות נדלקות, לחיצה פותחת את המפגש */
+var steps = q('.mcf-steps'), sylGrid = q('.syl-grid');
+if (steps && sylGrid) {
+var fill = steps.querySelector('.mcf-steps-fill'), dots = steps.querySelectorAll('.mcf-step-dot'), cards = sylGrid.querySelectorAll('.syl-card');
+steps.removeAttribute('aria-hidden');
+Array.prototype.forEach.call(dots, function(dot, i){
+dot.setAttribute('role','button'); dot.setAttribute('tabindex','0'); dot.setAttribute('aria-label','פתיחת מפגש ' + (i + 1));
+function go(){
+var c = cards[i]; if (!c) return;
+if (c._mcfOpen) c._mcfOpen(); else c.open = true;
+c.scrollIntoView({behavior: still() ? 'auto' : 'smooth', block:'nearest'});
+}
+dot.addEventListener('click', go);
+dot.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+});
+var stTick = false;
+function stepsUpdate(){
+stTick = false;
+var f;
+if (still()) f = 1;
+else {
+var r = sylGrid.getBoundingClientRect(), vh = window.innerHeight;
+f = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (r.height * 0.9 + vh * 0.35)));
+}
+var anyOpen = -1;
+Array.prototype.forEach.call(cards, function(c, i){ c.classList.toggle('mcf-active', c.open); if (c.open) anyOpen = Math.max(anyOpen, i); });
+if (anyOpen >= 0) f = Math.max(f, anyOpen / 2);
+fill.style.transform = 'scaleX(' + f + ')';
+Array.prototype.forEach.call(dots, function(d, i){
+d.classList.toggle('on', f >= i / 2 - 0.001 && f > 0.02);
+d.classList.toggle('open', !!(cards[i] && cards[i].open));
+});
+}
+window.addEventListener('scroll', function(){ if (!stTick){ stTick = true; requestAnimationFrame(stepsUpdate); } }, {passive:true});
+root.addEventListener('mcf:acc', stepsUpdate);
+stepsUpdate();
+}
 
 /* תפריט נגישות: המחלקות נוספות לעטיפה בלבד */
 var btn = q('[data-mcf="a11y-btn"]'), panel = q('[data-mcf="a11y-panel"]'), closeBtn = q('[data-mcf="a11y-close"]');
@@ -1131,7 +1326,7 @@ save();
   {"class": "ravxx_var_hero.pills.pill2", "name": "תגית 2", "description": "טקסט התגית השנייה.", "type": "text"},
   {"class": "ravxx_var_hero.pills.pill3", "name": "תגית 3", "description": "טקסט התגית השלישית.", "type": "text"},
   {"class": "ravxx_var_hero.pills.pill4", "name": "תגית 4", "description": "טקסט התגית הרביעית.", "type": "text"},
-  {"class": "ravxx_var_hero.cta", "name": "כפתור עליון", "description": "כתובת היעד של הכפתור באזור הראשי.", "type": "link"},
+  {"class": "ravxx_var_hero.cta", "name": "כפתור עליון", "description": "כתובת היעד של הכפתור באזור הראשי. כרגע גולל לטופס ההרשמה (#mcf-form).", "type": "link"},
   {"class": "ravxx_var_author", "name": "על דקלה", "type": "group"},
   {"class": "ravxx_var_author.name", "name": "שורת היכרות", "description": "השורה עם השם של דקלה.", "type": "text"},
   {"class": "ravxx_var_author.role", "name": "תפקיד", "description": "התיאור המקצועי מתחת לשם.", "type": "text"},
@@ -1194,7 +1389,7 @@ save();
   {"class": "ravxx_var_offer.steps.step2", "name": "שלב 2", "description": "טקסט השלב השני.", "type": "text"},
   {"class": "ravxx_var_offer.steps.step3", "name": "שלב 3", "description": "טקסט השלב השלישי.", "type": "text"},
   {"class": "ravxx_var_offer.mockup", "name": "מוקאפ לפני הכפתור", "description": "התמונה מעל כפתור ההרשמה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
-  {"class": "ravxx_var_offer.cta", "name": "כפתור הרשמה ראשי", "description": "כתובת היעד של כפתור ההרשמה הראשי (עמוד התשלום).", "type": "link"},
+  {"class": "ravxx_var_offer.cta", "name": "כפתור הרשמה ראשי", "description": "כתובת היעד של כפתור ההרשמה הראשי. כרגע גולל לטופס ההרשמה (#mcf-form).", "type": "link"},
   {"class": "ravxx_var_offer.ctaNote", "name": "הערה מתחת לכפתור", "description": "השורה הקטנה מתחת לכפתור ההרשמה.", "type": "text"},
   {"class": "ravxx_var_fit", "name": "למי זה מתאים", "type": "group"},
   {"class": "ravxx_var_fit.heading", "name": "כותרת", "description": "כותרת אזור ההתאמה.", "type": "text"},
@@ -1221,11 +1416,10 @@ save();
   {"class": "ravxx_var_faq.item5.answer", "name": "תשובה", "description": "התשובה לשאלה החמישית.", "type": "text"},
   {"class": "ravxx_var_closing", "name": "סגירה אישית", "type": "group"},
   {"class": "ravxx_var_closing.signature", "name": "חתימה", "description": "שורת החתימה של דקלה בסוף המכתב.", "type": "text"},
-  {"class": "ravxx_var_closing.price", "name": "שורת מחיר", "description": "שורת המחיר בכרטיס הסגירה.", "type": "text"},
-  {"class": "ravxx_var_closing.cta", "name": "כפתור סגירה", "description": "כתובת היעד של הכפתור בכרטיס הסגירה.", "type": "link"},
+  {"class": "ravxx_var_closing.price", "name": "שורת מחיר", "description": "שורת המחיר הגדולה בכרטיס הסגירה, מעל טופס ההרשמה.", "type": "text"},
   {"class": "ravxx_var_sticky", "name": "פס תחתון במובייל", "type": "group"},
   {"class": "ravxx_var_sticky.price", "name": "מחיר בפס", "description": "המחיר שמוצג בפס הדביק בתחתית המסך.", "type": "text"},
-  {"class": "ravxx_var_sticky.cta", "name": "כפתור בפס", "description": "כתובת היעד של הכפתור בפס הדביק.", "type": "link"},
+  {"class": "ravxx_var_sticky.cta", "name": "כפתור בפס", "description": "כתובת היעד של הכפתור בפס הדביק. כרגע גולל לטופס ההרשמה (#mcf-form).", "type": "link"},
   {"class": "ravxx_var_footer", "name": "פוטר", "type": "group"},
   {"class": "ravxx_var_footer.brand", "name": "שם המותג", "description": "שם המותג בפוטר.", "type": "text"},
   {"class": "ravxx_var_footer.rights", "name": "זכויות יוצרים", "description": "שורת זכויות היוצרים בתחתית.", "type": "text"}
