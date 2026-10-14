@@ -408,18 +408,95 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 .mc-felt .pills li{padding:8px 13px;font-size:14px}
 }
 /* ============================================================
-24. תמונות להחלפה: כל עוד אין תמונה (src שקוף) מוצג המקום הריק כמו קודם.
-   תמונה אמיתית מוצגת חופשית: ביחס המקורי שלה, בלי מסגרת, בלי צל ובלי חיתוך.
+24. תמונות להחלפה: כל התמונות בדף באותו גודל בדיוק (4:5).
+   כל עוד אין תמונה (src שקוף) מוצג מקום ריק מקווקו באותו גודל.
+   תמונה אמיתית ממלאת את המקום בלי מסגרת; תמונה בצורה אחרת נחתכת מעט בשוליים.
 ============================================================ */
-.mc-felt .mcf-frame{position:relative;overflow:hidden}
-.mc-felt .mcf-frame > .mcf-img{position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);max-width:none;object-fit:cover;border-radius:inherit}
+.mc-felt{--img-w:260px}
+@media (max-width:600px){.mc-felt{--img-w:280px}}
+.mc-felt .mcf-frame{position:relative;overflow:hidden;display:grid;place-items:center;
+width:min(100%,var(--img-w))!important;aspect-ratio:4/5!important;margin-inline:auto!important;border-radius:var(--r-s)}
+.mc-felt .hero-img,.mc-felt .portrait{width:min(100%,var(--img-w));box-shadow:none;overflow:visible;border-radius:0}
+.mc-felt .mockup.mcf-frame{margin-block:26px}
+.mc-felt .gift-slot.mcf-frame{margin-bottom:14px!important}
+.mc-felt .syl-gif.mcf-frame{margin-bottom:6px!important}
+.mc-felt .gif-grid,.mc-felt .proof-grid{--grid-w:min(820px,calc(100vw - 32px));width:var(--grid-w);max-width:none;
+margin-inline:calc((100% - var(--grid-w)) / 2)}
+@media (min-width:621px){.mc-felt .syl-grid{--grid-w:min(900px,calc(100vw - 32px));width:var(--grid-w);max-width:none;margin-inline:calc((100% - var(--grid-w)) / 2)}}
+@media (max-width:600px){.mc-felt .gif-grid,.mc-felt .proof-grid{grid-template-columns:1fr;gap:18px}
+.mc-felt .proof-grid .proof-slot:last-child{grid-column:auto}}
+.mc-felt .mcf-frame > .mcf-img{position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);max-width:none;
+object-fit:cover;border-radius:inherit;transition:transform .6s var(--ease)}
 .mc-felt .mcf-frame > .mcf-img[src^="data:"]{box-shadow:none!important;animation:none!important}
-.mc-felt .mcf-frame > .mcf-img:not([src^="data:"]){position:static;inset:auto;width:100%;height:auto;max-width:100%;object-fit:contain;border-radius:0!important;box-shadow:none!important}
-.mc-felt .mcf-frame:has(> .mcf-img:not([src^="data:"])){aspect-ratio:auto!important;border:0;padding:0;background:none;box-shadow:none;border-radius:0;display:block;overflow:visible}
-.mc-felt .mcf-frame:has(> .mcf-img:not([src^="data:"])) > .mcf-ph{display:none}
-.mc-felt .portrait:has(.mcf-img:not([src^="data:"])){box-shadow:none;border-radius:0;overflow:visible}
+.mc-felt .mcf-frame > .mcf-img:not([src^="data:"]){inset:0;width:100%;height:100%;box-shadow:none!important}
+.mc-felt .mcf-frame:has(> .mcf-img:not([src^="data:"])){border-color:transparent;background:none;padding:0}
+.mc-felt .mcf-frame:has(> .mcf-img:not([src^="data:"])) > .mcf-ph{visibility:hidden}
+@media (hover:hover) and (pointer:fine){.mc-felt .mcf-frame:hover > .mcf-img:not([src^="data:"]){transform:scale(1.05)}}
+
+/* מחיר גדול בסגירה */
+.mc-felt .price-install.flush{font-size:clamp(34px,8vw,56px);font-weight:900;color:var(--ink);line-height:1.2;margin:0 auto 6px}
+
+/* ============================================================
+25. אינטראקטיביות
+============================================================ */
+/* פס התקדמות קריאה */
+.mc-felt .mcf-progress{position:fixed;top:0;right:0;left:0;height:4px;z-index:70;pointer-events:none;
+background:linear-gradient(to left,var(--turquoise),var(--gold));transform-origin:100% 50%;transform:scaleX(0)}
+
+/* קו זהב שמצטייר מתחת למילים מודגשות */
+.mc-felt .accent{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;
+background-position:100% 100%;background-size:100% 2px;padding-bottom:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mc-felt.mcf-js .reveal .accent{background-size:0 2px;transition:background-size 1s var(--ease) .35s}
+.mc-felt.mcf-js .reveal.in .accent{background-size:100% 2px}
+
+/* כניסה בדירוג של פריטים בתוך רשימות וכרטיסים */
+@keyframes mcfRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes mcfPop{0%{transform:scale(0)}70%{transform:scale(1.18)}100%{transform:scale(1)}}
+.mc-felt.mcf-js .reveal.in .mcf-stagger{animation:mcfRise .6s var(--ease) backwards;animation-delay:calc(var(--i,0) * 110ms)}
+.mc-felt.mcf-js .fit-list.in li::before{animation:mcfPop .5s var(--ease) both;animation-delay:calc(var(--i,0) * 110ms + 200ms)}
+.mc-felt.mcf-js .dates.in .num-badge,.mc-felt.mcf-js .gift-grid.in .gift-num{animation:mcfPop .5s var(--ease) both;animation-delay:calc(var(--i,0) * 110ms + 200ms)}
+
+/* ריחוף על כרטיסים */
+.mc-felt .gift-card,.mc-felt .dates li,.mc-felt .faq-item,.mc-felt .fit-list li,.mc-felt .price-card{transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)}
+@media (hover:hover) and (pointer:fine){
+.mc-felt .gift-card:hover,.mc-felt .dates li:hover{transform:translateY(-4px);box-shadow:0 18px 32px -20px rgba(var(--ink-rgb),.4);border-color:rgba(var(--turquoise-rgb),.5)}
+.mc-felt .faq-item:hover{border-color:rgba(var(--turquoise-rgb),.6)}
+.mc-felt .fit-list li:hover{transform:translateX(-6px)}
+.mc-felt .pills li{transition:transform .2s var(--ease)}
+.mc-felt .pills li:hover{transform:translateY(-3px)}
+}
+.mc-felt .gift-card:active,.mc-felt .syl-card:active{transform:scale(.98)}
+.mc-felt .mcf-tilt{transform-style:preserve-3d;will-change:transform}
+
+/* כרטיס המחיר נושם בעדינות */
+@keyframes mcfGlow{0%,100%{box-shadow:0 20px 40px -24px rgba(var(--ink-rgb),.3),0 0 0 0 rgba(var(--turquoise-rgb),.0)}
+50%{box-shadow:0 20px 40px -24px rgba(var(--ink-rgb),.3),0 0 0 8px rgba(var(--turquoise-rgb),.16)}}
+.mc-felt .price-card.in{animation:mcfGlow 3.2s ease-in-out 1s infinite}
+.mc-felt .price-new.mcf-bump{animation:mcfPop .5s var(--ease)}
+
+/* פתיחה חלקה של שאלות וכרטיסי סילבוס */
+.mc-felt .mcf-acc-body{overflow:hidden}
+.mc-felt .faq-item[open]{border-color:rgba(var(--turquoise-rgb),.6);box-shadow:0 14px 28px -22px rgba(var(--ink-rgb),.4)}
+
+/* אדווה בלחיצה על כפתורים */
+.mc-felt .cta:not(.hero-cta){position:relative;overflow:hidden}
+.mc-felt .mcf-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);pointer-events:none;
+animation:mcfRipple .6s ease-out forwards}
+@keyframes mcfRipple{to{transform:scale(2.6);opacity:0}}
+
+/* בלי תנועה: מצב מערכת או כפתור הנגישות */
+@media (prefers-reduced-motion:reduce){
+.mc-felt .accent{background-size:100% 2px!important;transition:none!important}
+.mc-felt .mcf-stagger,.mc-felt .fit-list li::before,.mc-felt .num-badge,.mc-felt .gift-num,.mc-felt .price-card,.mc-felt .price-new{animation:none!important}
+.mc-felt .mcf-progress{display:none}
+}
+.mc-felt.a11y-motion .accent{background-size:100% 2px!important;transition:none!important}
+.mc-felt.a11y-motion .mcf-stagger,.mc-felt.a11y-motion .fit-list li::before,.mc-felt.a11y-motion .num-badge,.mc-felt.a11y-motion .gift-num,.mc-felt.a11y-motion .price-card,.mc-felt.a11y-motion .price-new{animation:none!important}
+.mc-felt.a11y-motion .mcf-progress{display:none}
+.mc-felt.a11y-contrast .accent{background-image:linear-gradient(#000,#000)}
 </style>
 
+<div class="mcf-progress" aria-hidden="true"></div>
 <a class="skip" href="#main">דלג לתוכן הראשי</a>
 
 <div class="mcf-page">
@@ -873,6 +950,116 @@ try { localStorage.setItem('lp_cookie_ok','1'); } catch(err){}
 if (bar) bar.hidden = true;
 });
 
+/* אינטראקטיביות: מכבד prefers-reduced-motion ואת כפתור "עצירת אנימציות" */
+function still(){ return reduced || root.classList.contains('a11y-motion'); }
+var finePointer = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* דירוג פריטים בתוך רשימות וגריד */
+['.fit-list > li','.dates > li','.gift-grid > .gift-card','.syl-grid > .syl-card','.gif-grid > *','.proof-grid > *'].forEach(function(sel){
+Array.prototype.forEach.call(qa(sel), function(el, i){ el.classList.add('mcf-stagger'); el.style.setProperty('--i', i); });
+});
+Array.prototype.forEach.call(qa('.fit-list > li, .dates > li, .gift-grid > .gift-card'), function(el){
+var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+el.style.setProperty('--i', i);
+var badge = el.querySelector('.num-badge, .gift-num'); if (badge) badge.style.setProperty('--i', i);
+});
+
+/* פס התקדמות */
+var bar = q('.mcf-progress'), ticking = false;
+function progress(){
+ticking = false;
+var r = root.getBoundingClientRect(), total = r.height - window.innerHeight;
+var f = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+bar.style.transform = 'scaleX(' + f + ')';
+}
+if (bar) {
+window.addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(progress); } }, {passive:true});
+progress();
+}
+
+/* ספירה של המחיר כשהוא נכנס למסך (רק אם הטקסט הוא מספר) */
+Array.prototype.forEach.call(qa('.price-new'), function(el){
+var node = el.firstChild;
+if (!node || node.nodeType !== 3 || !/^\s*\d+\s*$/.test(node.nodeValue) || !('IntersectionObserver' in window)) return;
+var target = parseInt(node.nodeValue, 10);
+var ob = new IntersectionObserver(function(en){
+if (!en[0].isIntersecting) return;
+ob.disconnect();
+if (still()) return;
+var start = null, from = Math.round(target * 2.3), dur = 1400;
+function step(t){
+if (!start) start = t;
+var k = Math.min(1, (t - start) / dur), e = 1 - Math.pow(1 - k, 3);
+node.nodeValue = String(Math.round(from + (target - from) * e));
+if (k < 1) requestAnimationFrame(step);
+else { node.nodeValue = String(target); el.classList.add('mcf-bump'); }
+}
+requestAnimationFrame(step);
+}, {threshold:.6});
+ob.observe(el);
+});
+
+/* פתיחה וסגירה חלקה: שאלות (אחת פתוחה בכל פעם) וכרטיסי סילבוס */
+function accordion(itemSel, bodySel, single){
+var items = qa(itemSel);
+Array.prototype.forEach.call(items, function(d){
+var sum = d.querySelector('summary'), body = d.querySelector(bodySel);
+if (!sum || !body) return;
+body.classList.add('mcf-acc-body');
+function animate(open){
+if (still()){ d.open = open; return; }
+if (open) d.open = true;
+var h = body.scrollHeight;
+body.style.height = (open ? 0 : h) + 'px';
+body.style.opacity = open ? 0 : 1;
+body.offsetHeight;
+body.style.transition = 'height .4s cubic-bezier(.16,1,.3,1), opacity .35s ease';
+body.style.height = (open ? h : 0) + 'px';
+body.style.opacity = open ? 1 : 0;
+setTimeout(function(){
+body.style.transition = ''; body.style.height = ''; body.style.opacity = '';
+if (!open) d.open = false;
+}, 420);
+}
+sum.addEventListener('click', function(e){
+e.preventDefault();
+var opening = !d.open;
+if (opening && single) Array.prototype.forEach.call(items, function(o){ if (o !== d && o.open) o._mcfClose(); });
+animate(opening);
+});
+d._mcfClose = function(){ animate(false); };
+});
+}
+accordion('.faq-item', '.faq-a', true);
+accordion('.syl-card', '.syl-card-body', false);
+
+/* הטיה עדינה של כרטיסים בתנועת עכבר */
+if (finePointer) Array.prototype.forEach.call(qa('.gift-card, .syl-card, .price-card'), function(card){
+card.classList.add('mcf-tilt');
+card.addEventListener('mousemove', function(e){
+if (still()) return;
+var r = card.getBoundingClientRect();
+var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+card.style.transform = 'perspective(900px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) translateY(-4px)';
+});
+card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+});
+
+/* אדווה בלחיצה על כפתורים */
+Array.prototype.forEach.call(qa('.cta:not(.hero-cta)'), function(btnEl){
+btnEl.addEventListener('pointerdown', function(e){
+if (still()) return;
+var r = btnEl.getBoundingClientRect(), size = Math.max(r.width, r.height);
+var rip = document.createElement('span');
+rip.className = 'mcf-ripple';
+rip.style.width = rip.style.height = size + 'px';
+rip.style.left = (e.clientX - r.left - size / 2) + 'px';
+rip.style.top = (e.clientY - r.top - size / 2) + 'px';
+btnEl.appendChild(rip);
+setTimeout(function(){ if (rip.parentNode) rip.parentNode.removeChild(rip); }, 650);
+});
+});
+
 /* תפריט נגישות: המחלקות נוספות לעטיפה בלבד */
 var btn = q('[data-mcf="a11y-btn"]'), panel = q('[data-mcf="a11y-panel"]'), closeBtn = q('[data-mcf="a11y-close"]');
 if (!btn || !panel || !closeBtn) return;
@@ -938,7 +1125,7 @@ save();
   {"class": "ravxx_var_hero.kicker", "name": "כותרת קטנה", "description": "השורה הקטנה מעל הכותרת הראשית.", "type": "text"},
   {"class": "ravxx_var_hero.title", "name": "כותרת ראשית", "description": "טקסט הכותרת הראשית של הדף.", "type": "text"},
   {"class": "ravxx_var_hero.subtitle", "name": "כותרת משנה", "description": "המשפט שמתחת לכותרת הראשית.", "type": "text"},
-  {"class": "ravxx_var_hero.image", "name": "תמונה ראשית", "description": "התמונה הראשית באזור העליון. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_hero.image", "name": "תמונה ראשית", "description": "התמונה הראשית באזור העליון. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_hero.pills", "name": "תגיות פרטי הסדנה", "type": "group"},
   {"class": "ravxx_var_hero.pills.pill1", "name": "תגית 1", "description": "טקסט התגית הראשונה.", "type": "text"},
   {"class": "ravxx_var_hero.pills.pill2", "name": "תגית 2", "description": "טקסט התגית השנייה.", "type": "text"},
@@ -948,21 +1135,21 @@ save();
   {"class": "ravxx_var_author", "name": "על דקלה", "type": "group"},
   {"class": "ravxx_var_author.name", "name": "שורת היכרות", "description": "השורה עם השם של דקלה.", "type": "text"},
   {"class": "ravxx_var_author.role", "name": "תפקיד", "description": "התיאור המקצועי מתחת לשם.", "type": "text"},
-  {"class": "ravxx_var_author.photo", "name": "תמונה של דקלה", "description": "תמונת הפרופיל. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_author.photo", "name": "תמונה של דקלה", "description": "תמונת הפרופיל. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_author.bio1", "name": "ביוגרפיה, פסקה 1", "description": "הפסקה הראשונה על הניסיון.", "type": "text"},
   {"class": "ravxx_var_author.bio2", "name": "ביוגרפיה, פסקה 2", "description": "הפסקה על שיטת Feltherapy.", "type": "text"},
   {"class": "ravxx_var_process", "name": "גיפים של התהליך", "type": "group"},
-  {"class": "ravxx_var_process.gif1", "name": "גיף 1", "description": "גיף או תמונה ברשת שמתחת להיכרות. מוצג בריבוע, עדיף תמונה מרובעת.", "type": "image"},
-  {"class": "ravxx_var_process.gif2", "name": "גיף 2", "description": "גיף או תמונה ברשת שמתחת להיכרות. מוצג בריבוע, עדיף תמונה מרובעת.", "type": "image"},
-  {"class": "ravxx_var_process.gif3", "name": "גיף 3", "description": "גיף או תמונה ברשת שמתחת להיכרות. מוצג בריבוע, עדיף תמונה מרובעת.", "type": "image"},
+  {"class": "ravxx_var_process.gif1", "name": "גיף 1", "description": "גיף או תמונה ברשת שמתחת להיכרות. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_process.gif2", "name": "גיף 2", "description": "גיף או תמונה ברשת שמתחת להיכרות. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_process.gif3", "name": "גיף 3", "description": "גיף או תמונה ברשת שמתחת להיכרות. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_proof", "name": "תוצרים של משתתפות", "type": "group"},
-  {"class": "ravxx_var_proof.photo1", "name": "תמונת תוצר 1", "description": "תמונה של נעלי בית שיצרה משתתפת. מוצגת ביחס 4:5, עדיף תמונה לאורך.", "type": "image"},
-  {"class": "ravxx_var_proof.photo2", "name": "תמונת תוצר 2", "description": "תמונה של נעלי בית שיצרה משתתפת. מוצגת ביחס 4:5, עדיף תמונה לאורך.", "type": "image"},
-  {"class": "ravxx_var_proof.photo3", "name": "תמונת תוצר 3", "description": "תמונה של נעלי בית שיצרה משתתפת. מוצגת ביחס 4:5, עדיף תמונה לאורך.", "type": "image"},
+  {"class": "ravxx_var_proof.photo1", "name": "תמונת תוצר 1", "description": "תמונה של נעלי בית שיצרה משתתפת. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_proof.photo2", "name": "תמונת תוצר 2", "description": "תמונה של נעלי בית שיצרה משתתפת. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_proof.photo3", "name": "תמונת תוצר 3", "description": "תמונה של נעלי בית שיצרה משתתפת. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services", "name": "הסדנה", "type": "group"},
   {"class": "ravxx_var_services.name", "name": "שם הסדנה", "description": "כותרת שם הסדנה.", "type": "text"},
   {"class": "ravxx_var_services.subtitle", "name": "תיאור קצר", "description": "השורה שמתחת לשם הסדנה.", "type": "text"},
-  {"class": "ravxx_var_services.mockup", "name": "מוקאפ הסדנה", "description": "התמונה מעל שם הסדנה. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_services.mockup", "name": "מוקאפ הסדנה", "description": "התמונה מעל שם הסדנה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.date1", "name": "מפגש 1: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש הראשון.", "type": "text"},
   {"class": "ravxx_var_services.date2", "name": "מפגש 2: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש השני.", "type": "text"},
   {"class": "ravxx_var_services.date3", "name": "מפגש 3: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש השלישי.", "type": "text"},
@@ -971,30 +1158,30 @@ save();
   {"class": "ravxx_var_services.syllabus.session1", "name": "מפגש 1", "type": "group"},
   {"class": "ravxx_var_services.syllabus.session1.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 1.", "type": "text"},
   {"class": "ravxx_var_services.syllabus.session1.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 1.", "type": "text"},
-  {"class": "ravxx_var_services.syllabus.session1.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 1. מוצג בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.syllabus.session1.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 1. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.syllabus.session2", "name": "מפגש 2", "type": "group"},
   {"class": "ravxx_var_services.syllabus.session2.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 2.", "type": "text"},
   {"class": "ravxx_var_services.syllabus.session2.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 2.", "type": "text"},
-  {"class": "ravxx_var_services.syllabus.session2.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 2. מוצג בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.syllabus.session2.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 2. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.syllabus.session3", "name": "מפגש 3", "type": "group"},
   {"class": "ravxx_var_services.syllabus.session3.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 3.", "type": "text"},
   {"class": "ravxx_var_services.syllabus.session3.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 3.", "type": "text"},
-  {"class": "ravxx_var_services.syllabus.session3.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 3. מוצג בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.syllabus.session3.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 3. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.gifts", "name": "מתנות", "type": "group"},
   {"class": "ravxx_var_services.gifts.heading", "name": "כותרת המתנות", "description": "כותרת אזור המתנות.", "type": "text"},
   {"class": "ravxx_var_services.gifts.intro", "name": "פתיח המתנות", "description": "המשפט שמתחת לכותרת המתנות.", "type": "text"},
   {"class": "ravxx_var_services.gifts.gift1", "name": "מתנה 1", "type": "group"},
   {"class": "ravxx_var_services.gifts.gift1.title", "name": "כותרת", "description": "כותרת המתנה הראשונה.", "type": "text"},
   {"class": "ravxx_var_services.gifts.gift1.body", "name": "תיאור", "description": "תיאור המתנה הראשונה.", "type": "text"},
-  {"class": "ravxx_var_services.gifts.gift1.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.gifts.gift1.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.gifts.gift2", "name": "מתנה 2", "type": "group"},
   {"class": "ravxx_var_services.gifts.gift2.title", "name": "כותרת", "description": "כותרת המתנה השנייה.", "type": "text"},
   {"class": "ravxx_var_services.gifts.gift2.body", "name": "תיאור", "description": "תיאור המתנה השנייה.", "type": "text"},
-  {"class": "ravxx_var_services.gifts.gift2.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.gifts.gift2.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.gifts.gift3", "name": "מתנה 3", "type": "group"},
   {"class": "ravxx_var_services.gifts.gift3.title", "name": "כותרת", "description": "כותרת המתנה השלישית.", "type": "text"},
   {"class": "ravxx_var_services.gifts.gift3.body", "name": "תיאור", "description": "תיאור המתנה השלישית.", "type": "text"},
-  {"class": "ravxx_var_services.gifts.gift3.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.gifts.gift3.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_offer", "name": "תמחור והרשמה", "type": "group"},
   {"class": "ravxx_var_offer.heading", "name": "כותרת התמחור", "description": "הכותרת של אזור ההשקעה.", "type": "text"},
   {"class": "ravxx_var_offer.value", "name": "שווי כולל", "description": "השורה עם השווי המקורי (מוצגת עם קו חוצה).", "type": "text"},
@@ -1006,7 +1193,7 @@ save();
   {"class": "ravxx_var_offer.steps.step1", "name": "שלב 1", "description": "טקסט השלב הראשון.", "type": "text"},
   {"class": "ravxx_var_offer.steps.step2", "name": "שלב 2", "description": "טקסט השלב השני.", "type": "text"},
   {"class": "ravxx_var_offer.steps.step3", "name": "שלב 3", "description": "טקסט השלב השלישי.", "type": "text"},
-  {"class": "ravxx_var_offer.mockup", "name": "מוקאפ לפני הכפתור", "description": "התמונה מעל כפתור ההרשמה. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_offer.mockup", "name": "מוקאפ לפני הכפתור", "description": "התמונה מעל כפתור ההרשמה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_offer.cta", "name": "כפתור הרשמה ראשי", "description": "כתובת היעד של כפתור ההרשמה הראשי (עמוד התשלום).", "type": "link"},
   {"class": "ravxx_var_offer.ctaNote", "name": "הערה מתחת לכפתור", "description": "השורה הקטנה מתחת לכפתור ההרשמה.", "type": "text"},
   {"class": "ravxx_var_fit", "name": "למי זה מתאים", "type": "group"},
