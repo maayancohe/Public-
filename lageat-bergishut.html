@@ -373,6 +373,11 @@ body.show-date-bar .date-sticky{opacity:1;visibility:visible;transform:none}
 .brow-now{border-right-color:#87c367;box-shadow:0 14px 34px -22px rgba(60,40,30,.5)}
 .brow-now .t>span:first-child{font-size:21px}
 
+/* שורת גישה מיידית מעל הטופס */
+.pricebox .instant-access{max-width:440px;margin:22px auto 0;padding:14px 18px;background:#eef6e8;border:1.5px solid #87c367;border-radius:16px;color:var(--ink);font-size:19px;line-height:1.55}
+.pricebox .instant-access b{font-weight:800;color:var(--brand)}
+@media(max-width:760px){.pricebox .instant-access{font-size:18px;padding:12px 14px}}
+
 /* בונוס מיוחד: קהילת אמא שיודעת */
 .bonus-special{position:relative;max-width:660px;margin:150px auto 0;background:var(--dark);color:var(--on-dark);border-radius:26px;border:2px solid var(--accent);box-shadow:0 30px 60px -30px rgba(60,40,30,.85);padding:96px 28px 34px;text-align:center}
 .bonus-special .bonus-image{top:-80px}
@@ -622,6 +627,7 @@ body.show-date-bar .date-sticky{opacity:1;visibility:visible;transform:none}
           <div class="unit"><span data-countdown="seconds">00</span><small>שניות</small></div>
         </div>
         <p class="return-price ravxx_var_offer.pricing.return_text">ואז המחיר יחזור להיות <u>1,590 ש"ח</u></p>
+        <p class="instant-access ravxx_var_offer.pricing.instant_access">ברגע שנרשמת: <b>הקלטת הרצאת המבוא</b> והכניסה לקהילת <b>"אמא שיודעת"</b> מחכות לך מיד.</p>
         <div class="price-form" id="registration-form"><iframe srcdoc="&lt;!doctype html&gt;&lt;html dir=&quot;rtl&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;base target=&quot;_top&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;height:auto!important;min-height:0!important;background:transparent;overflow-x:hidden}body&gt;script{display:none!important}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;https://form2.ravpage.co.il/9c74219a7c4d9822f1f14577b77bf36b6ABD283D&quot; charset=&quot;UTF-8&quot;&gt;&lt;/script&gt;&lt;script&gt;(function(){function t(){document.querySelectorAll('form').forEach(function(f){f.target='_top'});document.querySelectorAll('a[href]').forEach(function(a){if(!a.target)a.target='_top'})}t();new MutationObserver(t).observe(document.documentElement,{childList:true,subtree:true})})();&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" title="טופס הרשמה לתוכנית" scrolling="no"></iframe></div>
         <p class="limit ravxx_var_offer.pricing.limit">זו קבוצה קטנה בכוונה, והיא נסגרת ברגע שהיא מתמלאת.</p>
       </div>
@@ -897,6 +903,7 @@ if(formFrame){
   {"class":"ravxx_var_offer.pricing.current_label","name":"כותרת מחיר ההטבה","description":"הטקסט של כותרת מחיר ההטבה.","type":"text"},
   {"class":"ravxx_var_offer.pricing.current_price","name":"מחיר ההטבה","description":"הטקסט של מחיר ההטבה.","type":"text"},
   {"class":"ravxx_var_offer.pricing.deadline","name":"תאריך סיום ההטבה","description":"הטקסט של תאריך סיום ההטבה.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.instant_access","name":"שורת גישה מיידית","description":"השורה הירוקה מעל טופס ההרשמה.","type":"text"},
   {"class":"ravxx_var_offer.pricing.limit","name":"הערת מקומות","description":"הטקסט של הערת מקומות.","type":"text"},
   {"class":"ravxx_var_offer.pricing.not_now","name":"מסר המחיר המיוחד","description":"הטקסט של מסר המחיר המיוחד.","type":"text"},
   {"class":"ravxx_var_offer.pricing.note","name":"הערה","description":"הטקסט של הערה.","type":"text"},
