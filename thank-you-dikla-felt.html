@@ -87,6 +87,9 @@ border-radius:var(--r);background:var(--paper-bright);display:grid;place-items:c
 .mc-ty .ty-frame:has(> .ty-img:not([src^="data:"])){aspect-ratio:auto;border:0;padding:0;background:none;overflow:visible;border-radius:0;display:block}
 .mc-ty .ty-frame:has(> .ty-img:not([src^="data:"])) > .ty-ph{display:none}
 
+.mc-ty .ty-frame.ty-portrait{width:min(100%,260px);aspect-ratio:4/5;margin:0 auto 20px}
+.mc-ty .ty-frame.ty-portrait > .ty-img:not([src^="data:"]){max-height:min(60vh,480px)}
+
 /* ============================================================
 4. סרגל צעדים
 ============================================================ */
@@ -225,7 +228,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 
 <div class="ty-progress reveal" aria-live="polite">
 <span class="ty-progress-bar"><span class="ty-progress-fill"></span></span>
-<span><span class="ty-progress-count">0</span> מתוך 3 צעדים</span>
+<span><span class="ty-progress-count">0</span> <span class="ravxx_var_hero.progressLabel">מתוך 3 צעדים</span></span>
 </div>
 </div>
 </header>
@@ -240,7 +243,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <ul class="ty-dates reveal">
 <li class="ty-date mcty-stagger">
 <span class="ty-num">1</span>
-<span class="ty-date-txt"><span class="ty-date-day ravxx_var_calendar.date1">יום שישי, 6.11</span><span class="ty-date-time">09:30–11:30</span></span>
+<span class="ty-date-txt"><span class="ty-date-day ravxx_var_calendar.date1">יום שישי, 6.11</span><span class="ty-date-time ravxx_var_calendar.time1">09:30–11:30</span></span>
 <span class="ty-cal-btns">
 <a class="ty-cal google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%D7%A1%D7%93%D7%A0%D7%AA+%D7%9C%D7%99%D7%91%D7%95%D7%93+%D7%A0%D7%A2%D7%9C%D7%99+%D7%91%D7%99%D7%AA+%D7%A2%D7%9D+%D7%93%D7%A7%D7%9C%D7%94+%D7%93%D7%95%D7%9F+-+%D7%9E%D7%A4%D7%92%D7%A9+1&amp;dates=20261106T073000Z%2F20261106T093000Z&amp;details=%D7%9E%D7%A4%D7%92%D7%A9+%D7%96%D7%95%D7%9D+%D7%97%D7%99%2C+09%3A30-11%3A30.+%D7%A7%D7%99%D7%A9%D7%95%D7%A8+%D7%94%D7%96%D7%95%D7%9D+%D7%A0%D7%A9%D7%9C%D7%97+%D7%90%D7%9C%D7%99%D7%99%D7%9A+%D7%91%D7%9E%D7%99%D7%99%D7%9C.+%D7%9B%D7%9C+%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D+%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D." target="_blank" rel="noopener" data-step="cal">Google</a>
 <a class="ty-cal" href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FFeltherapy%2F%2FSlippers%20Workshop%2F%2FHE%0D%0ACALSCALE%3AGREGORIAN%0D%0AMETHOD%3APUBLISH%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afeltherapy-slippers-2026-1%40feltherapy%0D%0ADTSTAMP%3A20261014T000000Z%0D%0ADTSTART%3A20261106T073000Z%0D%0ADTEND%3A20261106T093000Z%0D%0ASUMMARY%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%D7%92%D7%A9%0D%0A%20%201%0D%0ADESCRIPTION%3A%D7%9E%D7%A4%D7%92%D7%A9%20%D7%96%D7%95%D7%9D%20%D7%97%D7%99%2C%2009%3A30-11%3A30.%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%96%D7%95%D7%9D%20%D7%A0%D7%A9%D7%9C%D7%97%0D%0A%20%20%D7%90%D7%9C%D7%99%D7%99%D7%9A%20%D7%91%D7%9E%D7%99%D7%99%D7%9C.%20%D7%9B%D7%9C%20%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D%20%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D.%0D%0ABEGIN%3AVALARM%0D%0ATRIGGER%3A-PT30M%0D%0AACTION%3ADISPLAY%0D%0ADESCRIPTION%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%0D%0A%20%D7%92%D7%A9%201%0D%0AEND%3AVALARM%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="mifgash-1.ics" data-step="cal">Apple / Outlook</a>
@@ -248,7 +251,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 </li>
 <li class="ty-date mcty-stagger">
 <span class="ty-num">2</span>
-<span class="ty-date-txt"><span class="ty-date-day ravxx_var_calendar.date2">יום שישי, 13.11</span><span class="ty-date-time">09:30–11:30</span></span>
+<span class="ty-date-txt"><span class="ty-date-day ravxx_var_calendar.date2">יום שישי, 13.11</span><span class="ty-date-time ravxx_var_calendar.time2">09:30–11:30</span></span>
 <span class="ty-cal-btns">
 <a class="ty-cal google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%D7%A1%D7%93%D7%A0%D7%AA+%D7%9C%D7%99%D7%91%D7%95%D7%93+%D7%A0%D7%A2%D7%9C%D7%99+%D7%91%D7%99%D7%AA+%D7%A2%D7%9D+%D7%93%D7%A7%D7%9C%D7%94+%D7%93%D7%95%D7%9F+-+%D7%9E%D7%A4%D7%92%D7%A9+2&amp;dates=20261113T073000Z%2F20261113T093000Z&amp;details=%D7%9E%D7%A4%D7%92%D7%A9+%D7%96%D7%95%D7%9D+%D7%97%D7%99%2C+09%3A30-11%3A30.+%D7%A7%D7%99%D7%A9%D7%95%D7%A8+%D7%94%D7%96%D7%95%D7%9D+%D7%A0%D7%A9%D7%9C%D7%97+%D7%90%D7%9C%D7%99%D7%99%D7%9A+%D7%91%D7%9E%D7%99%D7%99%D7%9C.+%D7%9B%D7%9C+%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D+%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D." target="_blank" rel="noopener" data-step="cal">Google</a>
 <a class="ty-cal" href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FFeltherapy%2F%2FSlippers%20Workshop%2F%2FHE%0D%0ACALSCALE%3AGREGORIAN%0D%0AMETHOD%3APUBLISH%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afeltherapy-slippers-2026-2%40feltherapy%0D%0ADTSTAMP%3A20261014T000000Z%0D%0ADTSTART%3A20261113T073000Z%0D%0ADTEND%3A20261113T093000Z%0D%0ASUMMARY%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%D7%92%D7%A9%0D%0A%20%202%0D%0ADESCRIPTION%3A%D7%9E%D7%A4%D7%92%D7%A9%20%D7%96%D7%95%D7%9D%20%D7%97%D7%99%2C%2009%3A30-11%3A30.%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%96%D7%95%D7%9D%20%D7%A0%D7%A9%D7%9C%D7%97%0D%0A%20%20%D7%90%D7%9C%D7%99%D7%99%D7%9A%20%D7%91%D7%9E%D7%99%D7%99%D7%9C.%20%D7%9B%D7%9C%20%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D%20%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D.%0D%0ABEGIN%3AVALARM%0D%0ATRIGGER%3A-PT30M%0D%0AACTION%3ADISPLAY%0D%0ADESCRIPTION%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%0D%0A%20%D7%92%D7%A9%202%0D%0AEND%3AVALARM%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="mifgash-2.ics" data-step="cal">Apple / Outlook</a>
@@ -256,7 +259,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 </li>
 <li class="ty-date mcty-stagger">
 <span class="ty-num">3</span>
-<span class="ty-date-txt"><span class="ty-date-day ravxx_var_calendar.date3">יום שישי, 27.11</span><span class="ty-date-time">09:30–11:30</span></span>
+<span class="ty-date-txt"><span class="ty-date-day ravxx_var_calendar.date3">יום שישי, 27.11</span><span class="ty-date-time ravxx_var_calendar.time3">09:30–11:30</span></span>
 <span class="ty-cal-btns">
 <a class="ty-cal google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%D7%A1%D7%93%D7%A0%D7%AA+%D7%9C%D7%99%D7%91%D7%95%D7%93+%D7%A0%D7%A2%D7%9C%D7%99+%D7%91%D7%99%D7%AA+%D7%A2%D7%9D+%D7%93%D7%A7%D7%9C%D7%94+%D7%93%D7%95%D7%9F+-+%D7%9E%D7%A4%D7%92%D7%A9+3&amp;dates=20261127T073000Z%2F20261127T093000Z&amp;details=%D7%9E%D7%A4%D7%92%D7%A9+%D7%96%D7%95%D7%9D+%D7%97%D7%99%2C+09%3A30-11%3A30.+%D7%A7%D7%99%D7%A9%D7%95%D7%A8+%D7%94%D7%96%D7%95%D7%9D+%D7%A0%D7%A9%D7%9C%D7%97+%D7%90%D7%9C%D7%99%D7%99%D7%9A+%D7%91%D7%9E%D7%99%D7%99%D7%9C.+%D7%9B%D7%9C+%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D+%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D." target="_blank" rel="noopener" data-step="cal">Google</a>
 <a class="ty-cal" href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FFeltherapy%2F%2FSlippers%20Workshop%2F%2FHE%0D%0ACALSCALE%3AGREGORIAN%0D%0AMETHOD%3APUBLISH%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afeltherapy-slippers-2026-3%40feltherapy%0D%0ADTSTAMP%3A20261014T000000Z%0D%0ADTSTART%3A20261127T073000Z%0D%0ADTEND%3A20261127T093000Z%0D%0ASUMMARY%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%D7%92%D7%A9%0D%0A%20%203%0D%0ADESCRIPTION%3A%D7%9E%D7%A4%D7%92%D7%A9%20%D7%96%D7%95%D7%9D%20%D7%97%D7%99%2C%2009%3A30-11%3A30.%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%96%D7%95%D7%9D%20%D7%A0%D7%A9%D7%9C%D7%97%0D%0A%20%20%D7%90%D7%9C%D7%99%D7%99%D7%9A%20%D7%91%D7%9E%D7%99%D7%99%D7%9C.%20%D7%9B%D7%9C%20%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D%20%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D.%0D%0ABEGIN%3AVALARM%0D%0ATRIGGER%3A-PT30M%0D%0AACTION%3ADISPLAY%0D%0ADESCRIPTION%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%0D%0A%20%D7%92%D7%A9%203%0D%0AEND%3AVALARM%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="mifgash-3.ics" data-step="cal">Apple / Outlook</a>
@@ -266,7 +269,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <div class="ty-btn-wrap reveal">
 <a class="ty-btn navy" href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FFeltherapy%2F%2FSlippers%20Workshop%2F%2FHE%0D%0ACALSCALE%3AGREGORIAN%0D%0AMETHOD%3APUBLISH%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afeltherapy-slippers-2026-1%40feltherapy%0D%0ADTSTAMP%3A20261014T000000Z%0D%0ADTSTART%3A20261106T073000Z%0D%0ADTEND%3A20261106T093000Z%0D%0ASUMMARY%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%D7%92%D7%A9%0D%0A%20%201%0D%0ADESCRIPTION%3A%D7%9E%D7%A4%D7%92%D7%A9%20%D7%96%D7%95%D7%9D%20%D7%97%D7%99%2C%2009%3A30-11%3A30.%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%96%D7%95%D7%9D%20%D7%A0%D7%A9%D7%9C%D7%97%0D%0A%20%20%D7%90%D7%9C%D7%99%D7%99%D7%9A%20%D7%91%D7%9E%D7%99%D7%99%D7%9C.%20%D7%9B%D7%9C%20%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D%20%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D.%0D%0ABEGIN%3AVALARM%0D%0ATRIGGER%3A-PT30M%0D%0AACTION%3ADISPLAY%0D%0ADESCRIPTION%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%0D%0A%20%D7%92%D7%A9%201%0D%0AEND%3AVALARM%0D%0AEND%3AVEVENT%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afeltherapy-slippers-2026-2%40feltherapy%0D%0ADTSTAMP%3A20261014T000000Z%0D%0ADTSTART%3A20261113T073000Z%0D%0ADTEND%3A20261113T093000Z%0D%0ASUMMARY%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%D7%92%D7%A9%0D%0A%20%202%0D%0ADESCRIPTION%3A%D7%9E%D7%A4%D7%92%D7%A9%20%D7%96%D7%95%D7%9D%20%D7%97%D7%99%2C%2009%3A30-11%3A30.%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%96%D7%95%D7%9D%20%D7%A0%D7%A9%D7%9C%D7%97%0D%0A%20%20%D7%90%D7%9C%D7%99%D7%99%D7%9A%20%D7%91%D7%9E%D7%99%D7%99%D7%9C.%20%D7%9B%D7%9C%20%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D%20%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D.%0D%0ABEGIN%3AVALARM%0D%0ATRIGGER%3A-PT30M%0D%0AACTION%3ADISPLAY%0D%0ADESCRIPTION%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%0D%0A%20%D7%92%D7%A9%202%0D%0AEND%3AVALARM%0D%0AEND%3AVEVENT%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Afeltherapy-slippers-2026-3%40feltherapy%0D%0ADTSTAMP%3A20261014T000000Z%0D%0ADTSTART%3A20261127T073000Z%0D%0ADTEND%3A20261127T093000Z%0D%0ASUMMARY%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%D7%92%D7%A9%0D%0A%20%203%0D%0ADESCRIPTION%3A%D7%9E%D7%A4%D7%92%D7%A9%20%D7%96%D7%95%D7%9D%20%D7%97%D7%99%2C%2009%3A30-11%3A30.%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%96%D7%95%D7%9D%20%D7%A0%D7%A9%D7%9C%D7%97%0D%0A%20%20%D7%90%D7%9C%D7%99%D7%99%D7%9A%20%D7%91%D7%9E%D7%99%D7%99%D7%9C.%20%D7%9B%D7%9C%20%D7%94%D7%9E%D7%A4%D7%92%D7%A9%D7%99%D7%9D%20%D7%9E%D7%95%D7%A7%D7%9C%D7%98%D7%99%D7%9D.%0D%0ABEGIN%3AVALARM%0D%0ATRIGGER%3A-PT30M%0D%0AACTION%3ADISPLAY%0D%0ADESCRIPTION%3A%D7%A1%D7%93%D7%A0%D7%AA%20%D7%9C%D7%99%D7%91%D7%95%D7%93%20%D7%A0%D7%A2%D7%9C%D7%99%20%D7%91%D7%99%D7%AA%20%D7%A2%D7%9D%20%D7%93%D7%A7%D7%9C%D7%94%20%D7%93%D7%95%D7%9F%20-%20%D7%9E%D7%A4%0D%0A%20%D7%92%D7%A9%203%0D%0AEND%3AVALARM%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="feltherapy-3-mifgashim.ics" data-step="cal">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M12 14v4M10 16h4"/></svg>
-<span class="ravxx_var_calendar.all_caption">הוספת כל 3 המפגשים ליומן</span>
+<span class="ravxx_var_calendar.allLabel">הוספת כל 3 המפגשים ליומן</span>
 </a>
 </div>
 <p class="ty-small reveal ravxx_var_calendar.note">לא מסתדר לך להגיע לאחד המפגשים? כל המפגשים מוקלטים וזמינים לצפייה מתי שנוח לך.</p>
@@ -306,6 +309,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <!-- סגירה -->
 <section class="ty-sec sand">
 <div class="ty-wrap reveal">
+<div class="ty-frame ty-portrait"><span class="ty-ph">[תמונה של דקלה]</span><img class="ty-img ravxx_var_closing.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="דקלה דון" loading="lazy"></div>
 <p class="ravxx_var_closing.text">אני כבר מחכה לפגוש אותך במפגש הראשון, עם הצמר, המים והסבון.</p>
 <p class="ty-sig ravxx_var_closing.signature">באהבה,<br>דקלה</p>
 </div>
@@ -473,12 +477,17 @@ save();
   {"class": "ravxx_var_hero.subtitle", "name": "כותרת משנה", "description": "השורה המודגשת מתחת לכותרת.", "type": "text"},
   {"class": "ravxx_var_hero.text", "name": "פסקת פתיחה", "description": "ההסבר מעל תמונת המוקאפ.", "type": "text"},
   {"class": "ravxx_var_hero.image", "name": "תמונת מוקאפ", "description": "תמונת המוקאפ באזור העליון. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_hero.progressLabel", "name": "טקסט סרגל הצעדים", "description": "הטקסט שליד המונה של סרגל הצעדים.", "type": "text"},
   {"class": "ravxx_var_calendar", "name": "צעד 1: יומן", "type": "group"},
   {"class": "ravxx_var_calendar.heading", "name": "כותרת", "description": "כותרת צעד היומן.", "type": "text"},
   {"class": "ravxx_var_calendar.text", "name": "הסבר", "description": "ההסבר מתחת לכותרת צעד היומן.", "type": "text"},
   {"class": "ravxx_var_calendar.date1", "name": "מפגש 1: תאריך", "description": "טקסט התאריך של מפגש 1. שינוי כאן לא משנה את התאריך ביומן.", "type": "text"},
+  {"class": "ravxx_var_calendar.time1", "name": "מפגש 1: שעה", "description": "טקסט השעה של מפגש 1. שינוי כאן לא משנה את השעה ביומן.", "type": "text"},
   {"class": "ravxx_var_calendar.date2", "name": "מפגש 2: תאריך", "description": "טקסט התאריך של מפגש 2. שינוי כאן לא משנה את התאריך ביומן.", "type": "text"},
+  {"class": "ravxx_var_calendar.time2", "name": "מפגש 2: שעה", "description": "טקסט השעה של מפגש 2. שינוי כאן לא משנה את השעה ביומן.", "type": "text"},
   {"class": "ravxx_var_calendar.date3", "name": "מפגש 3: תאריך", "description": "טקסט התאריך של מפגש 3. שינוי כאן לא משנה את התאריך ביומן.", "type": "text"},
+  {"class": "ravxx_var_calendar.time3", "name": "מפגש 3: שעה", "description": "טקסט השעה של מפגש 3. שינוי כאן לא משנה את השעה ביומן.", "type": "text"},
+  {"class": "ravxx_var_calendar.allLabel", "name": "טקסט כפתור כל המפגשים", "description": "הטקסט על הכפתור שמוסיף את כל 3 המפגשים ליומן.", "type": "text"},
   {"class": "ravxx_var_calendar.note", "name": "הערה על ההקלטות", "description": "השורה הקטנה מתחת לכפתור היומן.", "type": "text"},
   {"class": "ravxx_var_whatsapp", "name": "צעד 2: וואטסאפ", "type": "group"},
   {"class": "ravxx_var_whatsapp.heading", "name": "כותרת", "description": "כותרת צעד הוואטסאפ.", "type": "text"},
@@ -489,6 +498,7 @@ save();
   {"class": "ravxx_var_kit.text", "name": "הסבר", "description": "תיאור מארז הצמר.", "type": "text"},
   {"class": "ravxx_var_kit.link", "name": "קישור לתשלום", "description": "כתובת עמוד התשלום של מארז הצמר.", "type": "link"},
   {"class": "ravxx_var_closing", "name": "סגירה", "type": "group"},
+  {"class": "ravxx_var_closing.image", "name": "תמונה של דקלה", "description": "התמונה של דקלה מעל משפט הסגירה. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_closing.text", "name": "משפט סגירה", "description": "המשפט האישי בסוף הדף.", "type": "text"},
   {"class": "ravxx_var_closing.signature", "name": "חתימה", "description": "החתימה של דקלה.", "type": "text"},
   {"class": "ravxx_var_footer", "name": "פוטר", "type": "group"},
