@@ -4,7 +4,7 @@
 
   כל התמונות כבר נמצאות בתוך הקובץ, לא צריך להעלות אותן בנפרד.
 
-  טופס ההרשמה: מסומן בהערה "טופס ההרשמה". מוטמע טופס רב מסר (סקריפט עם טעינה מחוזקת).
+  טופס ההרשמה: מסומן בהערה "טופס ההרשמה". טופס עצמאי שנשלח ל-Make, ומשם הנרשמים נכנסים לרשימה ברב מסר.
   הטופס מוטמע פעם אחת בלבד, שאר הכפתורים בדף גוללים אליו.
 -->
 <html lang="he" dir="rtl">
@@ -237,120 +237,146 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 </div>
 <p style="margin: 0; font-size: 1.2rem; font-weight: 700">המפגש מיועד להורים של ילדים בגילים 3-10</p>
 <div style="width: 100%; max-width: 900px">
-<!-- ===== טופס ההרשמה: טופס רב מסר ===== -->
+<!-- ===== טופס ההרשמה: טופס עצמאי שנשלח ל-Make ומשם לרשימה ברב מסר ===== -->
 <!--
-  טעינה מחוזקת של טופס רב מסר:
-  1. הסקריפט של רב מסר נטען בתוך המסגרת של הטופס עצמו.
-  2. כל מה שהסקריפט כותב לדף (document.write) נכנס למסגרת, גם אם זה קורה באיחור.
-  3. אם הטופס נוצר במקום אחר בדף, הוא מועבר אוטומטית לכאן.
-  4. אם הטעינה נכשלת, יש עד 3 ניסיונות נוספים.
+  הגדרות (בתוך הסקריפט למטה):
+  WEBHOOK  כתובת ה-webhook ב-Make (תרחיש: "נעה פלד יעקבי - עוגן בסערה - טופס לרב מסר")
+  THANKS   כתובת דף התודה. אם ריק, מוצגת הודעת תודה במקום הטופס.
 -->
+<div class="mc-reg">
 <style>
-#rm-form-wrap{width:100%;max-width:900px;margin:0 auto;direction:rtl;min-height:120px}
-#rm-form-target iframe{width:100%!important;max-width:100%!important;border:0;min-height:420px;display:block}
-#rm-form-target form,#rm-form-target table{width:100%!important;max-width:100%!important}
-#rm-form-target input,#rm-form-target select,#rm-form-target textarea{max-width:100%;box-sizing:border-box}
-#rm-loading{text-align:center;padding:36px 0;font-size:1.1rem;color:#7A6A5E}
-#rm-retry{display:none;text-align:center;padding:24px 0}
-#rm-retry p{margin:0 0 14px;font-size:1.1rem}
-#rm-retry button{padding:14px 36px;border:0;border-radius:40px;background:#6E7753;color:#FFFDF8;font:inherit;font-size:1.15rem;font-weight:700;cursor:pointer}
-#rm-retry button:hover{background:#4F5639}
+.mc-reg{width:100%;max-width:560px;margin:0 auto;direction:rtl;text-align:right;font-family:'Assistant','Segoe UI',Tahoma,sans-serif}
+.mc-reg *,.mc-reg *::before,.mc-reg *::after{box-sizing:border-box}
+.mc-reg form{display:flex;flex-direction:column;gap:14px;margin:0}
+.mc-reg label{display:flex;flex-direction:column;gap:6px;font-size:1.05rem;font-weight:700;color:#2B2522}
+.mc-reg input[type=text],.mc-reg input[type=email],.mc-reg input[type=tel]{width:100%;min-height:52px;padding:10px 14px;border:2px solid #2B2522;border-radius:0;background:#FFFDF8;color:#2B2522;font:inherit;font-size:1.1rem;font-weight:400;box-shadow:3px 3px 0 #2B2522;-webkit-appearance:none;appearance:none}
+.mc-reg input[type=tel],.mc-reg input[type=email]{direction:ltr;text-align:right}
+.mc-reg input:focus{outline:3px solid #6E7753;outline-offset:1px}
+.mc-reg input[aria-invalid=true]{border-color:#A3321F;background:#FFF3EF}
+.mc-reg-err{min-height:1.2em;font-size:.95rem;font-weight:700;color:#A3321F}
+.mc-reg{position:relative}.mc-reg-hp{position:absolute!important;top:0;right:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;opacity:0;pointer-events:none}
+.mc-reg-btn{margin-top:6px;width:100%;min-height:60px;display:inline-flex;align-items:center;justify-content:center;padding:6px 24px 2px;border:2px solid #2B2522;border-radius:0;background:#C8694A;color:#FFFFFF;box-shadow:5px 5px 0 #2B2522;font-family:'Karantina','Rubik',sans-serif;font-weight:700;font-size:2rem;line-height:1;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.mc-reg-btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #2B2522}
+.mc-reg-btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 #2B2522}
+.mc-reg-btn[disabled]{opacity:.7;cursor:wait;transform:none}
+.mc-reg-status{min-height:1.4em;text-align:center;font-weight:700;font-size:1.05rem;color:#2B2522}
+.mc-reg-status.is-error{color:#A3321F}
+.mc-reg-done{display:none;text-align:center;padding:24px 8px;font-size:1.3rem;font-weight:800;color:#2B2522}
+@media (max-width:600px){.mc-reg-btn{font-size:1.8rem}}
+@media (prefers-reduced-motion:reduce){.mc-reg-btn{transition:none}}
 </style>
-<div id="rm-form-wrap">
-<div id="rm-form-target"></div>
-<div id="rm-loading">הטופס נטען...</div>
-<div id="rm-retry">
-<p>הטופס לא נטען. נסו לרענן את הדף:</p>
-<button type="button" onclick="location.reload()">רענון הדף</button>
-</div>
-</div>
+<form novalidate>
+<label>שם מלא
+<input type="text" name="name" autocomplete="name" required>
+<span class="mc-reg-err" aria-live="polite"></span>
+</label>
+<label>אימייל
+<input type="email" name="email" autocomplete="email" inputmode="email" required>
+<span class="mc-reg-err" aria-live="polite"></span>
+</label>
+<label>טלפון
+<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required>
+<span class="mc-reg-err" aria-live="polite"></span>
+</label>
+<div class="mc-reg-hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+<button type="submit" class="mc-reg-btn">להרשמה חינמית</button>
+<div class="mc-reg-status" role="status" aria-live="polite"></div>
+</form>
+<div class="mc-reg-done" role="status">תודה, נרשמת להדרכה. קישור הזום יישלח אליך במייל.</div>
 <script>
 (function(){
-  var SRC = 'https://form2.ravpage.co.il/2e4709a1bbd2b044bf10b4c8f25384796ACCCBFF';
-  var MAX_TRIES = 4, WAIT_MS = 12000;
-  var target = document.getElementById('rm-form-target');
-  var loading = document.getElementById('rm-loading');
-  var retry = document.getElementById('rm-retry');
-  if (!target || window.__rmFormStarted) return;
-  window.__rmFormStarted = true;
+  var WEBHOOK = 'https://hook.us2.make.com/p24kkd6yrq4nnm6crcn1a9f3691pno0w';
+  var THANKS = 'https://noapeledyacoby.ravpage.co.il/todahadrha';
 
-  // מעתיק תגית script כדי שהדפדפן יריץ אותה (סקריפט שנכנס דרך innerHTML לא רץ)
-  function cloneScript(old){
-    var s = document.createElement('script');
-    for (var i = 0; i < old.attributes.length; i++) s.setAttribute(old.attributes[i].name, old.attributes[i].value);
-    if (!old.src) s.text = old.text;
-    return s;
+  var scripts = document.getElementsByTagName('script');
+  var me = document.currentScript || scripts[scripts.length - 1];
+  var root = me && me.parentNode;
+  if (!root || root.getAttribute('data-mc-ready')) return;
+  root.setAttribute('data-mc-ready', '1');
+
+  var form = root.querySelector('form');
+  var btn = root.querySelector('.mc-reg-btn');
+  var status = root.querySelector('.mc-reg-status');
+  var done = root.querySelector('.mc-reg-done');
+  var btnText = btn.textContent;
+
+  function field(n){ return form.elements[n]; }
+  function setErr(input, msg){
+    var err = input.parentNode.querySelector('.mc-reg-err');
+    if (err) err.textContent = msg || '';
+    input.setAttribute('aria-invalid', msg ? 'true' : 'false');
   }
-  function insertHTML(html){
-    var tmp = document.createElement('div');
-    tmp.innerHTML = html;
-    var scripts = [];
-    while (tmp.firstChild) {
-      var n = tmp.firstChild;
-      target.appendChild(n);
-      if (n.nodeType === 1) {
-        if (n.tagName === 'SCRIPT') scripts.push(n);
-        else scripts = scripts.concat(Array.prototype.slice.call(n.querySelectorAll('script')));
-      }
+  function cleanPhone(v){
+    v = v.replace(/[^\d+]/g, '');
+    if (v.indexOf('+972') === 0) v = '0' + v.slice(4);
+    else if (v.indexOf('972') === 0 && v.length >= 11) v = '0' + v.slice(3);
+    return v;
+  }
+  function validate(){
+    var ok = true, first = null;
+    var n = field('name'), e = field('email'), p = field('phone');
+    if (n.value.trim().length < 2) { setErr(n, 'נא למלא שם'); ok = false; first = first || n; } else setErr(n);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e.value.trim())) { setErr(e, 'נא למלא כתובת מייל תקינה'); ok = false; first = first || e; } else setErr(e);
+    if (!/^0\d{8,9}$/.test(cleanPhone(p.value))) { setErr(p, 'נא למלא מספר טלפון תקין'); ok = false; first = first || p; } else setErr(p);
+    if (first) first.focus();
+    return ok;
+  }
+  ['name','email','phone'].forEach(function(n){
+    field(n).addEventListener('input', function(){ if (this.getAttribute('aria-invalid') === 'true') setErr(this); });
+  });
+
+  function params(){
+    var q = {}, s = location.search.replace(/^\?/, '').split('&');
+    for (var i = 0; i < s.length; i++) {
+      var kv = s[i].split('=');
+      if (/^utm_/.test(kv[0])) q[kv[0]] = decodeURIComponent((kv[1] || '').replace(/\+/g, ' '));
     }
-    scripts.forEach(function(old){ old.parentNode.replaceChild(cloneScript(old), old); });
+    return q;
   }
 
-  // אחרי שהדף נטען document.write מוחק את כל הדף, לכן מפנים אותו למסגרת של הטופס
-  var buf = '', flushTimer = null;
-  function write(){
-    buf += Array.prototype.join.call(arguments, '');
-    clearTimeout(flushTimer);
-    flushTimer = setTimeout(function(){ var h = buf; buf = ''; if (h) insertHTML(h); }, 0);
-  }
-  document.write = write;
-  document.writeln = function(){ write(Array.prototype.join.call(arguments, '') + '\n'); };
-
-  // אם רב מסר יוצר את הטופס במקום אחר בדף, מעבירים אותו לכאן
-  var RAV = /ravpage|responder|ravmesser|rav-messer/i;
-  function isRav(el){
-    var u = el.getAttribute('src') || el.getAttribute('action') || '';
-    return RAV.test(u);
-  }
-  function adopt(){
-    var els = document.querySelectorAll('iframe, form');
-    for (var i = 0; i < els.length; i++) {
-      var el = els[i];
-      if (!target.contains(el) && isRav(el)) target.appendChild(el);
-    }
-  }
-  if (window.MutationObserver) {
-    new MutationObserver(adopt).observe(document.documentElement, {childList: true, subtree: true});
+  function send(body, tries){
+    return fetch(WEBHOOK, {method: 'POST', body: body, keepalive: true})
+      .then(function(r){ if (!r.ok && r.status !== 0) throw new Error('HTTP ' + r.status); })
+      .catch(function(err){
+        if (tries > 1) return new Promise(function(res){ setTimeout(res, 1200); }).then(function(){ return send(body, tries - 1); });
+        // ניסיון אחרון בלי קריאת תשובה, למקרה שהדפדפן חוסם את קריאת התשובה מ-Make
+        return fetch(WEBHOOK, {method: 'POST', body: body, mode: 'no-cors', keepalive: true});
+      });
   }
 
-  function hasForm(){ adopt(); return target.querySelector('iframe, form, input'); }
+  function success(){
+    if (THANKS) { location.href = THANKS; return; }
+    form.style.display = 'none';
+    done.style.display = 'block';
+  }
 
-  var tries = 0, watch = null;
-  function load(){
-    tries++;
-    var s = document.createElement('script');
-    s.src = SRC + (tries > 1 ? (SRC.indexOf('?') < 0 ? '?' : '&') + 'r=' + Date.now() : '');
-    s.charset = 'UTF-8';
-    s.async = false;
-    s.onerror = function(){ next(); };
-    target.appendChild(s);
-    var start = Date.now();
-    clearInterval(watch);
-    watch = setInterval(function(){
-      if (hasForm()) { clearInterval(watch); loading.style.display = 'none'; retry.style.display = 'none'; return; }
-      if (Date.now() - start > WAIT_MS) next();
-    }, 400);
-  }
-  function next(){
-    clearInterval(watch);
-    if (hasForm()) { loading.style.display = 'none'; return; }
-    if (tries < MAX_TRIES) { setTimeout(load, 800); return; }
-    loading.style.display = 'none';
-    retry.style.display = 'block';
-  }
-  load();
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    status.textContent = ''; status.className = 'mc-reg-status';
+    if (field('website').value) { success(); return; }
+    if (!validate()) return;
+
+    var data = {
+      name: field('name').value.trim(),
+      email: field('email').value.trim().toLowerCase(),
+      phone: cleanPhone(field('phone').value),
+      page: location.href.split('#')[0],
+      submitted_at: new Date().toISOString()
+    };
+    var u = params(); for (var k in u) data[k] = u[k];
+    var body = new URLSearchParams();
+    for (var key in data) body.append(key, data[key]);
+
+    btn.disabled = true; btn.textContent = 'שולחים...';
+    send(body, 3).then(success, function(){
+      btn.disabled = false; btn.textContent = btnText;
+      status.className = 'mc-reg-status is-error';
+      status.textContent = 'משהו השתבש בשליחה. בדקו את החיבור לאינטרנט ונסו שוב.';
+    });
+  });
 })();
 </script>
+</div>
 <p style="margin: 14px 0 0; font-size: 1rem; font-weight: 700">קישור הזום יישלח אליכם במייל</p>
 <!-- ===== סוף טופס ההרשמה ===== -->
 </div>
