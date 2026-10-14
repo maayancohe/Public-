@@ -407,6 +407,18 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 .mc-felt .cta{padding:15px 22px;font-size:16px}
 .mc-felt .pills li{padding:8px 13px;font-size:14px}
 }
+/* ============================================================
+24. תמונות להחלפה: כל עוד אין תמונה (src שקוף) מוצג המקום הריק כמו קודם.
+   תמונה אמיתית ממלאת את המסגרת; בהירו, בפרופיל ובמוקאפים היא נשארת ביחס המקורי שלה.
+============================================================ */
+.mc-felt .mcf-frame{position:relative;overflow:hidden}
+.mc-felt .mcf-frame > .mcf-img{position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);max-width:none;object-fit:cover;border-radius:inherit}
+.mc-felt .mcf-frame > .mcf-img[src^="data:"]{box-shadow:none!important;animation:none!important}
+.mc-felt .mcf-frame:has(> .mcf-img:not([src^="data:"])) > .mcf-ph{visibility:hidden}
+.mc-felt .mcf-frame.mcf-natural:has(> .mcf-img:not([src^="data:"])){aspect-ratio:auto!important;border:0;padding:0;background:none;display:block;overflow:visible}
+.mc-felt .mcf-frame.mcf-natural:has(> .mcf-img:not([src^="data:"])) > .mcf-ph{display:none}
+.mc-felt .mcf-frame.mcf-natural > .mcf-img:not([src^="data:"]){position:static;inset:auto;width:100%;height:auto;object-fit:contain}
+.mc-felt .mockup.mcf-natural > .mcf-img:not([src^="data:"]){border-radius:var(--r)}
 </style>
 
 <a class="skip" href="#main">דלג לתוכן הראשי</a>
@@ -436,7 +448,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 </ul>
 
 <figure class="hero-img reveal">
-<div class="hero-slot">[תמונה: לא סופקה]</div>
+<div class="hero-slot mcf-frame mcf-natural"><span class="mcf-ph">[תמונה: לא סופקה]</span><img class="mcf-img ravxx_var_hero.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="נעלי בית מצמר טבעי"></div>
 </figure>
 
 <ul class="pills reveal" aria-label="פרטי הסדנה">
@@ -474,7 +486,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <section class="sec bright" id="author">
 <div class="wrap narrow author-copy">
 <div class="portrait reveal">
-<div class="proof-slot" style="aspect-ratio:700/864">[תמונה: לא סופקה]</div>
+<div class="proof-slot mcf-frame mcf-natural" style="aspect-ratio:700/864"><span class="mcf-ph">[תמונה: לא סופקה]</span><img class="mcf-img ravxx_var_author.photo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="דקלה דון" loading="lazy"></div>
 </div>
 <p class="author-name reveal ravxx_var_author.name">ואם עוד לא הכרנו,&nbsp; נעים מאוד, אני דקלה דון</p>
 <p class="author-role reveal ravxx_var_author.role">תרפיסטית באמנות על פי הגישה האנתרופוסופית</p>
@@ -486,9 +498,9 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <section class="sec paper">
 <div class="wrap narrow">
 <div class="gif-grid reveal">
-<div class="gif-slot">[גיף: לא סופק]</div>
-<div class="gif-slot">[גיף: לא סופק]</div>
-<div class="gif-slot">[גיף: לא סופק]</div>
+<div class="gif-slot mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_process.gif1" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="תהליך הליבוד" loading="lazy"></div>
+<div class="gif-slot mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_process.gif2" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="תהליך הליבוד" loading="lazy"></div>
+<div class="gif-slot mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_process.gif3" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="תהליך הליבוד" loading="lazy"></div>
 </div>
 </div>
 </section>
@@ -520,9 +532,9 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <div class="wrap narrow">
 <p class="eyebrow statement reveal">ואני לא היחידה שחוותה את זה</p>
 <div class="proof-grid reveal" aria-label="תמונות נעלי בית שיצרו משתתפות, יתווספו בהמשך">
-<div class="proof-slot">[תמונת תוצר של משתתפת: לא סופקה]</div>
-<div class="proof-slot">[תמונת תוצר של משתתפת: לא סופקה]</div>
-<div class="proof-slot">[תמונת תוצר של משתתפת: לא סופקה]</div>
+<div class="proof-slot mcf-frame"><span class="mcf-ph">[תמונת תוצר של משתתפת: לא סופקה]</span><img class="mcf-img ravxx_var_proof.photo1" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="נעלי בית שיצרה משתתפת" loading="lazy"></div>
+<div class="proof-slot mcf-frame"><span class="mcf-ph">[תמונת תוצר של משתתפת: לא סופקה]</span><img class="mcf-img ravxx_var_proof.photo2" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="נעלי בית שיצרה משתתפת" loading="lazy"></div>
+<div class="proof-slot mcf-frame"><span class="mcf-ph">[תמונת תוצר של משתתפת: לא סופקה]</span><img class="mcf-img ravxx_var_proof.photo3" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="נעלי בית שיצרה משתתפת" loading="lazy"></div>
 </div>
 </div>
 </section>
@@ -557,7 +569,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <p class="reveal">ואם הגעת עד לכאן,</p>
 <p class="reveal"><strong>אני מתרגשת מאד להזמין אותך לסדנא החדשה שלי</strong><br>מסע אינטימי של יצירה, רכות וחום:</p>
 
-<div class="mockup reveal">[מוקאפ מעוצב: מסך זום עם צמר, מים ונעלי בית מוכנות, לעיצוב בהמשך]</div>
+<div class="mockup reveal mcf-frame mcf-natural"><span class="mcf-ph">[מוקאפ מעוצב: מסך זום עם צמר, מים ונעלי בית מוכנות, לעיצוב בהמשך]</span><img class="mcf-img ravxx_var_services.mockup" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="הסדנה בזום" loading="lazy"></div>
 
 <h2 class="product-name reveal ravxx_var_services.name">סדנת אונליין חיה: ליבוד נעלי בית מצמר טבעי</h2>
 <p class="product-sub reveal ravxx_var_services.subtitle">3 מפגשי זום חיים + ליווי קבוצתי צמוד + גישה לכל החיים להקלטות</p>
@@ -586,7 +598,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <summary>
 <span class="syl-card-title ravxx_var_services.syllabus.session1.title">מפגש 1<small>מצמר גולמי לבסיס של נעל</small></span>
 <span class="syl-plus">+</span>
-<span class="syl-gif">[גיף: לא סופק]</span>
+<span class="syl-gif mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_services.syllabus.session1.gif" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מפגש 1" loading="lazy"></span>
 </summary>
 <div class="syl-card-body ravxx_var_services.syllabus.session1.body">
 <p><strong>יוצרות את הגיזרה ומניחות את הצמר</strong></p>
@@ -599,7 +611,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <summary>
 <span class="syl-card-title ravxx_var_services.syllabus.session2.title">מפגש 2<small>מסיבים רכים למבנה שמקבל צורה</small></span>
 <span class="syl-plus">+</span>
-<span class="syl-gif">[גיף: לא סופק]</span>
+<span class="syl-gif mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_services.syllabus.session2.gif" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מפגש 2" loading="lazy"></span>
 </summary>
 <div class="syl-card-body ravxx_var_services.syllabus.session2.body">
 <p><strong>מחברות את סיבי הצמר</strong></p>
@@ -611,7 +623,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <summary>
 <span class="syl-card-title ravxx_var_services.syllabus.session3.title">מפגש 3<small>ממבנה רך לזוג נעלי בית מוכנות</small></span>
 <span class="syl-plus">+</span>
-<span class="syl-gif">[גיף: לא סופק]</span>
+<span class="syl-gif mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_services.syllabus.session3.gif" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מפגש 3" loading="lazy"></span>
 </summary>
 <div class="syl-card-body ravxx_var_services.syllabus.session3.body">
 <p><strong>מתאימות, מכווצות ומסיימות</strong></p>
@@ -632,19 +644,19 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <div class="gift-grid reveal">
 <div class="gift-card">
 <div class="gift-num">1</div>
-<div class="gift-slot">[תמונה/אלמנט: לא סופק]</div>
+<div class="gift-slot mcf-frame"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift1.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 1" loading="lazy"></div>
 <h3 class="ravxx_var_services.gifts.gift1.title">מתנה 1: מדריך מצולם עם כל שלבי הסדנה</h3>
 <p class="ravxx_var_services.gifts.gift1.body">כל התהליך מסודר לך בתמונות, כדי שתוכלי לחזור לכל שלב ולעבוד בביטחון גם לבד</p>
 </div>
 <div class="gift-card">
 <div class="gift-num">2</div>
-<div class="gift-slot">[תמונה/אלמנט: לא סופק]</div>
+<div class="gift-slot mcf-frame"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift2.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 2" loading="lazy"></div>
 <h3 class="ravxx_var_services.gifts.gift2.title">מתנה 2: קבוצת וואטסאפ לתמיכה ושאלות</h3>
 <p class="ravxx_var_services.gifts.gift2.body">נתקעת? לא בטוחה אם עשית נכון? שולחת שאלה בקבוצה ומקבלת הכוונה לאורך הדרך</p>
 </div>
 <div class="gift-card">
 <div class="gift-num">3</div>
-<div class="gift-slot">[תמונה/אלמנט: לא סופק]</div>
+<div class="gift-slot mcf-frame"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift3.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 3" loading="lazy"></div>
 <h3 class="ravxx_var_services.gifts.gift3.title">מתנה 3: קובץ השראה לנעלי בית מלובדות</h3>
 <p class="ravxx_var_services.gifts.gift3.body">אוסף תמונות של נעלי בית שאני ונשים שלקחו חלק בסדנאות שלי יצרו, כדי לקבל רעיונות לצבעים, שילובים ודוגמאות לזוג שלך.</p>
 </div>
@@ -685,7 +697,7 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 <li><span class="num-badge">3</span><span class="d-txt ravxx_var_offer.steps.step3">לקבל מייל מיידי עם פרטי ההתחברות לזום, רשימת הציוד והגישה לקבוצת הליווי</span></li>
 </ul>
 
-<div class="mockup reveal">[מוקאפ של הסדנה: לעיצוב בהמשך]</div>
+<div class="mockup reveal mcf-frame mcf-natural"><span class="mcf-ph">[מוקאפ של הסדנה: לעיצוב בהמשך]</span><img class="mcf-img ravxx_var_offer.mockup" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מוקאפ הסדנה" loading="lazy"></div>
 
 <div class="cta-wrap reveal">
 <a class="cta navy cta-main ravxx_var_offer.cta" href="#signup" id="main-cta">
@@ -922,96 +934,114 @@ save();
 </html>
 <!--ravxx_variables
 [
-  { "class": "ravxx_var_hero", "name": "אזור ראשי", "type": "group" },
-  { "class": "ravxx_var_hero.question", "name": "שאלת פתיחה", "description": "השאלה בפס התורכיז בראש הדף.", "type": "text" },
-  { "class": "ravxx_var_hero.kicker", "name": "כותרת קטנה", "description": "השורה הקטנה מעל הכותרת הראשית.", "type": "text" },
-  { "class": "ravxx_var_hero.title", "name": "כותרת ראשית", "description": "טקסט הכותרת הראשית של הדף.", "type": "text" },
-  { "class": "ravxx_var_hero.subtitle", "name": "כותרת משנה", "description": "המשפט שמתחת לכותרת הראשית.", "type": "text" },
-  { "class": "ravxx_var_hero.pills", "name": "תגיות פרטי הסדנה", "type": "group" },
-  { "class": "ravxx_var_hero.pills.pill1", "name": "תגית 1", "description": "טקסט התגית הראשונה.", "type": "text" },
-  { "class": "ravxx_var_hero.pills.pill2", "name": "תגית 2", "description": "טקסט התגית השנייה.", "type": "text" },
-  { "class": "ravxx_var_hero.pills.pill3", "name": "תגית 3", "description": "טקסט התגית השלישית.", "type": "text" },
-  { "class": "ravxx_var_hero.pills.pill4", "name": "תגית 4", "description": "טקסט התגית הרביעית.", "type": "text" },
-  { "class": "ravxx_var_hero.cta", "name": "כפתור עליון", "description": "כתובת היעד של הכפתור באזור הראשי.", "type": "link" },
-  { "class": "ravxx_var_author", "name": "על דקלה", "type": "group" },
-  { "class": "ravxx_var_author.name", "name": "שורת היכרות", "description": "השורה עם השם של דקלה.", "type": "text" },
-  { "class": "ravxx_var_author.role", "name": "תפקיד", "description": "התיאור המקצועי מתחת לשם.", "type": "text" },
-  { "class": "ravxx_var_author.bio1", "name": "ביוגרפיה, פסקה 1", "description": "הפסקה הראשונה על הניסיון.", "type": "text" },
-  { "class": "ravxx_var_author.bio2", "name": "ביוגרפיה, פסקה 2", "description": "הפסקה על שיטת Feltherapy.", "type": "text" },
-  { "class": "ravxx_var_services", "name": "הסדנה", "type": "group" },
-  { "class": "ravxx_var_services.name", "name": "שם הסדנה", "description": "כותרת שם הסדנה.", "type": "text" },
-  { "class": "ravxx_var_services.subtitle", "name": "תיאור קצר", "description": "השורה שמתחת לשם הסדנה.", "type": "text" },
-  { "class": "ravxx_var_services.date1", "name": "מפגש 1: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש הראשון.", "type": "text" },
-  { "class": "ravxx_var_services.date2", "name": "מפגש 2: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש השני.", "type": "text" },
-  { "class": "ravxx_var_services.date3", "name": "מפגש 3: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש השלישי.", "type": "text" },
-  { "class": "ravxx_var_services.recordingNote", "name": "הערה על ההקלטות", "description": "ההודעה שמתחת לתאריכים.", "type": "text" },
-  { "class": "ravxx_var_services.syllabus", "name": "סילבוס", "type": "group" },
-  { "class": "ravxx_var_services.syllabus.session1", "name": "מפגש 1", "type": "group" },
-  { "class": "ravxx_var_services.syllabus.session1.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 1.", "type": "text" },
-  { "class": "ravxx_var_services.syllabus.session1.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 1.", "type": "text" },
-  { "class": "ravxx_var_services.syllabus.session2", "name": "מפגש 2", "type": "group" },
-  { "class": "ravxx_var_services.syllabus.session2.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 2.", "type": "text" },
-  { "class": "ravxx_var_services.syllabus.session2.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 2.", "type": "text" },
-  { "class": "ravxx_var_services.syllabus.session3", "name": "מפגש 3", "type": "group" },
-  { "class": "ravxx_var_services.syllabus.session3.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 3.", "type": "text" },
-  { "class": "ravxx_var_services.syllabus.session3.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 3.", "type": "text" },
-  { "class": "ravxx_var_services.gifts", "name": "מתנות", "type": "group" },
-  { "class": "ravxx_var_services.gifts.heading", "name": "כותרת המתנות", "description": "כותרת אזור המתנות.", "type": "text" },
-  { "class": "ravxx_var_services.gifts.intro", "name": "פתיח המתנות", "description": "המשפט שמתחת לכותרת המתנות.", "type": "text" },
-  { "class": "ravxx_var_services.gifts.gift1", "name": "מתנה 1", "type": "group" },
-  { "class": "ravxx_var_services.gifts.gift1.title", "name": "כותרת", "description": "כותרת המתנה הראשונה.", "type": "text" },
-  { "class": "ravxx_var_services.gifts.gift1.body", "name": "תיאור", "description": "תיאור המתנה הראשונה.", "type": "text" },
-  { "class": "ravxx_var_services.gifts.gift2", "name": "מתנה 2", "type": "group" },
-  { "class": "ravxx_var_services.gifts.gift2.title", "name": "כותרת", "description": "כותרת המתנה השנייה.", "type": "text" },
-  { "class": "ravxx_var_services.gifts.gift2.body", "name": "תיאור", "description": "תיאור המתנה השנייה.", "type": "text" },
-  { "class": "ravxx_var_services.gifts.gift3", "name": "מתנה 3", "type": "group" },
-  { "class": "ravxx_var_services.gifts.gift3.title", "name": "כותרת", "description": "כותרת המתנה השלישית.", "type": "text" },
-  { "class": "ravxx_var_services.gifts.gift3.body", "name": "תיאור", "description": "תיאור המתנה השלישית.", "type": "text" },
-  { "class": "ravxx_var_offer", "name": "תמחור והרשמה", "type": "group" },
-  { "class": "ravxx_var_offer.heading", "name": "כותרת התמחור", "description": "הכותרת של אזור ההשקעה.", "type": "text" },
-  { "class": "ravxx_var_offer.value", "name": "שווי כולל", "description": "השורה עם השווי המקורי (מוצגת עם קו חוצה).", "type": "text" },
-  { "class": "ravxx_var_offer.price", "name": "מחיר", "description": "המחיר הגדול בכרטיס התמחור.", "type": "text" },
-  { "class": "ravxx_var_offer.installments", "name": "תשלומים", "description": "השורה עם אפשרות התשלומים.", "type": "text" },
-  { "class": "ravxx_var_offer.finePrint", "name": "אותיות קטנות", "description": "ההערה בתחתית כרטיס התמחור.", "type": "text" },
-  { "class": "ravxx_var_offer.stepsHeading", "name": "כותרת שלבי ההרשמה", "description": "הכותרת מעל שלבי ההרשמה.", "type": "text" },
-  { "class": "ravxx_var_offer.steps", "name": "שלבי ההרשמה", "type": "group" },
-  { "class": "ravxx_var_offer.steps.step1", "name": "שלב 1", "description": "טקסט השלב הראשון.", "type": "text" },
-  { "class": "ravxx_var_offer.steps.step2", "name": "שלב 2", "description": "טקסט השלב השני.", "type": "text" },
-  { "class": "ravxx_var_offer.steps.step3", "name": "שלב 3", "description": "טקסט השלב השלישי.", "type": "text" },
-  { "class": "ravxx_var_offer.cta", "name": "כפתור הרשמה ראשי", "description": "כתובת היעד של כפתור ההרשמה הראשי (עמוד התשלום).", "type": "link" },
-  { "class": "ravxx_var_offer.ctaNote", "name": "הערה מתחת לכפתור", "description": "השורה הקטנה מתחת לכפתור ההרשמה.", "type": "text" },
-  { "class": "ravxx_var_fit", "name": "למי זה מתאים", "type": "group" },
-  { "class": "ravxx_var_fit.heading", "name": "כותרת", "description": "כותרת אזור ההתאמה.", "type": "text" },
-  { "class": "ravxx_var_fit.item1", "name": "סעיף 1", "description": "הסעיף הראשון ברשימה.", "type": "text" },
-  { "class": "ravxx_var_fit.item2", "name": "סעיף 2", "description": "הסעיף השני ברשימה.", "type": "text" },
-  { "class": "ravxx_var_fit.item3", "name": "סעיף 3", "description": "הסעיף השלישי ברשימה.", "type": "text" },
-  { "class": "ravxx_var_fit.item4", "name": "סעיף 4", "description": "הסעיף הרביעי ברשימה.", "type": "text" },
-  { "class": "ravxx_var_faq", "name": "שאלות ותשובות", "type": "group" },
-  { "class": "ravxx_var_faq.heading", "name": "כותרת", "description": "כותרת אזור השאלות והתשובות.", "type": "text" },
-  { "class": "ravxx_var_faq.item1", "name": "שאלה 1", "type": "group" },
-  { "class": "ravxx_var_faq.item1.question", "name": "שאלה", "description": "נוסח השאלה הראשונה.", "type": "text" },
-  { "class": "ravxx_var_faq.item1.answer", "name": "תשובה", "description": "התשובה לשאלה הראשונה.", "type": "text" },
-  { "class": "ravxx_var_faq.item2", "name": "שאלה 2", "type": "group" },
-  { "class": "ravxx_var_faq.item2.question", "name": "שאלה", "description": "נוסח השאלה השנייה.", "type": "text" },
-  { "class": "ravxx_var_faq.item2.answer", "name": "תשובה", "description": "התשובה לשאלה השנייה.", "type": "text" },
-  { "class": "ravxx_var_faq.item3", "name": "שאלה 3", "type": "group" },
-  { "class": "ravxx_var_faq.item3.question", "name": "שאלה", "description": "נוסח השאלה השלישית.", "type": "text" },
-  { "class": "ravxx_var_faq.item3.answer", "name": "תשובה", "description": "התשובה לשאלה השלישית.", "type": "text" },
-  { "class": "ravxx_var_faq.item4", "name": "שאלה 4", "type": "group" },
-  { "class": "ravxx_var_faq.item4.question", "name": "שאלה", "description": "נוסח השאלה הרביעית.", "type": "text" },
-  { "class": "ravxx_var_faq.item4.answer", "name": "תשובה", "description": "התשובה לשאלה הרביעית.", "type": "text" },
-  { "class": "ravxx_var_faq.item5", "name": "שאלה 5", "type": "group" },
-  { "class": "ravxx_var_faq.item5.question", "name": "שאלה", "description": "נוסח השאלה החמישית.", "type": "text" },
-  { "class": "ravxx_var_faq.item5.answer", "name": "תשובה", "description": "התשובה לשאלה החמישית.", "type": "text" },
-  { "class": "ravxx_var_closing", "name": "סגירה אישית", "type": "group" },
-  { "class": "ravxx_var_closing.signature", "name": "חתימה", "description": "שורת החתימה של דקלה בסוף המכתב.", "type": "text" },
-  { "class": "ravxx_var_closing.price", "name": "שורת מחיר", "description": "שורת המחיר בכרטיס הסגירה.", "type": "text" },
-  { "class": "ravxx_var_closing.cta", "name": "כפתור סגירה", "description": "כתובת היעד של הכפתור בכרטיס הסגירה.", "type": "link" },
-  { "class": "ravxx_var_sticky", "name": "פס תחתון במובייל", "type": "group" },
-  { "class": "ravxx_var_sticky.price", "name": "מחיר בפס", "description": "המחיר שמוצג בפס הדביק בתחתית המסך.", "type": "text" },
-  { "class": "ravxx_var_sticky.cta", "name": "כפתור בפס", "description": "כתובת היעד של הכפתור בפס הדביק.", "type": "link" },
-  { "class": "ravxx_var_footer", "name": "פוטר", "type": "group" },
-  { "class": "ravxx_var_footer.brand", "name": "שם המותג", "description": "שם המותג בפוטר.", "type": "text" },
-  { "class": "ravxx_var_footer.rights", "name": "זכויות יוצרים", "description": "שורת זכויות היוצרים בתחתית.", "type": "text" }
+  {"class": "ravxx_var_hero", "name": "אזור ראשי", "type": "group"},
+  {"class": "ravxx_var_hero.question", "name": "שאלת פתיחה", "description": "השאלה בפס התורכיז בראש הדף.", "type": "text"},
+  {"class": "ravxx_var_hero.kicker", "name": "כותרת קטנה", "description": "השורה הקטנה מעל הכותרת הראשית.", "type": "text"},
+  {"class": "ravxx_var_hero.title", "name": "כותרת ראשית", "description": "טקסט הכותרת הראשית של הדף.", "type": "text"},
+  {"class": "ravxx_var_hero.subtitle", "name": "כותרת משנה", "description": "המשפט שמתחת לכותרת הראשית.", "type": "text"},
+  {"class": "ravxx_var_hero.image", "name": "תמונה ראשית", "description": "התמונה הראשית באזור העליון. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_hero.pills", "name": "תגיות פרטי הסדנה", "type": "group"},
+  {"class": "ravxx_var_hero.pills.pill1", "name": "תגית 1", "description": "טקסט התגית הראשונה.", "type": "text"},
+  {"class": "ravxx_var_hero.pills.pill2", "name": "תגית 2", "description": "טקסט התגית השנייה.", "type": "text"},
+  {"class": "ravxx_var_hero.pills.pill3", "name": "תגית 3", "description": "טקסט התגית השלישית.", "type": "text"},
+  {"class": "ravxx_var_hero.pills.pill4", "name": "תגית 4", "description": "טקסט התגית הרביעית.", "type": "text"},
+  {"class": "ravxx_var_hero.cta", "name": "כפתור עליון", "description": "כתובת היעד של הכפתור באזור הראשי.", "type": "link"},
+  {"class": "ravxx_var_author", "name": "על דקלה", "type": "group"},
+  {"class": "ravxx_var_author.name", "name": "שורת היכרות", "description": "השורה עם השם של דקלה.", "type": "text"},
+  {"class": "ravxx_var_author.role", "name": "תפקיד", "description": "התיאור המקצועי מתחת לשם.", "type": "text"},
+  {"class": "ravxx_var_author.photo", "name": "תמונה של דקלה", "description": "תמונת הפרופיל. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_author.bio1", "name": "ביוגרפיה, פסקה 1", "description": "הפסקה הראשונה על הניסיון.", "type": "text"},
+  {"class": "ravxx_var_author.bio2", "name": "ביוגרפיה, פסקה 2", "description": "הפסקה על שיטת Feltherapy.", "type": "text"},
+  {"class": "ravxx_var_process", "name": "גיפים של התהליך", "type": "group"},
+  {"class": "ravxx_var_process.gif1", "name": "גיף 1", "description": "גיף או תמונה ברשת שמתחת להיכרות. מוצג בריבוע, עדיף תמונה מרובעת.", "type": "image"},
+  {"class": "ravxx_var_process.gif2", "name": "גיף 2", "description": "גיף או תמונה ברשת שמתחת להיכרות. מוצג בריבוע, עדיף תמונה מרובעת.", "type": "image"},
+  {"class": "ravxx_var_process.gif3", "name": "גיף 3", "description": "גיף או תמונה ברשת שמתחת להיכרות. מוצג בריבוע, עדיף תמונה מרובעת.", "type": "image"},
+  {"class": "ravxx_var_proof", "name": "תוצרים של משתתפות", "type": "group"},
+  {"class": "ravxx_var_proof.photo1", "name": "תמונת תוצר 1", "description": "תמונה של נעלי בית שיצרה משתתפת. מוצגת ביחס 4:5, עדיף תמונה לאורך.", "type": "image"},
+  {"class": "ravxx_var_proof.photo2", "name": "תמונת תוצר 2", "description": "תמונה של נעלי בית שיצרה משתתפת. מוצגת ביחס 4:5, עדיף תמונה לאורך.", "type": "image"},
+  {"class": "ravxx_var_proof.photo3", "name": "תמונת תוצר 3", "description": "תמונה של נעלי בית שיצרה משתתפת. מוצגת ביחס 4:5, עדיף תמונה לאורך.", "type": "image"},
+  {"class": "ravxx_var_services", "name": "הסדנה", "type": "group"},
+  {"class": "ravxx_var_services.name", "name": "שם הסדנה", "description": "כותרת שם הסדנה.", "type": "text"},
+  {"class": "ravxx_var_services.subtitle", "name": "תיאור קצר", "description": "השורה שמתחת לשם הסדנה.", "type": "text"},
+  {"class": "ravxx_var_services.mockup", "name": "מוקאפ הסדנה", "description": "התמונה מעל שם הסדנה. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_services.date1", "name": "מפגש 1: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש הראשון.", "type": "text"},
+  {"class": "ravxx_var_services.date2", "name": "מפגש 2: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש השני.", "type": "text"},
+  {"class": "ravxx_var_services.date3", "name": "מפגש 3: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש השלישי.", "type": "text"},
+  {"class": "ravxx_var_services.recordingNote", "name": "הערה על ההקלטות", "description": "ההודעה שמתחת לתאריכים.", "type": "text"},
+  {"class": "ravxx_var_services.syllabus", "name": "סילבוס", "type": "group"},
+  {"class": "ravxx_var_services.syllabus.session1", "name": "מפגש 1", "type": "group"},
+  {"class": "ravxx_var_services.syllabus.session1.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 1.", "type": "text"},
+  {"class": "ravxx_var_services.syllabus.session1.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 1.", "type": "text"},
+  {"class": "ravxx_var_services.syllabus.session1.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 1. מוצג בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.syllabus.session2", "name": "מפגש 2", "type": "group"},
+  {"class": "ravxx_var_services.syllabus.session2.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 2.", "type": "text"},
+  {"class": "ravxx_var_services.syllabus.session2.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 2.", "type": "text"},
+  {"class": "ravxx_var_services.syllabus.session2.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 2. מוצג בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.syllabus.session3", "name": "מפגש 3", "type": "group"},
+  {"class": "ravxx_var_services.syllabus.session3.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 3.", "type": "text"},
+  {"class": "ravxx_var_services.syllabus.session3.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 3.", "type": "text"},
+  {"class": "ravxx_var_services.syllabus.session3.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 3. מוצג בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.gifts", "name": "מתנות", "type": "group"},
+  {"class": "ravxx_var_services.gifts.heading", "name": "כותרת המתנות", "description": "כותרת אזור המתנות.", "type": "text"},
+  {"class": "ravxx_var_services.gifts.intro", "name": "פתיח המתנות", "description": "המשפט שמתחת לכותרת המתנות.", "type": "text"},
+  {"class": "ravxx_var_services.gifts.gift1", "name": "מתנה 1", "type": "group"},
+  {"class": "ravxx_var_services.gifts.gift1.title", "name": "כותרת", "description": "כותרת המתנה הראשונה.", "type": "text"},
+  {"class": "ravxx_var_services.gifts.gift1.body", "name": "תיאור", "description": "תיאור המתנה הראשונה.", "type": "text"},
+  {"class": "ravxx_var_services.gifts.gift1.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.gifts.gift2", "name": "מתנה 2", "type": "group"},
+  {"class": "ravxx_var_services.gifts.gift2.title", "name": "כותרת", "description": "כותרת המתנה השנייה.", "type": "text"},
+  {"class": "ravxx_var_services.gifts.gift2.body", "name": "תיאור", "description": "תיאור המתנה השנייה.", "type": "text"},
+  {"class": "ravxx_var_services.gifts.gift2.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בריבוע.", "type": "image"},
+  {"class": "ravxx_var_services.gifts.gift3", "name": "מתנה 3", "type": "group"},
+  {"class": "ravxx_var_services.gifts.gift3.title", "name": "כותרת", "description": "כותרת המתנה השלישית.", "type": "text"},
+  {"class": "ravxx_var_services.gifts.gift3.body", "name": "תיאור", "description": "תיאור המתנה השלישית.", "type": "text"},
+  {"class": "ravxx_var_services.gifts.gift3.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בריבוע.", "type": "image"},
+  {"class": "ravxx_var_offer", "name": "תמחור והרשמה", "type": "group"},
+  {"class": "ravxx_var_offer.heading", "name": "כותרת התמחור", "description": "הכותרת של אזור ההשקעה.", "type": "text"},
+  {"class": "ravxx_var_offer.value", "name": "שווי כולל", "description": "השורה עם השווי המקורי (מוצגת עם קו חוצה).", "type": "text"},
+  {"class": "ravxx_var_offer.price", "name": "מחיר", "description": "המחיר הגדול בכרטיס התמחור.", "type": "text"},
+  {"class": "ravxx_var_offer.installments", "name": "תשלומים", "description": "השורה עם אפשרות התשלומים.", "type": "text"},
+  {"class": "ravxx_var_offer.finePrint", "name": "אותיות קטנות", "description": "ההערה בתחתית כרטיס התמחור.", "type": "text"},
+  {"class": "ravxx_var_offer.stepsHeading", "name": "כותרת שלבי ההרשמה", "description": "הכותרת מעל שלבי ההרשמה.", "type": "text"},
+  {"class": "ravxx_var_offer.steps", "name": "שלבי ההרשמה", "type": "group"},
+  {"class": "ravxx_var_offer.steps.step1", "name": "שלב 1", "description": "טקסט השלב הראשון.", "type": "text"},
+  {"class": "ravxx_var_offer.steps.step2", "name": "שלב 2", "description": "טקסט השלב השני.", "type": "text"},
+  {"class": "ravxx_var_offer.steps.step3", "name": "שלב 3", "description": "טקסט השלב השלישי.", "type": "text"},
+  {"class": "ravxx_var_offer.mockup", "name": "מוקאפ לפני הכפתור", "description": "התמונה מעל כפתור ההרשמה. כל יחס גובה-רוחב מתאים.", "type": "image"},
+  {"class": "ravxx_var_offer.cta", "name": "כפתור הרשמה ראשי", "description": "כתובת היעד של כפתור ההרשמה הראשי (עמוד התשלום).", "type": "link"},
+  {"class": "ravxx_var_offer.ctaNote", "name": "הערה מתחת לכפתור", "description": "השורה הקטנה מתחת לכפתור ההרשמה.", "type": "text"},
+  {"class": "ravxx_var_fit", "name": "למי זה מתאים", "type": "group"},
+  {"class": "ravxx_var_fit.heading", "name": "כותרת", "description": "כותרת אזור ההתאמה.", "type": "text"},
+  {"class": "ravxx_var_fit.item1", "name": "סעיף 1", "description": "הסעיף הראשון ברשימה.", "type": "text"},
+  {"class": "ravxx_var_fit.item2", "name": "סעיף 2", "description": "הסעיף השני ברשימה.", "type": "text"},
+  {"class": "ravxx_var_fit.item3", "name": "סעיף 3", "description": "הסעיף השלישי ברשימה.", "type": "text"},
+  {"class": "ravxx_var_fit.item4", "name": "סעיף 4", "description": "הסעיף הרביעי ברשימה.", "type": "text"},
+  {"class": "ravxx_var_faq", "name": "שאלות ותשובות", "type": "group"},
+  {"class": "ravxx_var_faq.heading", "name": "כותרת", "description": "כותרת אזור השאלות והתשובות.", "type": "text"},
+  {"class": "ravxx_var_faq.item1", "name": "שאלה 1", "type": "group"},
+  {"class": "ravxx_var_faq.item1.question", "name": "שאלה", "description": "נוסח השאלה הראשונה.", "type": "text"},
+  {"class": "ravxx_var_faq.item1.answer", "name": "תשובה", "description": "התשובה לשאלה הראשונה.", "type": "text"},
+  {"class": "ravxx_var_faq.item2", "name": "שאלה 2", "type": "group"},
+  {"class": "ravxx_var_faq.item2.question", "name": "שאלה", "description": "נוסח השאלה השנייה.", "type": "text"},
+  {"class": "ravxx_var_faq.item2.answer", "name": "תשובה", "description": "התשובה לשאלה השנייה.", "type": "text"},
+  {"class": "ravxx_var_faq.item3", "name": "שאלה 3", "type": "group"},
+  {"class": "ravxx_var_faq.item3.question", "name": "שאלה", "description": "נוסח השאלה השלישית.", "type": "text"},
+  {"class": "ravxx_var_faq.item3.answer", "name": "תשובה", "description": "התשובה לשאלה השלישית.", "type": "text"},
+  {"class": "ravxx_var_faq.item4", "name": "שאלה 4", "type": "group"},
+  {"class": "ravxx_var_faq.item4.question", "name": "שאלה", "description": "נוסח השאלה הרביעית.", "type": "text"},
+  {"class": "ravxx_var_faq.item4.answer", "name": "תשובה", "description": "התשובה לשאלה הרביעית.", "type": "text"},
+  {"class": "ravxx_var_faq.item5", "name": "שאלה 5", "type": "group"},
+  {"class": "ravxx_var_faq.item5.question", "name": "שאלה", "description": "נוסח השאלה החמישית.", "type": "text"},
+  {"class": "ravxx_var_faq.item5.answer", "name": "תשובה", "description": "התשובה לשאלה החמישית.", "type": "text"},
+  {"class": "ravxx_var_closing", "name": "סגירה אישית", "type": "group"},
+  {"class": "ravxx_var_closing.signature", "name": "חתימה", "description": "שורת החתימה של דקלה בסוף המכתב.", "type": "text"},
+  {"class": "ravxx_var_closing.price", "name": "שורת מחיר", "description": "שורת המחיר בכרטיס הסגירה.", "type": "text"},
+  {"class": "ravxx_var_closing.cta", "name": "כפתור סגירה", "description": "כתובת היעד של הכפתור בכרטיס הסגירה.", "type": "link"},
+  {"class": "ravxx_var_sticky", "name": "פס תחתון במובייל", "type": "group"},
+  {"class": "ravxx_var_sticky.price", "name": "מחיר בפס", "description": "המחיר שמוצג בפס הדביק בתחתית המסך.", "type": "text"},
+  {"class": "ravxx_var_sticky.cta", "name": "כפתור בפס", "description": "כתובת היעד של הכפתור בפס הדביק.", "type": "link"},
+  {"class": "ravxx_var_footer", "name": "פוטר", "type": "group"},
+  {"class": "ravxx_var_footer.brand", "name": "שם המותג", "description": "שם המותג בפוטר.", "type": "text"},
+  {"class": "ravxx_var_footer.rights", "name": "זכויות יוצרים", "description": "שורת זכויות היוצרים בתחתית.", "type": "text"}
 ]
 -->
