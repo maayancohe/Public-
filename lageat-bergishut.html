@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>כהה · לגעת ברגישות · סגנון 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--mocha:var(--brand)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--bg);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased;font-size:17px}
+img{max-width:100%}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+.sec{position:relative;padding:84px 0}
+h1,h2,h3,h4,.quote,.manifesto,.amt,.dl{font-family:var(--font-h)}
+h2{text-align:center;font-size:clamp(27px,4.4vw,42px);font-weight:var(--hw);line-height:1.25;margin-bottom:16px;color:var(--ink)}
+.eyebrow{text-align:center;font-weight:700;font-size:14px;letter-spacing:2.5px;margin-bottom:12px;color:var(--accent)}
+.sub{text-align:center;color:var(--ink-soft);font-size:18px;max-width:600px;margin:0 auto 44px}
+.btn{display:inline-block;font-family:var(--font-b);font-size:19px;font-weight:800;padding:17px 42px;border-radius:999px;text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s;background:var(--brand);color:var(--on-brand);box-shadow:0 10px 30px -10px var(--brand)}
+.btn:hover{transform:translateY(-2px)}
+.todo{background:#fff8e6;border:1.5px dashed #d9a441;color:#6b5320;font-size:13.5px;font-weight:600;border-radius:14px;padding:9px 16px;max-width:620px;margin:24px auto 0;text-align:center;font-family:var(--font-b);line-height:1.5}
+
+/* שורת סמכות */
+.authbar{text-align:center;font-size:13.5px;font-weight:600;padding:11px 14px;line-height:1.9}
+.authbar .nw{white-space:nowrap}
+.authbar .dot{margin:0 7px;opacity:.6}
+@media(max-width:640px){.authbar .nw{display:block}.authbar{font-size:12.5px}.authbar .dot{margin:0 5px}}
+
+/* הירו */
+.sec-hero{text-align:center;padding:56px 0 64px;overflow:hidden}
+.avatar{width:150px;height:150px;border-radius:50%;margin:0 auto 24px;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:62% 25%;display:block}
+.progname{font-weight:800;font-size:16px;letter-spacing:4px;margin-bottom:14px}
+.sec-hero h1{font-size:clamp(33px,5.6vw,58px);font-weight:var(--hw);line-height:1.18;max-width:860px;margin:0 auto 22px}
+.sec-hero h1 span{display:block}
+.objection{max-width:640px;margin:0 auto 32px;font-size:18px;line-height:1.7}
+.objection .what{display:block;margin-top:10px;font-size:16.5px}
+.shots{position:relative;max-width:1000px;margin:48px auto 0}
+.shots .strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 16px;scrollbar-width:none}
+.shots .strip::-webkit-scrollbar{display:none}
+.shots .shot{flex:0 0 auto;height:280px;scroll-snap-align:start;border-radius:20px;overflow:hidden;background:#fff}
+.shots .shot img{height:100%;width:auto;display:block}
+.shots .nav{position:absolute;top:42%;width:44px;height:44px;border-radius:50%;border:none;font-size:20px;cursor:pointer;z-index:3;background:#fff;color:var(--ink)}
+.shots .nav.prev{right:-14px}.shots .nav.next{left:-14px}
+@media(max-width:760px){.shots .shot{height:230px}.shots .nav{display:none}}
+
+/* פס תאריך */
+.sec-date{text-align:center;padding:40px 0}
+.pill{display:inline-block;border-radius:999px;padding:7px 20px;font-weight:700;font-size:14.5px}
+.dl{font-size:clamp(25px,4.2vw,36px);font-weight:var(--hw);margin:14px 0 4px;line-height:1.3}
+.dsub{font-size:15px;font-weight:600}
+
+/* כאב */
+.pain{max-width:640px;margin:34px auto 0;display:grid;gap:12px}
+.pline{display:flex;gap:14px;align-items:flex-start;padding:16px 24px;font-size:17px}
+.pline i{flex:0 0 8px;height:8px;border-radius:50%;margin-top:12px}
+.pain-close{max-width:640px;margin:34px auto 0;text-align:center;font-size:18.5px}
+
+/* סיפור */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.story .img{overflow:hidden}
+.story .img img{width:100%;height:100%;min-height:360px;max-height:560px;object-fit:cover;display:block}
+.story h2{text-align:right}
+.story p{margin-bottom:14px;color:var(--ink-soft)}
+
+.quote{max-width:760px;margin:0 auto;text-align:center;font-size:clamp(24px,3.8vw,34px);line-height:1.45}
+.quote small{display:block;margin-top:18px;font-size:16px;font-family:var(--font-b);font-weight:700;letter-spacing:1px}
+
+/* מסלולים / לפני אחרי */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:840px;margin:0 auto}
+.ba .col{padding:32px 28px}
+.ba h3{font-size:20px;font-weight:800;margin-bottom:14px;line-height:1.4}
+.ba li{list-style:none;padding:11px 0;font-size:16px;border-bottom:1px solid var(--line)}
+.ba li:last-child{border-bottom:none}
+.paths-close{text-align:center;margin-top:36px;font-size:clamp(22px,3.4vw,28px);font-weight:var(--hw);font-family:var(--font-h);line-height:1.4}
+
+/* מנגנון */
+.manifesto{text-align:center;font-size:clamp(32px,6vw,58px);font-weight:var(--hw);line-height:1.15;max-width:900px;margin:0 auto}
+.manifesto em,.manifesto u{font-style:normal;text-decoration:none}
+.tipnote{text-align:center;color:var(--ink-soft);font-size:16px;margin-top:10px}
+.approach{max-width:700px;margin:0 auto;padding:40px 38px}
+.approach h3{font-size:24px;font-weight:var(--hw);margin-bottom:16px;text-align:center}
+.approach p{margin-bottom:14px;color:var(--ink-soft)}
+.approach p:last-child{margin-bottom:0}
+
+/* שלבים */
+.steps{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.step{display:flex;gap:22px;align-items:flex-start;padding:26px 28px}
+.step .n{flex:0 0 50px;height:50px;border-radius:50%;font-weight:800;font-size:21px;display:flex;align-items:center;justify-content:center;font-family:var(--font-h)}
+.step h3{font-size:22px;font-weight:var(--hw);margin-bottom:4px}
+.step p{font-size:16px;color:var(--ink-soft)}
+.steps-note{max-width:640px;margin:34px auto 0;text-align:center;font-size:16.5px;color:var(--ink-soft);padding:22px 28px}
+
+/* מי אני */
+.bio{max-width:700px;margin:0 auto;padding:40px 38px}
+.bio p{margin-bottom:15px;color:var(--ink-soft)}
+.creds{margin:28px 0 10px;display:grid;grid-template-columns:1fr 1fr;gap:16px 22px}
+.cred{display:flex;flex-direction:column;padding-right:16px;border-right:3px solid var(--accent-soft)}
+.cred b{font-size:15.5px;font-weight:800;color:var(--ink)}
+.cred span{font-size:14px;color:var(--ink-soft);line-height:1.55}
+@media(max-width:640px){.creds{grid-template-columns:1fr}}
+.credline{text-align:center;font-size:21px;font-weight:var(--hw);margin-top:28px;line-height:1.5;font-family:var(--font-h)}
+
+/* הצעה */
+.checklist{max-width:640px;margin:0 auto;display:grid;gap:12px}
+.check{display:flex;gap:14px;align-items:center;padding:15px 22px;font-size:16.5px;font-weight:600}
+.check .v{flex:0 0 30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px}
+.blocktitle{text-align:center;font-size:clamp(22px,3.4vw,28px);font-weight:var(--hw);margin:60px auto 24px;max-width:640px;line-height:1.35}
+.topics{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:840px;margin:0 auto}
+.topic{padding:26px 26px 24px;position:relative}
+.topic .tn{position:absolute;top:22px;left:22px;font-family:var(--font-h);font-weight:800}
+.topic h4{font-size:20px;font-weight:var(--hw);margin-bottom:6px;padding-left:40px}
+.topic p{font-size:15.5px;color:var(--ink-soft)}
+@media(max-width:760px){.topics,.story,.ba{grid-template-columns:1fr}}
+.bonus{max-width:660px;margin:0 auto;display:grid;gap:12px}
+.brow{padding:18px 22px}
+.brow .t{font-size:16.5px;font-weight:700;display:block}
+.brow .bwhy{display:block;font-size:15px;font-weight:400;margin-top:4px;color:var(--ink-soft)}
+.bic{width:22px;height:22px;vertical-align:-5px;margin-left:8px}
+.preprice{max-width:640px;margin:56px auto 0;text-align:center}
+.preprice p{margin-bottom:13px;color:var(--ink-soft)}
+.pricebox{max-width:540px;margin:40px auto 0;padding:44px 30px;text-align:center}
+.pricebox .amt{font-size:54px;font-weight:800;line-height:1.1}
+.pricebox .note{font-size:16px;margin:10px 0 26px}
+.pricebox .limit{margin-top:18px;font-weight:700;font-size:15.5px}
+
+/* שאלות */
+.acc{max-width:680px;margin:34px auto 0}
+.acc .row{margin-bottom:10px;overflow:hidden}
+.acc .q{padding:18px 24px;font-size:17px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.acc .a{max-height:0;overflow:hidden;transition:.35s;padding:0 24px;color:var(--ink-soft);font-size:16px}
+.acc .row.open .a{max-height:420px;padding:0 24px 20px}
+.acc .plus{font-size:24px;font-weight:400;transition:.3s;flex:0 0 auto}
+.acc .row.open .plus{transform:rotate(45deg)}
+
+/* סיום */
+.sec-final{text-align:center}
+.sec-final .box{max-width:680px;margin:0 auto}
+.sec-final .box p{font-size:18px;margin-bottom:14px}
+.sec-final .box .kicker{font-size:clamp(24px,4vw,32px);font-weight:var(--hw);margin:26px 0 32px;font-family:var(--font-h);line-height:1.4}
+footer{text-align:center;padding:28px;font-size:14.5px}
+
+/* כניסה רכה של ראש הדף */
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sec-hero .wrap>*{animation:up .8s both}
+.sec-hero .wrap>*:nth-child(2){animation-delay:.08s}
+.sec-hero .wrap>*:nth-child(3){animation-delay:.16s}
+.sec-hero .wrap>*:nth-child(4){animation-delay:.24s}
+.sec-hero .wrap>*:nth-child(5){animation-delay:.32s}
+@media(prefers-reduced-motion:reduce){.sec-hero .wrap>*{animation:none}}
+
+:root{--bg:#f3ebe0;--bg2:#fbf7f1;--ink:#2e211b;--ink-soft:#5a4a41;--brand:#9c5639;--on-brand:#fff;--accent:#b7832f;--accent-soft:#e6cfa6;
+--dark:#3b2a22;--on-dark:#f3ebe0;--line:rgba(60,40,30,.1);--font-h:'Heebo',sans-serif;--font-b:'Assistant',sans-serif;--hw:800;--card:#fff}
+.authbar{background:var(--dark);color:var(--accent-soft)}
+.authbar b{color:#fff}
+.sec{padding:90px 0 100px}
+.sec::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:44px;background-size:100% 100%;pointer-events:none}
+.sec-hero{background:radial-gradient(120% 70% at 50% 0%,#fbf5ec 0%,var(--bg) 60%);padding-bottom:100px}
+.sec-hero::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%233b2a22'/%3E%3C/svg%3E")}
+.avatar{box-shadow:0 0 0 5px var(--bg),0 0 0 7px var(--accent),0 20px 40px -18px rgba(60,40,30,.5)}
+.progname{color:var(--brand)}
+.sec-hero h1{font-weight:900;letter-spacing:-.5px;color:var(--ink)}
+.sec-hero h1 span{color:var(--brand)}
+.objection{color:var(--ink-soft)}
+.objection b{color:var(--ink)}
+.shots .shot{box-shadow:0 20px 40px -24px rgba(60,40,30,.6)}
+.sec-date{background:var(--dark);color:var(--on-dark);padding:30px 0 70px}
+.sec-date::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23f3ebe0'/%3E%3C/svg%3E")}
+.pill{background:rgba(230,207,166,.12);color:var(--accent-soft);border:1px solid rgba(230,207,166,.4)}
+.dl{color:#fff}
+.dsub{color:rgba(243,235,224,.7)}
+.sec-pain{background:var(--bg)}
+.sec-pain::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23fbf7f1'/%3E%3C/svg%3E")}
+.pline{background:var(--card);border-radius:16px;box-shadow:0 8px 24px -16px rgba(60,40,30,.35)}
+.pline i{background:var(--brand)}
+.pain-close b{color:var(--brand)}
+.sec-story{background:var(--bg2)}
+.sec-story::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%239c5639'/%3E%3C/svg%3E")}
+.story .img{border-radius:28px;box-shadow:0 30px 50px -28px rgba(60,40,30,.6)}
+.story b{color:var(--brand)}
+.sec-quote{background:var(--brand);color:#fff;padding:70px 0 90px}
+.sec-quote::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23fbf7f1'/%3E%3C/svg%3E")}
+.quote{font-weight:700}
+.quote small{color:var(--accent-soft)}
+.sec-paths{background:var(--bg2)}
+.sec-paths::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23f3ebe0'/%3E%3C/svg%3E")}
+.ba .col{border-radius:22px;background:var(--card);box-shadow:0 12px 30px -20px rgba(60,40,30,.4)}
+.ba .before{background:#f7f1e9;box-shadow:none;border:1px dashed rgba(90,74,65,.3)}
+.ba .before h3{color:var(--ink-soft)}
+.ba .after{border-top:5px solid var(--accent)}
+.ba .after h3{color:var(--brand)}
+.paths-close{color:var(--brand)}
+.marker-reveal{position:relative;display:inline-block;isolation:isolate;padding:0 .14em;color:var(--brand)}
+.marker-reveal::before{content:"";position:absolute;inset:.08em -.08em -.02em;z-index:-1;background:#7b503b;clip-path:polygon(1% 9%,98% 0,100% 88%,3% 100%);transform:scaleX(0);transform-origin:right center;transition:transform 1.2s cubic-bezier(.2,.75,.2,1)}
+.marker-covered{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#f3ebe0;clip-path:inset(0 0 0 100%);transition:clip-path 1.2s cubic-bezier(.2,.75,.2,1);white-space:nowrap}
+.is-visible .marker-reveal::before{transform:scaleX(1)}
+.is-visible .marker-covered{clip-path:inset(0)}
+.sec-mech{background:var(--bg)}
+.sec-mech::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23fbf7f1'/%3E%3C/svg%3E")}
+.manifesto em{color:var(--accent)}
+.manifesto u{color:var(--brand)}
+.approach{background:var(--card);border-radius:26px;box-shadow:0 18px 40px -26px rgba(60,40,30,.5);margin-top:6px}
+.approach h3{color:var(--brand)}
+.approach b{color:var(--ink)}
+.sec-steps{background:var(--bg2)}
+.sec-steps::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23f3ebe0'/%3E%3C/svg%3E")}
+.eyebrow{color:var(--accent)}
+.step{background:var(--card);border-radius:20px;box-shadow:0 10px 26px -18px rgba(60,40,30,.45)}
+.step .n{background:var(--accent);color:#fff}
+.step h3{color:var(--ink)}
+.sec-bio{background:var(--bg)}
+.sec-bio::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23fbf7f1'/%3E%3C/svg%3E")}
+.bio{background:var(--card);border-radius:26px;box-shadow:0 18px 40px -26px rgba(60,40,30,.5)}
+.bio b{color:var(--brand)}
+.credline{color:var(--brand)}
+.steps-note{background:var(--bg);border-radius:18px}
+.sec-offer{background:var(--bg2)}
+.sec-offer::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23f3ebe0'/%3E%3C/svg%3E")}
+.check{background:var(--card);border-radius:14px;box-shadow:0 6px 18px -14px rgba(60,40,30,.4)}
+.check .v{background:var(--brand);color:#fff}
+.blocktitle{color:var(--ink)}
+.topic{background:var(--card);border-radius:20px;box-shadow:0 10px 26px -20px rgba(60,40,30,.45)}
+.topic .tn{color:var(--accent);font-size:30px;line-height:1;top:16px}
+.topic h4{color:var(--brand)}
+.brow{background:var(--card);border-radius:16px;border-right:4px solid var(--accent)}
+.bic{color:var(--accent)}
+.pricebox{background:var(--dark);color:var(--on-dark);border-radius:30px;box-shadow:0 30px 60px -30px rgba(60,40,30,.8)}
+.pricebox .amt{color:#fff}
+.pricebox .note{color:rgba(243,235,224,.75)}
+.pricebox .limit{color:var(--accent-soft)}
+.pricebox .btn{background:var(--accent);color:var(--dark);box-shadow:none}
+.sec-trans{background:var(--bg)}
+.sec-trans::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%23fbf7f1'/%3E%3C/svg%3E")}
+.sec-faq{background:var(--bg2)}
+.sec-faq::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 360 70 1080 -10 1440 30 L1440 60 L0 60Z' fill='%233b2a22'/%3E%3C/svg%3E")}
+.acc .row{background:var(--card);border-radius:16px;box-shadow:0 6px 18px -14px rgba(60,40,30,.4)}
+.acc .plus{color:var(--brand)}
+.sec-final{background:var(--dark);color:var(--on-dark);padding-top:70px}
+.sec-final h2{color:#fff}
+.sec-final .box p{color:rgba(243,235,224,.82)}
+.sec-final .box .kicker{color:var(--accent-soft)}
+.sec-final .btn{background:var(--accent);color:var(--dark);box-shadow:none}
+footer{background:var(--dark);color:rgba(243,235,224,.6);border-top:1px solid rgba(255,255,255,.08)}
+
+/* פתיחה כהה */
+.authbar{background:#2b1f19;border-bottom:1px solid rgba(230,207,166,.12)}
+.sec-hero{padding-top:80px!important;background:radial-gradient(90% 60% at 50% 0%,#5a3d2e 0%,#3b2a22 70%);color:#f3ebe0}
+.sec-hero::after{display:none}
+.avatar{width:120px;height:120px;box-shadow:0 0 0 4px #3b2a22,0 0 0 6px var(--accent),0 20px 40px -18px rgba(0,0,0,.6)}
+.progname{color:var(--accent-soft)}
+.sec-hero h1{color:#fff}
+.sec-hero h1 span{color:#e3a07c}
+.objection{color:rgba(243,235,224,.78)}
+.objection b{color:#fff}
+.sec-hero .btn{background:#c46a45;box-shadow:0 0 0 4px rgba(230,207,166,.2),0 14px 30px -12px rgba(0,0,0,.6)}
+.shots .shot{box-shadow:0 24px 44px -24px rgba(0,0,0,.8)}
+.shots .nav{background:#f3ebe0}
+.sec-date{padding-top:10px}
+
+/* התאמות עיצוב ותנועה */
+body{font-family:'Assistant',sans-serif;font-size:20px;text-align:center}
+h1,h2,h3,h4,.quote,.manifesto,.amt,.dl{font-family:'Assistant',sans-serif}
+h1,h2{font-size:35px!important;line-height:1.25;text-align:center!important;text-wrap:balance}
+h3,h4{font-size:25px!important;line-height:1.3;text-align:center!important;text-wrap:balance}
+p,li,.sub,.objection,.pain-close,.approach p,.step p,.bio p,.topic p,.acc .q,.acc .a,.sec-final .box p{font-size:20px;line-height:1.7;text-align:center;text-wrap:pretty}
+.authbar,.eyebrow,.progname{font-size:16px;font-weight:700}
+.authbar{font-size:16px!important;background:#2b1f19;color:var(--accent-soft)}
+.sec-hero{background:radial-gradient(90% 60% at 50% 0%,#5a3d2e 0%,#3b2a22 70%);color:#f3ebe0}
+.shots.single-image{max-width:680px;margin:0 auto 34px}
+.shots.single-image .shot{height:auto;max-height:none;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+.shots.single-image .shot img{width:100%;height:auto;max-height:620px;object-fit:contain;margin:0 auto;background:transparent}
+.sec-hero .objection,.sec-hero .objection .what{font-size:22px}
+.date-sticky{position:fixed;z-index:999;right:0;left:0;bottom:0;padding:9px 18px calc(9px + env(safe-area-inset-bottom));background:#2b1f19;border-top:1px solid rgba(230,207,166,.25);box-shadow:0 -10px 30px -22px rgba(0,0,0,.8);opacity:0;visibility:hidden;transform:translateY(100%);transition:opacity .3s ease,transform .3s ease,visibility .3s}
+body.show-date-bar .date-sticky{opacity:1;visibility:visible;transform:none}
+.date-sticky .pill{font-size:18px;font-weight:800;line-height:1.35;background:rgba(230,207,166,.12);color:var(--accent-soft);border:1px solid rgba(230,207,166,.4);box-shadow:none;animation:none}
+.date-sticky .dsub{display:inline-block;margin-right:14px;font-size:15px}
+.pain{max-width:760px}
+.pline{align-items:center;justify-content:center;font-size:20px;text-align:center;gap:18px;direction:rtl}
+.pline i{order:-1;flex:0 0 42px;width:42px;height:42px;margin-top:0;background:transparent!important;border:3px solid var(--brand);border-radius:50%;position:relative;animation:alertWiggle 1.35s ease-in-out infinite}
+.pline i::before{content:"!";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--brand);font-style:normal;font-weight:900;font-size:28px;line-height:1}
+.pline:nth-child(2) i{animation-delay:.15s}.pline:nth-child(3) i{animation-delay:.3s}.pline:nth-child(4) i{animation-delay:.45s}
+@keyframes alertWiggle{0%,70%,100%{transform:rotate(0) scale(1)}78%{transform:rotate(-10deg) scale(1.08)}86%{transform:rotate(10deg) scale(1.08)}94%{transform:rotate(-5deg)}}
+.has-js .reveal-seq>*{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.8,.2,1)}
+.has-js .reveal-seq.is-visible>*{opacity:1;transform:none}
+.has-js .paths-close.reveal-seq>.marker-reveal{opacity:1;transform:none;transition:none}
+.reveal-seq>*:nth-child(2){transition-delay:.13s}.reveal-seq>*:nth-child(3){transition-delay:.26s}.reveal-seq>*:nth-child(4){transition-delay:.39s}.reveal-seq>*:nth-child(5){transition-delay:.52s}.reveal-seq>*:nth-child(6){transition-delay:.65s}
+.ba h3,.ba li{text-align:center!important}
+.ba li{display:flex;align-items:center;justify-content:center;gap:11px;padding:12px 8px}
+.ba .before li::before{content:"💔";flex:0 0 28px;width:28px;height:28px;color:#7b503b;font-size:25px;line-height:1;filter:sepia(1) saturate(1.2) hue-rotate(330deg);animation:heartBreak 1.7s ease-in-out infinite}
+.ba .after li::before{content:"♥";flex:0 0 28px;color:#7b503b;font-size:28px;line-height:1;animation:heartBeat 1.35s ease-in-out infinite}
+@keyframes heartBeat{0%,45%,100%{transform:scale(1)}15%{transform:scale(1.22)}28%{transform:scale(.96)}}
+@keyframes heartBreak{0%,34%{transform:scale(1) rotate(0)}45%{transform:scale(1.2) rotate(-5deg)}55%{transform:scale(.92) rotate(5deg)}68%,100%{transform:scale(1) rotate(0)}}
+.approach-image{width:auto;height:auto;max-width:220px;max-height:150px;object-fit:contain;display:block;margin:0 auto 18px;filter:drop-shadow(0 8px 14px rgba(60,40,30,.15))}
+.approach,.approach p{text-align:center}
+.steps{gap:28px;padding-top:18px}
+.steps .step{align-items:center;text-align:center;position:relative;padding:26px 28px;overflow:hidden;flex-direction:column}
+.steps .step>div:last-child{flex:1}
+.step-image{position:static;transform:none;width:auto;height:auto;max-width:58%;max-height:260px;object-fit:contain;display:block;margin:0 auto 18px;z-index:2;filter:drop-shadow(0 10px 16px rgba(60,40,30,.16))}
+.bio{position:relative;margin-top:175px;padding-top:105px;text-align:center}
+.bio-photo{position:absolute;top:-145px;left:50%;transform:translateX(-50%);width:230px;max-width:70%;height:auto;max-height:230px;object-fit:contain;display:block;filter:drop-shadow(0 18px 22px rgba(60,40,30,.22))}
+.bio p strong,.bio p b{font-weight:800;color:inherit}
+.cred{padding:0 16px 0 0;border-top:none;border-right:3px solid var(--accent-soft);align-items:flex-start;text-align:right}
+.cred b,.cred span{text-align:right}
+.cred span{font-size:20px;line-height:1.55}
+.teacher-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 36px;margin:34px auto 12px;max-width:720px;place-items:center}
+.teacher-images img{width:auto;height:auto;max-width:100%;max-height:190px;object-fit:contain;display:block;margin:auto;border-radius:0;background:transparent;box-shadow:none}
+.checklist.reveal-seq .check{justify-content:center;text-align:center}
+.check .v{background:#87c367!important;color:#fff;font-weight:900}
+.topic{text-align:center}
+.topic .tn{display:none}
+.topic h4{padding-left:0;margin-bottom:8px;text-align:center!important}
+.topic p{text-align:center!important}
+.warning-icon{width:78px;height:70px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:#8a5c20;font-size:62px;line-height:1;filter:drop-shadow(0 8px 12px rgba(60,40,30,.14));animation:warningPulse 1.8s ease-in-out infinite}
+.warning-box{max-width:640px;margin:34px auto 0;background:var(--bg);border-radius:18px;padding:20px 28px 24px;box-shadow:0 10px 30px -22px rgba(60,40,30,.5)}
+.warning-box .steps-note{margin:0;padding:0;background:transparent;font-weight:800}
+@keyframes warningPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.bonus{gap:96px;padding-top:78px}
+.bonus .bic{display:none}
+.brow{position:relative;overflow:visible;padding:100px 24px 28px}
+.brow,.brow .t,.brow .bwhy{text-align:center}
+.bonus-image{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:min(78%,420px);height:160px;object-fit:contain;display:block;background:transparent;z-index:2;filter:drop-shadow(0 10px 18px rgba(60,40,30,.14))}
+[class~="ravxx_var_offer.bonuses.item6.image"]{width:min(62%,330px);height:130px;top:-66px}
+.pricebox{background:#fff;color:var(--ink);border-radius:28px;border:2px solid #7b503b;box-shadow:8px 8px 0 #7b503b,0 24px 50px -28px rgba(60,40,30,.6);padding:42px 30px}
+.pricebox .note{font-size:22px;color:var(--ink);margin:0 0 8px;font-weight:700}
+.pricebox .amt{font-size:30px;color:#7b2637;font-weight:900;text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:#7b2637}
+.pricebox .price-but{font-size:26px;font-weight:900;color:var(--brand);margin:20px 0 2px}
+.pricebox .not-now,.pricebox .deadline,.pricebox .current-label,.pricebox .countdown-label,.pricebox .return-price{color:var(--ink);margin:5px 0}
+.pricebox .deadline{font-weight:900;color:var(--brand);font-size:25px}
+.pricebox .current-price{font-size:45px;line-height:1.15;font-weight:900;color:#56b447;text-shadow:0 0 12px rgba(135,195,103,.42);margin:8px 0 24px}
+.countdown{direction:ltr;display:grid;grid-template-columns:repeat(4,1fr);gap:9px;max-width:410px;margin:12px auto 20px}
+.countdown .unit{background:#f3ebe0;border:1px solid rgba(123,80,59,.22);border-radius:14px;padding:10px 5px;box-shadow:inset 0 -3px 0 rgba(123,80,59,.08)}
+.countdown .unit span{display:block;font-size:30px;font-weight:900;color:var(--brand);line-height:1.1}
+.countdown .unit small{display:block;font-size:13px;font-weight:700;color:var(--ink-soft)}
+.pricebox .return-price u{text-decoration-thickness:2px;text-underline-offset:5px;font-weight:800}
+.pricebox .limit{color:var(--brand)}
+.pricebox .btn{background:var(--brand);color:#fff;box-shadow:0 10px 28px -12px rgba(60,40,30,.55)}
+.price-form{width:100%;max-width:560px;margin:22px auto 14px;position:relative;z-index:1;overflow:hidden;scroll-margin-top:24px}
+.price-form iframe{display:block;width:100%;height:380px;border:0;background:transparent;overflow:hidden}
+.sec-trans .ba .col,.sec-trans .ba li{text-align:center!important}
+@media(max-width:760px){
+  .wrap{padding:0 18px}
+  .sec{padding:68px 0 78px}
+  h1,h2{font-size:35px!important;line-height:1.22;max-width:94%;margin-left:auto!important;margin-right:auto!important;text-wrap:balance}
+  h3,h4{font-size:25px!important;text-wrap:balance}
+  p,li,.sub,.objection,.pain-close,.approach p,.step p,.bio p,.topic p,.acc .q,.acc .a,.sec-final .box p{font-size:20px;line-height:1.65;text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
+  .pline{padding:18px 15px;flex-direction:row;gap:12px}
+  .steps .step{flex-direction:column;align-items:center;gap:12px}
+  .step-image{width:auto;max-width:64%;max-height:220px}
+  .teacher-images{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
+  .teacher-images img{width:auto;height:auto;max-height:150px}
+  .date-sticky .pill{font-size:16px}
+  .date-sticky .dsub{display:block;margin:4px 0 0;font-size:14px}
+  .bio{padding:96px 22px 34px;margin-top:155px}
+  .bio-photo{width:200px;top:-126px}
+  .countdown .unit span{font-size:25px}
+  .pricebox{padding:36px 18px;box-shadow:6px 6px 0 #7b503b,0 20px 42px -28px rgba(60,40,30,.6)}
+  .bonus{gap:84px;padding-top:72px}
+  .brow{padding:90px 18px 26px}
+  .bonus-image{top:-70px;width:86%;height:140px}
+  [class~="ravxx_var_offer.bonuses.item6.image"]{width:70%;height:115px;top:-58px}
+}
+@media(prefers-reduced-motion:reduce){.pline i,.ba li::before,.warning-icon{animation:none}.has-js .reveal-seq>*{opacity:1;transform:none;transition:none}.marker-reveal::before{transform:scaleX(1);transition:none}.marker-covered{clip-path:inset(0);transition:none}}
+
+/* תיקון: צמצום הרווח בין הטופס לשורת "קבוצה קטנה" */
+.price-form{margin:22px auto 0!important}
+.price-form iframe{height:300px}
+.pricebox .limit{margin-top:6px!important}
+
+/* תווית "מיד עם ההרשמה" על בונוס הרצאת המבוא */
+.bonus-tag{display:inline-block;background:#87c367;color:#fff;font-size:16px;font-weight:800;line-height:1.3;border-radius:999px;padding:6px 16px;margin:0 auto 12px}
+.brow-now{border-right-color:#87c367;box-shadow:0 14px 34px -22px rgba(60,40,30,.5)}
+.brow-now .t>span:first-child{font-size:21px}
+
+/* בונוס מיוחד: קהילת אמא שיודעת */
+.bonus-special{position:relative;max-width:660px;margin:150px auto 0;background:var(--dark);color:var(--on-dark);border-radius:26px;border:2px solid var(--accent);box-shadow:0 30px 60px -30px rgba(60,40,30,.85);padding:96px 28px 34px;text-align:center}
+.bonus-special .bonus-image{top:-80px}
+.bonus-special-tag{display:inline-block;background:var(--accent);color:var(--dark);font-size:17px;font-weight:900;line-height:1.3;border-radius:999px;padding:8px 22px;margin:0 auto 16px;letter-spacing:.3px}
+.bonus-special .t{display:block;font-size:clamp(24px,3.4vw,30px);font-weight:900;line-height:1.3;color:#fff;text-align:center}
+.bonus-special .t b{color:var(--accent-soft)}
+.bonus-special .bwhy{display:block;font-size:20px;font-weight:400;line-height:1.6;margin-top:12px;color:rgba(243,235,224,.85);text-align:center}
+@media(max-width:760px){
+  .bonus-special{margin-top:130px;padding:86px 18px 30px}
+  .bonus-special .bonus-image{top:-70px}
+  .bonus-special-tag{font-size:16px;padding:7px 16px}
+}
+</style>
+</head>
+<body>
+
+  <!-- שורת סמכות עליונה -->
+  <div class="authbar">
+    <span class="nw ravxx_var_authority.identity"><b>שרי גת</b><span class="dot">·</span>מפתחת הגישה הנוירו-הוליסטית להורות</span>
+  </div>
+
+  <!-- 1. הירו -->
+  <header class="sec sec-hero">
+    <div class="wrap">
+      <div class="shots single-image">
+        <div class="shot"><img src="../תמונות/עדות-3.jpg" alt="תמונה ראשית" class="ravxx_var_hero.testimonial_image"></div>
+      </div>
+      <h1 class="ravxx_var_hero.title">תוכנית ליווי ייחודית<br><span>להורים לילדים רגישים</span></h1>
+      <div class="objection"><span class="what ravxx_var_hero.description">שישה מפגשי עומק בקבוצה אינטימית, שבהם תקבלי את ההבנה השלמה של הילד שלך ואת הכלים להוביל אותו.</span></div>
+      <a href="#registration-form" class="btn ravxx_var_hero.cta"><span class="ravxx_var_hero.cta_caption">רגע, ספרי לי עוד על התוכנית</span></a>
+    </div>
+  </header>
+
+  <!-- פס תאריך -->
+  <div class="sec sec-date">
+    <div class="wrap">
+      <div class="date-sticky">
+        <span class="pill ravxx_var_date.opening">מחזור עשירי · נפתח ב-25.11</span>
+        <p class="dsub ravxx_var_date.note">קבוצה אינטימית · מקומות מוגבלים</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. מראה כאב -->
+  <section class="sec sec-pain">
+    <div class="wrap">
+      <h2 class="ravxx_var_pain.title">אם את אמא לילד רגיש,<br>את בטח גם מרגישה ש...</h2>
+      <div class="pain reveal-seq" style="margin-top:34px">
+        <div class="pline"><i></i><span class="ravxx_var_pain.point1">את <strong>נותנת לו הכל</strong>, ובכל זאת תמיד מרגישה שזה פשוט <strong>לא מספיק</strong>.</span></div>
+        <div class="pline"><i></i><span class="ravxx_var_pain.point2">את מתמודדת עם <strong>תגובות שמרגישות לא פרופורציונליות</strong>, ומוצאת את עצמך <strong>הולכת על ביצים</strong>.</span></div>
+        <div class="pline"><i></i><span class="ravxx_var_pain.point3"><strong>כל כך הרבה דברים מצריכים חשיבה מראש</strong> – מעברים, יציאה מהבית, מפגשים.</span></div>
+        <div class="pline"><i></i><span class="ravxx_var_pain.point4">ואז את מסתכלת מסביב, ונדמה לך <strong>שלהורים אחרים פשוט יותר קל</strong>.</span></div>
+      </div>
+      <p class="pain-close ravxx_var_pain.closing"><b>להיות הורה לילד רגיש מרגיש קשה יותר.</b><br>לא בגלל שיש בעיה בילד שלך, וגם לא בגלל שיש בעיה בך.<br>אלא פשוט בגלל שאף אחד מעולם לא לימד אותך איך להיות אמא לילד רגיש.<br><br><b>ואת ממש לא היחידה.</b><br>כמדריכת הורים שמתמחה בנושא של רגישות גבוהה, אני פוגשת את זה כל יום.<br>וזו בדיוק הסיבה שפיתחתי את התוכנית "לגעת ברגישות".</p>
+    </div>
+  </section>
+
+  <!-- 5. הרעיון הגדול -->
+  <section class="sec sec-story">
+    <div class="wrap">
+      <div class="story">
+        <div class="img"><img src="../תמונות/ילד-בחוף.jpg" alt="" class="ravxx_var_story.image"></div>
+        <div>
+          <h2 class="ravxx_var_story.title">הילד שלך הוא ילד רגיש<br>שגדל בעולם לא רגיש.</h2>
+          <p class="ravxx_var_story.intro"><strong>הוא סחלב בשדה של סביונים.</strong></p>
+          <p class="ravxx_var_story.paragraph1"><strong>סביון גדל בכל מקום.</strong> בסדק במדרכה, בשוליים של הכביש, בלי שאף אחד שם לב אליו. הוא <strong>לא צריך כמעט כלום כדי לשרוד</strong>.</p>
+          <p class="ravxx_var_story.paragraph2"><strong>לסחלב יש תנאי גידול אחרים לגמרי.</strong> בדיוק האור הנכון, בדיוק הלחות הנכונה, בדיוק האדמה הנכונה. וברגע שמנסים לגדל סחלב בתנאים של סביון, <strong>זה פשוט לא יצליח</strong>. הוא יקמל, וכולם יגידו שהוא פרח בעייתי.</p>
+          <p class="ravxx_var_story.paragraph3">אבל <strong>סחלב הוא לא פרח פגום</strong>. הוא פרח שצריך את תנאי הגידול שלו, ושתינו יודעות שהם קצת יותר מדויקים. <strong>וכשהוא מקבל אותם, הוא פורח</strong> בצורה שאף סביון לא יפרח לעולם.</p>
+          <p class="ravxx_var_story.conclusion"><b>בדיוק ככה הילד הרגיש שלך.</b> אין בו שום דבר פגום, ואין מה לתקן בו. הוא רק צריך את תנאי הגידול המדויקים לו.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. באנד ציטוט -->
+  <section class="sec sec-quote">
+    <div class="wrap">
+      <p class="quote"><span class="ravxx_var_quote.text">"הדבר הכי חשוב עבור ילד עם רגישות גבוהה, זה הורה שמבין אותו."</span>
+        <small class="ravxx_var_quote.source">ד"ר איליין ארון</small></p>
+    </div>
+  </section>
+
+  <!-- 7. שני המסלולים -->
+  <section class="sec sec-paths">
+    <div class="wrap">
+      <h2 class="ravxx_var_paths.title">הרגישות היא מתנה שהילד שלך קיבל,<br>והיא יכולה לקחת אותו רחוק מאוד.</h2>
+      <p class="sub ravxx_var_paths.intro">מה שיקבע אם היא תהיה לו מתנה או מכשול, זו האדמה שבה היא מתפתחת.<br><b style="color:var(--mocha)">וזה בדיוק המקום שלך.</b></p>
+      <div class="ba reveal-seq">
+        <div class="col before">
+          <h3 class="ravxx_var_paths.before.title">ילד רגיש שגדל עם הורה שלא מבין רגישות</h3>
+          <ul class="ravxx_var_paths.before.list">
+            <li>שומע שוב ושוב שהוא מגזים, דרמטי או מפונק</li>
+            <li>מסיק מזה שמשהו בו לא בסדר</li>
+            <li>מפסיק לסמוך על מה שהוא מרגיש</li>
+            <li>גדל כשהרגישות היא נטל, ולא כוח</li>
+          </ul>
+        </div>
+        <div class="col after">
+          <h3 class="ravxx_var_paths.after.title">ילד רגיש שגדל עם הורה שמבין רגישות</h3>
+          <ul class="ravxx_var_paths.after.list">
+            <li>גדל עם תחושת ביטחון בסיסית</li>
+            <li>מפתח חוסן ותחושת מסוגלות</li>
+            <li>לומד איך להפוך את הרגישות לעוצמה</li>
+            <li>פורח בזכות הרגישות שלו, לא למרותה</li>
+          </ul>
+        </div>
+      </div>
+      <p class="paths-close ravxx_var_paths.closing reveal-seq">ההבדל בין שני הילדים האלה הוא לא הילד.<br><span class="marker-reveal"><span class="marker-base">ההבדל הוא את.</span><span class="marker-covered" aria-hidden="true">ההבדל הוא את.</span></span></p>
+      <div style="text-align:center;margin-top:34px"><a href="#registration-form" class="btn ravxx_var_paths.cta"><span class="ravxx_var_paths.cta_caption">אני רוצה להצטרף</span></a></div>
+    </div>
+  </section>
+
+  <!-- 8. המנגנון -->
+  <section class="sec sec-mech">
+    <div class="wrap">
+      <h2 style="font-size:clamp(24px,3.4vw,34px);margin-bottom:28px" class="ravxx_var_method.title">אז מה את צריכה בשביל לתת לו את זה?</h2>
+      <p class="manifesto ravxx_var_method.statement1">לא עוד <em>רשימת טיפים</em>.</p>
+      <p class="tipnote ravxx_var_method.tipnote">(פוסטים, סטוריז, מיילים...)</p>
+      <p class="manifesto ravxx_var_method.statement2" style="margin-top:22px">אלא <u>הבנה שלמה</u>.</p>
+      <p class="sub ravxx_var_method.intro" style="margin-top:30px;max-width:680px">וזה בדיוק מה שהתוכנית "לגעת ברגישות" נותנת לך, בגישה הנוירו-הוליסטית.</p>
+      <div class="approach">
+        <img class="approach-image ravxx_var_method.approach.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='140' viewBox='0 0 220 140'%3E%3C/svg%3E" alt="תמונה לגישה הנוירו-הוליסטית" width="220" height="140">
+        <h3 class="ravxx_var_method.approach.title">מה זו הגישה הנוירו-הוליסטית</h3>
+        <p class="ravxx_var_method.approach.paragraph1">היא נולדה מהמפגש בין שני עולמות שליוו אותי כל חיי המקצועיים. מצד אחד הרקע ההוליסטי שלי, בגישות חינוך הוליסטיות, ביוגה תרפיה, בפילוסופיה ובמיינדפולנס. מצד שני עשור של לימודי עומק אצל המורים המובילים בעולם, בגישות מבוססות חקר מוח ומערכת העצבים.</p>
+        <p class="ravxx_var_method.approach.paragraph2">ומתוך הלימודים, ומתוך אלפי המפגשים עם משפחות, הבנתי דבר אחד: בדיוק במקום שבו העולם ההוליסטי ועולם חקר המוח נפגשים, שם נמצא המענה האמיתי.</p>
+        <p class="ravxx_var_method.approach.paragraph3"><b>הגישה הנוירו-הוליסטית מסתכלת על הילד כשלם.</b> לא רק על המוח. לא רק על ההתנהגות. לא רק על התגובה. ואפילו לא רק על הרגישות. אלא על הכל ביחד: הגוף שלו, הרגשות שלו, העבר שלו, סביבת החיים שלו והמשפחה שלו. התמונה שלו היא תמיד שלמה, ואני תמיד עובדת מתוך התמונה השלמה הזו.</p>
+        <p class="ravxx_var_method.approach.paragraph4">וזה נכון גם למענה עצמו. גם הוא צריך להיות שלם. זה לא טיפ בודד ולא פתרון מהיר, אלא הבנה רחבה שכוללת כמה שיותר ידע, כדי שנדע בדיוק איך לתת לו את המענה הנכון. בלי לנחש.</p>
+        <p class="ravxx_var_method.approach.paragraph5"><b>כי הגיע הזמן שנפסיק לנחש איך להיות ההורים הכי טובים שאנחנו יכולים להיות.</b> יש לנו היום ידע, והוא צריך לשמש אותנו. בלי ביקורת ובלי אשמה, אבל כן על בסיס ידע, ובאופן שמתאים בדיוק למשפחה שלנו.</p>
+        <p class="ravxx_var_method.approach.paragraph6">וזה נכון גם לדרך העבודה שלנו בתוכנית. אנחנו לא מסתכלות רק עליו, אלא על הילד, על ההורה ועל הסביבה כתמונה אחת שלמה. כי בבית הכל מדבר עם הכל.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. שלושת השלבים -->
+  <section class="sec sec-steps">
+    <div class="wrap">
+      <p class="eyebrow ravxx_var_steps.eyebrow">איך זה עובד בתוכנית</p>
+      <h2 class="ravxx_var_steps.title">למידה, הפנמה, פעולה</h2>
+      <p class="sub ravxx_var_steps.description">הידע הוא המנוע לשינוי. וכדי שהוא באמת יהפוך לשינוי, הוא צריך לעבור דרך שלושה שלבים. אי אפשר לדלג על אף אחד מהם, ובדיוק בגלל זה כלים בלי הבנה אף פעם לא החזיקו לך לאורך זמן.</p>
+      <div class="steps reveal-seq">
+        <div class="step"><img class="step-image ravxx_var_steps.step1.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'%3E%3C/svg%3E" alt="תמונה לשלב הלמידה" width="180" height="120"><div><h3 class="ravxx_var_steps.step1.title">למידה</h3><p class="ravxx_var_steps.step1.description">מה זו רגישות ומה היא לא, מה קורה בגוף שלו ובמערכת העצבים שלו, ואיך הוא מושפע מהסביבה. הידע ההתפתחותי לצד הידע על הרגישות, ולא הסברים כלליים אלא הידע המדעי האמיתי, בשפה שלך.</p></div></div>
+        <div class="step"><img class="step-image ravxx_var_steps.step2.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'%3E%3C/svg%3E" alt="תמונה לשלב ההפנמה" width="180" height="120"><div><h3 class="ravxx_var_steps.step2.title">הפנמה</h3><p class="ravxx_var_steps.step2.description">כאן הידע הופך לתמונה שלמה של הילד הספציפי שלך. על מה יושב כל אתגר שאת מכירה מהבית, מה מפעיל אותו ומה מרגיע אותו, ומה הוא באמת מנסה להגיד לך. לשם כך יש גם שיעורי בית בין המפגשים, שמעגנים את זה אצלך.</p></div></div>
+        <div class="step"><img class="step-image ravxx_var_steps.step3.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'%3E%3C/svg%3E" alt="תמונה לשלב הפעולה" width="180" height="120"><div><h3 class="ravxx_var_steps.step3.title">פעולה</h3><p class="ravxx_var_steps.step3.description">הכלים הפרקטיים עצמם. איך בונים את הבית סביבו, איך מתווכים את היחסים במשפחה, איך מחברים אותו למסגרת ואיך מתנהלים מולה. ומה לתת לו בידיים, כדי שהוא יוכל באמת לקחת חלק בעולם, גם כשהעולם הזה לא נבנה בשבילו.</p></div></div>
+      </div>
+      <div style="text-align:center;margin-top:40px"><a href="#registration-form" class="btn ravxx_var_steps.cta"><span class="ravxx_var_steps.cta_caption">אני רוצה להצטרף</span></a></div>
+    </div>
+  </section>
+
+  <!-- 10. מי אני -->
+  <section class="sec sec-bio">
+    <div class="wrap">
+      <p class="eyebrow ravxx_var_bio.eyebrow">נעים מאוד</p>
+      <h2 class="ravxx_var_bio.title">אני שרי גת</h2>
+      <div class="bio">
+        <img class="bio-photo ravxx_var_bio.image" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/9889154eb2e2409d0e8f9347782e762f.png?cc=8&amp;convert=webp&amp;maxWidth=250&amp;maxHeight=175" alt="שרי גת">
+        <p class="ravxx_var_bio.paragraph1">אני <strong>אמא לשניים</strong>, ובעברי <strong>אשת חינוך, גננת ומחנכת</strong> בכיתות צעירות.</p>
+        <p class="ravxx_var_bio.paragraph2">האמת היא ש<strong>כל חיי התעסקתי בעבודה עם ילדים</strong>. ממש התחלתי בגיל 8, בהתנדבות במושב. המשכתי בהתנדבות בצפון אירלנד, בכפר של ילדים עם צרכים מיוחדים. ובהמשך, <strong>במשך עשור, הייתי גננת ומחנכת בארץ ובחו"ל</strong>, בחינוך אנתרופוסופי ואלטרנטיבי.</p>
+        <p class="ravxx_var_bio.paragraph3">לפני שנים הבנתי משהו: אם אני רוצה <strong>לייצר שינוי משמעותי עבור ילדים</strong>, אני צריכה לעבוד עם <strong>המבוגרים שמגדלים ומחנכים אותם</strong>.</p>
+        <p class="ravxx_var_bio.paragraph4">מאז אני <strong>לומדת ומלמדת ללא הפסקה</strong>, אצל המורים המובילים בעולם בגישות מבוססות חקר מוח ומערכת העצבים. מתוך זה נולדה <strong>הגישה הנוירו-הוליסטית</strong> שאני עובדת לפיה היום.</p>
+        <p class="ravxx_var_bio.paragraph5"><b>והרגישות הגבוהה היא התחום שהעמקתי בו יותר מכל.</b> התמחיתי בו אצל גדולי המומחים בעולם, במקומות שכמעט אף אחד בארץ לא למד בהם. היום זה הלב של העבודה שלי. וגם אני, אמא לילדים רגישים.</p>
+        <div class="creds">
+          <div class="cred ravxx_var_bio.credentials.item1"><b>ד"ר מונה דלהוק</b><span>פסיכולוגית קלינית, סופרת ומרצה בינלאומית בתחום החינוך סביב ויסות אמיתי והתנהגויות מאתגרות.</span></div>
+          <div class="cred ravxx_var_bio.credentials.item2"><b>רובין גובל</b><span>מטפלת בטראומה והתקשרות, 20 שנה עם ילדים ומשפחות. מלמדת הורים ואנשי מקצוע להבין התנהגויות מאתגרות דרך המוח והגוף, וייסדה מכון להכשרת אנשי מקצוע.</span></div>
+          <div class="cred ravxx_var_bio.credentials.item3"><b>נטלי ברונסוויק</b><span>מרפאה בעיסוק ופסיכותרפיסטית, מטפלת במצבי מתח וטראומה. מומחית לרגישות גבוהה אצל ילדים, וייסדה את הקהילה The Highly Sensitive Family.</span></div>
+          <div class="cred ravxx_var_bio.credentials.item4"><b>פרופ' דניאל סיגל</b><span>Mindsight Institute, UCLA. מחבר "ילדי המוח השלם"</span></div>
+          <div class="cred ravxx_var_bio.credentials.item5"><b>פרופ' סטיבן פורג'ס ודב דנה</b><span>התיאוריה הפוליוואגלית. מערכת העצבים והשפעתה על ויסות</span></div>
+          <div class="cred ravxx_var_bio.credentials.item6"><b>ד"ר בקי קנדי</b><span>Good Inside. נבחרה על ידי TIME למשפיעה הגדולה ביותר בהורות</span></div>
+        </div>
+        <div class="teacher-images">
+          <img class="ravxx_var_bio.teacher_images.item1" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/432502cf26d36ffa4abf1f9353860d5d.png?cc=8&amp;convert=webp&amp;maxWidth=250&amp;maxHeight=175" alt="מורה ומקור השראה">
+          <img class="ravxx_var_bio.teacher_images.item2" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/8286da89d29fd180ff0f76d6fe9bee1d.png?cc=8&amp;convert=webp&amp;maxWidth=250&amp;maxHeight=175" alt="מורה ומקור השראה">
+          <img class="ravxx_var_bio.teacher_images.item3" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/9d7302806aa8e8239ff882748bbba7a5.png?cc=8&amp;convert=webp&amp;maxWidth=250&amp;maxHeight=175" alt="מורה ומקור השראה">
+          <img class="ravxx_var_bio.teacher_images.item4" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/8936ba62380fbccbf2daa36496bed9e3.png?cc=8&amp;convert=webp&amp;maxWidth=250&amp;maxHeight=175" alt="מורה ומקור השראה">
+        </div>
+        <p class="credline ravxx_var_bio.closing">הגישה שלי לא מלמדת "מה לעשות".<br>היא מלמדת להבין. וכשמבינים, הכל משתנה.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 12. ההצעה -->
+  <section class="sec sec-offer" id="הצעה">
+    <div class="wrap">
+      <p class="eyebrow ravxx_var_offer.eyebrow">מה התוכנית כוללת</p>
+      <h2 class="ravxx_var_offer.title">מה את הולכת לקבל</h2>
+      <p class="sub ravxx_var_offer.description">שישה מפגשי עומק בזום, בקבוצה אינטימית של הורים לילדים רגישים, בגישה הנוירו-הוליסטית.</p>
+      <div class="checklist reveal-seq">
+        <div class="check"><span class="v">✓</span> <span class="ravxx_var_offer.features.item1">שישה מפגשי לייב בזום, שבהם אני ואתם מעמיקים יחד</span></div>
+        <div class="check"><span class="v">✓</span> <span class="ravxx_var_offer.features.item2">כל המפגשים מוקלטים ונשארים אצלך</span></div>
+        <div class="check"><span class="v">✓</span> <span class="ravxx_var_offer.features.item3">ספריית תוכן שכבר מחכה לך (כולל כל הבונוסים), וגדלה תוך כדי</span></div>
+        <div class="check"><span class="v">✓</span> <span class="ravxx_var_offer.features.item4">קבוצת ווטסאפ אינטימית, עם זמני מענה קבועים ממני</span></div>
+        <div class="check"><span class="v">✓</span> <span class="ravxx_var_offer.features.item5">שיעורי בית שיעזרו לך להפנים ולהעמיק בשלושת שלבי העבודה</span></div>
+        <div class="check"><span class="v">✓</span> <span class="ravxx_var_offer.features.item6">קהילה עוטפת של הורים לילדים רגישים</span></div>
+      </div>
+      <h3 class="blocktitle ravxx_var_offer.topics.title">מה הנושאים שנלמד</h3>
+      <div class="topics">
+        <div class="topic"><h4 class="ravxx_var_offer.topics.item1.title">מהי בעצם רגישות גבוהה?</h4><p class="ravxx_var_offer.topics.item1.description">ידע מבוסס מחקר וניסיון. מה זה כן, מה זה לא, ואיך זה נראה אצל הילד שלך.</p></div>
+        <div class="topic"><h4 class="ravxx_var_offer.topics.item2.title">ויסות</h4><p class="ravxx_var_offer.topics.item2.description">ויסות חושי ורגשי, ואיך זה עובד בכלל אצל ילדים רגישים. מה קורה בגוף שלו כשהוא מוצף, ואיך אפשר לעזור לו.</p></div>
+        <div class="topic"><h4 class="ravxx_var_offer.topics.item3.title">העולם בחוץ</h4><p class="ravxx_var_offer.topics.item3.description">איך נתמוך בילדים במפגש עם העולם החיצון, ואיך נתקשר לעולם את הרגישות שלהם.</p></div>
+        <div class="topic"><h4 class="ravxx_var_offer.topics.item4.title">מצבי קיצון ונפץ</h4><p class="ravxx_var_offer.topics.item4.description">איך נתמודד עם הרגעים הקשים האלה. מה לעשות, איך לעשות, ומה דווקא לא לעשות.</p></div>
+        <div class="topic"><h4 class="ravxx_var_offer.topics.item5.title">גבולות</h4><p class="ravxx_var_offer.topics.item5.description">איך מציבים נכון גבולות לילד רגיש. כאלה שבאמת עובדים, ושבונים אותו.</p></div>
+        <div class="topic"><h4 class="ravxx_var_offer.topics.item6.title">חוסן ומסוגלות</h4><p class="ravxx_var_offer.topics.item6.description">איך מפתחים חוסן ותחושת מסוגלות אצל ילדים רגישים.</p></div>
+      </div>
+      <div class="warning-box">
+        <div class="warning-icon" aria-hidden="true">⚠</div>
+        <p class="steps-note ravxx_var_offer.topics.note">וחשוב לי לציין: למרות שזה כבר המחזור העשירי של התוכנית, כל קבוצה היא קבוצה ייחודית. התוכן משתנה ומתפתח גם מתוך מה שנחווה יחד במהלך התוכנית, ומתוך הצרכים שלכם.</p>
+      </div>
+
+      <h3 class="blocktitle ravxx_var_offer.bonuses.title">ואני אתן לך גם בונוסים אקסקלוסיביים, כדי שישלימו את התמונה</h3>
+      <div class="bonus">
+        <div class="brow brow-now"><img class="bonus-image ravxx_var_offer.bonuses.intro.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='160' viewBox='0 0 420 160'%3E%3C/svg%3E" alt="תמונה להרצאת המבוא מהי רגישות גבוהה"><span class="bonus-tag ravxx_var_offer.bonuses.intro.tag">מיד עם ההרשמה</span><span class="t"><span class="ravxx_var_offer.bonuses.intro.title">גישה מיידית להקלטת הרצאת המבוא: "מהי רגישות גבוהה"</span><br><span class="bwhy ravxx_var_offer.bonuses.intro.description">הסבר <b>לעומק</b> מהי רגישות גבוהה, ומה זה אומר <b>ילד עם רגישות גבוהה</b>. מחכה לך ברגע שנרשמת.</span></span></div>
+        <div class="brow"><img class="bonus-image ravxx_var_offer.bonuses.item1.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='160' viewBox='0 0 420 160'%3E%3C/svg%3E" alt="תמונה לבונוס להיות הורה רגיש מאוד"><span class="t"><span class="ravxx_var_offer.bonuses.item1.title">הרצאה מוקלטת: "להיות הורה רגיש מאוד"</span><br><span class="bwhy ravxx_var_offer.bonuses.item1.description">כשגם את, ולא רק הילד, מרגישה הכל חזק מדי.</span></span></div>
+        <div class="brow"><img class="bonus-image ravxx_var_offer.bonuses.item2.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='160' viewBox='0 0 420 160'%3E%3C/svg%3E" alt="תמונה לבונוס סרטון לאנשי החינוך"><span class="t"><span class="ravxx_var_offer.bonuses.item2.title">סרטון קצר לאנשי החינוך: מהי רגישות גבוהה</span><br><span class="bwhy ravxx_var_offer.bonuses.item2.description">כדי שהגננת, המורה או סבתא יבינו, בלי שתסבירי את זה בפעם המאה.</span></span></div>
+        <div class="brow"><img class="bonus-image ravxx_var_offer.bonuses.item3.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='160' viewBox='0 0 420 160'%3E%3C/svg%3E" alt="תמונה לבונוס ויסות חושי ורגישות גבוהה"><span class="t"><span class="ravxx_var_offer.bonuses.item3.title">הרצאה מוקלטת: "קושי בוויסות חושי ורגישות גבוהה"</span><br><span class="bwhy ravxx_var_offer.bonuses.item3.description">כשאת לא בטוחה אם מה שאת רואה זו רגישות או משהו אחר.</span></span></div>
+        <div class="brow"><img class="bonus-image ravxx_var_offer.bonuses.item4.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='160' viewBox='0 0 420 160'%3E%3C/svg%3E" alt="תמונה לבונוס השתלבות במסגרות"><span class="t"><span class="ravxx_var_offer.bonuses.item4.title">הרצאה מוקלטת: איך נעזור לילדים רגישים להיקלט במסגרות</span><br><span class="bwhy ravxx_var_offer.bonuses.item4.description">כשהמעברים לגן ולבית הספר הופכים לנקודת המשבר של השבוע.</span></span></div>
+        <div class="brow"><img class="bonus-image ravxx_var_offer.bonuses.item5.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='160' viewBox='0 0 420 160'%3E%3C/svg%3E" alt="תמונה למסמכים התומכים"><span class="t"><span class="ravxx_var_offer.bonuses.item5.title">מסמכים תומכים לאורך כל התוכנית</span><br><span class="bwhy ravxx_var_offer.bonuses.item5.description">חומר כתוב שנשאר אצלך גם אחרי שהתוכנית נגמרת.</span></span></div>
+      </div>
+
+      <!-- בונוס מיוחד לנרשמות עכשיו -->
+      <div class="bonus-special">
+        <img class="bonus-image ravxx_var_offer.bonuses.item6.image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='160' viewBox='0 0 420 160'%3E%3C/svg%3E" alt="מוקאפ לקהילת אמא שיודעת">
+        <span class="bonus-special-tag ravxx_var_offer.bonuses.item6.tag">בונוס מיוחד לנרשמות עכשיו</span>
+        <span class="t ravxx_var_offer.bonuses.item6.title">כניסה <b>חינם</b> לקהילת המנויות שלי <b>"אמא שיודעת"</b></span>
+        <span class="bwhy ravxx_var_offer.bonuses.item6.description">גישה מיידית לקהילת "אמא שיודעת" – <b>קשר איתי</b> וכל <b>ספריית התוכן</b>, עד שהתוכנית שלנו מתחילה.</span>
+      </div>
+
+      <div class="preprice">
+        <p class="ravxx_var_offer.preprice.paragraph1">אני יודעת כמה חשוב לך שהילד הרגיש שלך יוכל באמת להשתלב בעולם. כי למרות שהעולם הזה לא רגיש, הוא עדיין העולם שלו.</p>
+        <p class="ravxx_var_offer.preprice.paragraph2">אני יודעת כמה את לא רוצה להרגיש עוד פעם אחת את כאב הלב הזה, כשאת הולכת לאסוף אותו ורואה מרחוק את הקושי שלו ואת השונות שלו.</p>
+        <p class="ravxx_var_offer.preprice.paragraph3">ואני יודעת כמה פעמים כבר ניסית להסביר אותו. לאנשי המקצוע, למשפחה, לגננת. ולפעמים גם לעצמך, בלילה, אחרי שכולם נרדמו.</p>
+        <p class="ravxx_var_offer.preprice.paragraph4"><b>ואת ממש לא היחידה שחווה את זה. כל הורה לילד רגיש חווה את זה.</b> כי לגדל סחלב בשדה של סביונים, ולגדל ילד רגיש בעולם לא רגיש, זו משימה מורכבת. וצריך לדעת איך עושים אותה.</p>
+      </div>
+
+      <div class="pricebox">
+        <p class="note ravxx_var_offer.pricing.note">עלות מלאה של התוכנית</p>
+        <div class="amt ravxx_var_offer.pricing.price">1,590 ש"ח</div>
+        <p class="price-but ravxx_var_offer.pricing.but">אבל!</p>
+        <p class="not-now ravxx_var_offer.pricing.not_now">זה לא המחיר שאת תשלמי עכשיו</p>
+        <p class="deadline ravxx_var_offer.pricing.deadline">עד ה־11/10</p>
+        <p class="current-label ravxx_var_offer.pricing.current_label">העלות שלך היא</p>
+        <div class="current-price ravxx_var_offer.pricing.current_price">1,390 ש"ח בלבד</div>
+        <p class="countdown-label ravxx_var_offer.pricing.countdown_label">עד שהשעון ייעצר</p>
+        <div class="countdown" data-deadline="2026-10-11T23:59:59+03:00" aria-label="ספירה לאחור לסיום המחיר המיוחד">
+          <div class="unit"><span data-countdown="days">00</span><small>ימים</small></div>
+          <div class="unit"><span data-countdown="hours">00</span><small>שעות</small></div>
+          <div class="unit"><span data-countdown="minutes">00</span><small>דקות</small></div>
+          <div class="unit"><span data-countdown="seconds">00</span><small>שניות</small></div>
+        </div>
+        <p class="return-price ravxx_var_offer.pricing.return_text">ואז המחיר יחזור להיות <u>1,590 ש"ח</u></p>
+        <div class="price-form" id="registration-form"><iframe srcdoc="&lt;!doctype html&gt;&lt;html dir=&quot;rtl&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;base target=&quot;_top&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;height:auto!important;min-height:0!important;background:transparent;overflow-x:hidden}body&gt;script{display:none!important}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;https://form2.ravpage.co.il/9c74219a7c4d9822f1f14577b77bf36b6ABD283D&quot; charset=&quot;UTF-8&quot;&gt;&lt;/script&gt;&lt;script&gt;(function(){function t(){document.querySelectorAll('form').forEach(function(f){f.target='_top'});document.querySelectorAll('a[href]').forEach(function(a){if(!a.target)a.target='_top'})}t();new MutationObserver(t).observe(document.documentElement,{childList:true,subtree:true})})();&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" title="טופס הרשמה לתוכנית" scrolling="no"></iframe></div>
+        <p class="limit ravxx_var_offer.pricing.limit">זו קבוצה קטנה בכוונה, והיא נסגרת ברגע שהיא מתמלאת.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. הטרנספורמציה -->
+  <section class="sec sec-trans">
+    <div class="wrap">
+      <p class="eyebrow ravxx_var_transformation.eyebrow">מה משתנה</p>
+      <h2 class="ravxx_var_transformation.title">מהישרדות יומיומית לבהירות</h2>
+      <p class="sub ravxx_var_transformation.description">אותו בית, אותו ילד, אותה רגישות בדיוק. רק שהפעם את מבינה.</p>
+      <div class="ba">
+        <div class="col before">
+          <h3 class="ravxx_var_transformation.before.title">איך זה מרגיש היום</h3>
+          <ul class="ravxx_var_transformation.before.list">
+            <li>הבית מתנהל בהישרדות, מרגע לרגע</li>
+            <li>כל אירוע קטן מציף גם אותו וגם אותך</li>
+            <li>את מגיבה ואחר כך מצטערת</li>
+            <li>כל יום מתחיל מחדש, בלי כיוון</li>
+          </ul>
+        </div>
+        <div class="col after">
+          <h3 class="ravxx_var_transformation.after.title">איך זה מרגיש אחרי</h3>
+          <ul class="ravxx_var_transformation.after.list">
+            <li>יש לך בהירות. את מבינה מה קורה ולמה</li>
+            <li>את יודעת להתכונן לרגע הקשה מראש</li>
+            <li>את יודעת איך להכיל אותו כשהוא כבר כאן</li>
+            <li>הבית מתנהל בנחת ובהבנה שמתאימה לכולם</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. שאלות ותשובות -->
+  <section class="sec sec-faq">
+    <div class="wrap">
+      <p class="eyebrow ravxx_var_faq.eyebrow">לפני שאת נרשמת</p>
+      <h2 class="ravxx_var_faq.title">שאלות שאמהות שואלות אותי</h2>
+      <div class="acc" style="margin-top:34px">
+        <div class="row"><div class="q"><span class="ravxx_var_faq.item1.question">כבר ניסינו טיפולים והדרכות, למה זה יהיה שונה? </span><span class="plus">+</span></div><div class="a ravxx_var_faq.item1.answer">קודם כל, כי הגישה הנוירו-הוליסטית היא גישה מבוססת, שנותנת לך גם את הידע המדויק וגם את הכלים להפנים אותו לתוך החיים שלך. ובנוסף, כי כאן זה נכנס אליכם הביתה. זה לא טיפול שקורה מסביב, שעה בשבוע, בזמן שאת נשארת עם כל שאר השעות בלי לדעת מה לעשות בהן. וחשוב לי להגיד: אני לא נגד טיפול. יש ילדים שאני עצמי מפנה לטיפול. אבל טיפול בלי הורה שמבין הוא חצי עבודה.</div></div>
+        <div class="row"><div class="q"><span class="ravxx_var_faq.item2.question">אני כל כך מותשת, אין לי כוח לעוד משהו </span><span class="plus">+</span></div><div class="a ravxx_var_faq.item2.answer">אני יודעת, ואני שומעת את זה כמעט מכל אמא שמגיעה. אבל התשישות הזו מגיעה בדיוק מזה שאת מתמודדת בלי להבין מה קורה, ולכן כל יום מתחיל מאפס. ברגע שיש הבנה, מפסיקים להיאבק באוויר. ההבנה לא לוקחת ממך אנרגיה, היא מחזירה לך אותה. וגם: את תמיד יכולה לעלות ללייב, וכל המפגשים מוקלטים, כדי שתוכלי לחזור למה שפספסת או למה שתצטרכי.</div></div>
+        <div class="row"><div class="q"><span class="ravxx_var_faq.item3.question">אולי זה בכלל שלב שיעבור? </span><span class="plus">+</span></div><div class="a ravxx_var_faq.item3.answer">הרגישות עצמה היא לא שלב. זו תכונה מולדת שנשארת לכל החיים, והיא גם לא אמורה לעבור. מה שכן יכול לעבור זה הקושי, ברגע שתקבלי את ההבנה ואת הכלים הנכונים.</div></div>
+        <div class="row"><div class="q"><span class="ravxx_var_faq.item4.question">הילד שלי לא אובחן בשום דבר, זה מתאים לי? </span><span class="plus">+</span></div><div class="a ravxx_var_faq.item4.answer">לגמרי. רגישות גבוהה היא בכלל לא דבר שמאבחנים. התוכנית לא בנויה סביב אבחנה ולא דורשת אחת, אלא סביב הבנה של מערכת עצבים רגישה. אם את מזהה את הילד שלך בתיאורים כאן בדף, זה המקום שלך.</div></div>
+        <div class="row"><div class="q"><span class="ravxx_var_faq.item5.question">לאיזה גיל התוכנית מתאימה? </span><span class="plus">+</span></div><div class="a ravxx_var_faq.item5.answer">מגיל שנתיים ועד גיל 11. העקרונות זהים בכל הגילאים, והכלים מותאמים לגיל של הילד שלך.</div></div>
+        <div class="row"><div class="q"><span class="ravxx_var_faq.item6.question">מה קורה אם אני לא יכולה להגיע למפגש? </span><span class="plus">+</span></div><div class="a ravxx_var_faq.item6.answer">כל המפגשים מוקלטים והם נשארים אצלך. אפשר לצפות מתי שנוח לך, ולחזור אליהם גם אחרי שהתוכנית נגמרה. השאלות שלך תמיד יכולות להישלח לקבוצת הווטסאפ, גם אם לא היית בשידור החי.</div></div>
+        <div class="row"><div class="q"><span class="ravxx_var_faq.item7.question">אפשר להצטרף עם בן או בת הזוג? </span><span class="plus">+</span></div><div class="a ravxx_var_faq.item7.answer">בהחלט, ואפילו מומלץ. הרשמה אחת מתאימה לשני ההורים, ואתם מוזמנים לשבת יחד במפגשים.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. קריאה אחרונה -->
+  <section class="sec sec-final">
+    <div class="wrap">
+      <div class="box">
+        <h2 class="ravxx_var_final.title">היום הוא ילד רגיש,<br>ולשמחתנו הוא גם יגדל להיות אדם רגיש</h2>
+        <p class="ravxx_var_final.paragraph1">הרגישות לא תיעלם, והיא גם לא אמורה להיעלם. היא מתנה שלו, והיא מתנה לעולם.</p>
+        <p class="ravxx_var_final.paragraph2">השאלה היחידה שנשארת היא איך הוא יפרח. אם הוא יגדל בתנאים שלא מתאימים לו, הוא ילמד שמשהו בו לא בסדר. ואם הוא יגדל עם מישהי שמבינה בדיוק מה הוא צריך, הוא יפרח בצורה שאף אחד לא ציפה לה.</p>
+        <p class="kicker ravxx_var_final.kicker">את לא צריכה לתקן אותו.<br>את צריכה להבין אותו.</p>
+        <a href="#registration-form" class="btn ravxx_var_final.cta"><span class="ravxx_var_final.cta_caption">אני רוצה להצטרף לתוכנית</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ravxx_var_footer">שרי גת · מלווה הורים על שביל ההורות</footer>
+
+  <script>
+document.documentElement.classList.add('has-js');
+document.querySelectorAll('.acc .q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
+const revealGroups=document.querySelectorAll('.reveal-seq');
+if('IntersectionObserver' in window){
+  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.18});
+  revealGroups.forEach(group=>revealObserver.observe(group));
+}else{revealGroups.forEach(group=>group.classList.add('is-visible'))}
+const heroSection=document.querySelector('.sec-hero');
+const dateSection=document.querySelector('.sec-date');
+const updateDateBar=()=>{
+  if(!heroSection||!dateSection)return;
+  const heroRect=heroSection.getBoundingClientRect();
+  const dateRect=dateSection.getBoundingClientRect();
+  document.body.classList.toggle('show-date-bar',heroRect.top<window.innerHeight&&dateRect.bottom>0);
+};
+updateDateBar();
+window.addEventListener('scroll',updateDateBar,{passive:true});
+window.addEventListener('resize',updateDateBar);
+document.querySelectorAll('.countdown').forEach(timer=>{
+  const deadline=new Date(timer.dataset.deadline).getTime();
+  const fields={days:timer.querySelector('[data-countdown="days"]'),hours:timer.querySelector('[data-countdown="hours"]'),minutes:timer.querySelector('[data-countdown="minutes"]'),seconds:timer.querySelector('[data-countdown="seconds"]')};
+  const pad=value=>String(value).padStart(2,'0');
+  let interval;
+  const update=()=>{
+    const remaining=Math.max(0,deadline-Date.now());
+    fields.days.textContent=pad(Math.floor(remaining/86400000));
+    fields.hours.textContent=pad(Math.floor(remaining/3600000)%24);
+    fields.minutes.textContent=pad(Math.floor(remaining/60000)%60);
+    fields.seconds.textContent=pad(Math.floor(remaining/1000)%60);
+    if(remaining===0&&interval) clearInterval(interval);
+  };
+  update();
+  interval=setInterval(update,1000);
+});
+
+/* כל הכפתורים קופצים לטופס */
+const formWrap=document.getElementById('registration-form');
+document.querySelectorAll('a.btn, a[href="#registration-form"]').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    if(!formWrap)return;
+    e.preventDefault();
+    formWrap.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>formWrap.scrollIntoView({behavior:'smooth',block:'start'}),800);
+  });
+});
+
+/* התאמת גובה הטופס לתוכן האמיתי, בלי שטח ריק מתחתיו */
+const formFrame=formWrap?formWrap.querySelector('iframe'):null;
+if(formFrame){
+  const fit=()=>{
+    try{
+      const d=formFrame.contentDocument;
+      if(!d||!d.body)return;
+      let h=0;
+      [...d.body.children].forEach(el=>{
+        if(el.tagName==='SCRIPT'||el.tagName==='STYLE')return;
+        h=Math.max(h,el.getBoundingClientRect().bottom);
+      });
+      if(h>0)formFrame.style.height=Math.ceil(h)+'px';
+    }catch(err){}
+  };
+  let started=false;
+  const init=()=>{
+    if(started)return;started=true;
+    fit();
+    try{new ResizeObserver(fit).observe(formFrame.contentDocument.body)}catch(err){}
+    let n=0;const t=setInterval(()=>{fit();if(++n>60)clearInterval(t)},250);
+  };
+  formFrame.addEventListener('load',init);
+  try{if(formFrame.contentDocument&&formFrame.contentDocument.readyState==='complete'&&formFrame.contentDocument.body&&formFrame.contentDocument.body.children.length)init()}catch(err){}
+}
+</script>
+</body>
+</html>
+<!--ravxx_variables
+[
+  {"class":"ravxx_var_authority","name":"שורת סמכות","type":"group"},
+  {"class":"ravxx_var_authority.identity","name":"זהות מקצועית","description":"הטקסט של זהות מקצועית.","type":"text"},
+  {"class":"ravxx_var_bio","name":"אודות שרי","type":"group"},
+  {"class":"ravxx_var_bio.closing","name":"פסקת סיום","description":"הטקסט של פסקת סיום.","type":"text"},
+  {"class":"ravxx_var_bio.credentials","name":"הכשרות","type":"group"},
+  {"class":"ravxx_var_bio.credentials.item1","name":"תוכן","description":"הטקסט של תוכן.","type":"text"},
+  {"class":"ravxx_var_bio.credentials.item2","name":"תוכן","description":"הטקסט של תוכן.","type":"text"},
+  {"class":"ravxx_var_bio.credentials.item3","name":"תוכן","description":"הטקסט של תוכן.","type":"text"},
+  {"class":"ravxx_var_bio.credentials.item4","name":"תוכן","description":"הטקסט של תוכן.","type":"text"},
+  {"class":"ravxx_var_bio.credentials.item5","name":"תוכן","description":"הטקסט של תוכן.","type":"text"},
+  {"class":"ravxx_var_bio.credentials.item6","name":"תוכן","description":"הטקסט של תוכן.","type":"text"},
+  {"class":"ravxx_var_bio.eyebrow","name":"כותרת מקדימה","description":"הטקסט של כותרת מקדימה.","type":"text"},
+  {"class":"ravxx_var_bio.image","name":"תמונת שרי","description":"תמונת שרי ניתנת להחלפה. ניתן להשתמש בכל יחס גובה־רוחב.","type":"image"},
+  {"class":"ravxx_var_bio.paragraph1","name":"פסקה 1","description":"הטקסט של פסקה 1.","type":"text"},
+  {"class":"ravxx_var_bio.paragraph2","name":"פסקה 2","description":"הטקסט של פסקה 2.","type":"text"},
+  {"class":"ravxx_var_bio.paragraph3","name":"פסקה 3","description":"הטקסט של פסקה 3.","type":"text"},
+  {"class":"ravxx_var_bio.paragraph4","name":"פסקה 4","description":"הטקסט של פסקה 4.","type":"text"},
+  {"class":"ravxx_var_bio.paragraph5","name":"פסקה 5","description":"הטקסט של פסקה 5.","type":"text"},
+  {"class":"ravxx_var_bio.teacher_images","name":"תמונות המורים","type":"group"},
+  {"class":"ravxx_var_bio.teacher_images.item1","name":"תמונת מורה 1","description":"תמונת מורה 1 ניתנת להחלפה. ניתן להשתמש בכל יחס גובה־רוחב.","type":"image"},
+  {"class":"ravxx_var_bio.teacher_images.item2","name":"תמונת מורה 2","description":"תמונת מורה 2 ניתנת להחלפה. ניתן להשתמש בכל יחס גובה־רוחב.","type":"image"},
+  {"class":"ravxx_var_bio.teacher_images.item3","name":"תמונת מורה 3","description":"תמונת מורה 3 ניתנת להחלפה. ניתן להשתמש בכל יחס גובה־רוחב.","type":"image"},
+  {"class":"ravxx_var_bio.teacher_images.item4","name":"תמונת מורה 4","description":"תמונת מורה 4 ניתנת להחלפה. ניתן להשתמש בכל יחס גובה־רוחב.","type":"image"},
+  {"class":"ravxx_var_bio.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_date","name":"מועד פתיחה","type":"group"},
+  {"class":"ravxx_var_date.note","name":"הערה","description":"הטקסט של הערה.","type":"text"},
+  {"class":"ravxx_var_date.opening","name":"מועד פתיחה","description":"הטקסט של מועד פתיחה.","type":"text"},
+  {"class":"ravxx_var_faq","name":"שאלות ותשובות","type":"group"},
+  {"class":"ravxx_var_faq.eyebrow","name":"כותרת מקדימה","description":"הטקסט של כותרת מקדימה.","type":"text"},
+  {"class":"ravxx_var_faq.item1","name":"שאלה 1","type":"group"},
+  {"class":"ravxx_var_faq.item1.answer","name":"תשובה","description":"הטקסט של תשובה.","type":"text"},
+  {"class":"ravxx_var_faq.item1.question","name":"שאלה","description":"הטקסט של שאלה.","type":"text"},
+  {"class":"ravxx_var_faq.item2","name":"שאלה 2","type":"group"},
+  {"class":"ravxx_var_faq.item2.answer","name":"תשובה","description":"הטקסט של תשובה.","type":"text"},
+  {"class":"ravxx_var_faq.item2.question","name":"שאלה","description":"הטקסט של שאלה.","type":"text"},
+  {"class":"ravxx_var_faq.item3","name":"שאלה 3","type":"group"},
+  {"class":"ravxx_var_faq.item3.answer","name":"תשובה","description":"הטקסט של תשובה.","type":"text"},
+  {"class":"ravxx_var_faq.item3.question","name":"שאלה","description":"הטקסט של שאלה.","type":"text"},
+  {"class":"ravxx_var_faq.item4","name":"שאלה 4","type":"group"},
+  {"class":"ravxx_var_faq.item4.answer","name":"תשובה","description":"הטקסט של תשובה.","type":"text"},
+  {"class":"ravxx_var_faq.item4.question","name":"שאלה","description":"הטקסט של שאלה.","type":"text"},
+  {"class":"ravxx_var_faq.item5","name":"שאלה 5","type":"group"},
+  {"class":"ravxx_var_faq.item5.answer","name":"תשובה","description":"הטקסט של תשובה.","type":"text"},
+  {"class":"ravxx_var_faq.item5.question","name":"שאלה","description":"הטקסט של שאלה.","type":"text"},
+  {"class":"ravxx_var_faq.item6","name":"שאלה 6","type":"group"},
+  {"class":"ravxx_var_faq.item6.answer","name":"תשובה","description":"הטקסט של תשובה.","type":"text"},
+  {"class":"ravxx_var_faq.item6.question","name":"שאלה","description":"הטקסט של שאלה.","type":"text"},
+  {"class":"ravxx_var_faq.item7","name":"שאלה 7","type":"group"},
+  {"class":"ravxx_var_faq.item7.answer","name":"תשובה","description":"הטקסט של תשובה.","type":"text"},
+  {"class":"ravxx_var_faq.item7.question","name":"שאלה","description":"הטקסט של שאלה.","type":"text"},
+  {"class":"ravxx_var_faq.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_final","name":"אזור סיום","type":"group"},
+  {"class":"ravxx_var_final.cta","name":"כפתור פעולה","description":"כתובת היעד של כפתור פעולה. גם כיתוב הכפתור ניתן לעריכה.","type":"link"},
+  {"class":"ravxx_var_final.kicker","name":"מסר מסכם","description":"הטקסט של מסר מסכם.","type":"text"},
+  {"class":"ravxx_var_final.paragraph1","name":"פסקה 1","description":"הטקסט של פסקה 1.","type":"text"},
+  {"class":"ravxx_var_final.paragraph2","name":"פסקה 2","description":"הטקסט של פסקה 2.","type":"text"},
+  {"class":"ravxx_var_final.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_footer","name":"תוכן","description":"הטקסט של תוכן.","type":"text"},
+  {"class":"ravxx_var_hero","name":"אזור ראשי","type":"group"},
+  {"class":"ravxx_var_hero.cta","name":"כפתור פעולה","description":"כתובת היעד של כפתור פעולה. גם כיתוב הכפתור ניתן לעריכה.","type":"link"},
+  {"class":"ravxx_var_hero.description","name":"תיאור","description":"הטקסט של תיאור.","type":"text"},
+  {"class":"ravxx_var_hero.testimonial_image","name":"תמונה ראשית","description":"תמונה ראשית ניתנת להחלפה. ניתן להשתמש בכל יחס גובה־רוחב.","type":"image"},
+  {"class":"ravxx_var_hero.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_method","name":"הסבר הגישה","type":"group"},
+  {"class":"ravxx_var_method.approach","name":"הגישה הנוירו־הוליסטית","type":"group"},
+  {"class":"ravxx_var_method.approach.image","name":"תמונה לגישה","description":"תמונה מעל ההסבר על הגישה הנוירו־הוליסטית. כל יחס גובה־רוחב מתאים.","type":"image"},
+  {"class":"ravxx_var_method.approach.paragraph1","name":"פסקה 1","description":"הטקסט של פסקה 1.","type":"text"},
+  {"class":"ravxx_var_method.approach.paragraph2","name":"פסקה 2","description":"הטקסט של פסקה 2.","type":"text"},
+  {"class":"ravxx_var_method.approach.paragraph3","name":"פסקה 3","description":"הטקסט של פסקה 3.","type":"text"},
+  {"class":"ravxx_var_method.approach.paragraph4","name":"פסקה 4","description":"הטקסט של פסקה 4.","type":"text"},
+  {"class":"ravxx_var_method.approach.paragraph5","name":"פסקה 5","description":"הטקסט של פסקה 5.","type":"text"},
+  {"class":"ravxx_var_method.approach.paragraph6","name":"פסקה 6","description":"הטקסט של פסקה 6.","type":"text"},
+  {"class":"ravxx_var_method.approach.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_method.intro","name":"פתיח","description":"הטקסט של פתיח.","type":"text"},
+  {"class":"ravxx_var_method.statement1","name":"מסר ראשון","description":"הטקסט של מסר ראשון.","type":"text"},
+  {"class":"ravxx_var_method.statement2","name":"מסר שני","description":"הטקסט של מסר שני.","type":"text"},
+  {"class":"ravxx_var_method.tipnote","name":"הערת ביניים","description":"הטקסט של הערת ביניים.","type":"text"},
+  {"class":"ravxx_var_method.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer","name":"הצעת התוכנית","type":"group"},
+  {"class":"ravxx_var_offer.bonuses","name":"בונוסים","type":"group"},
+  {"class":"ravxx_var_offer.bonuses.intro","name":"הרצאת המבוא – גישה מיידית","type":"group"},
+  {"class":"ravxx_var_offer.bonuses.intro.tag","name":"תווית","description":"התווית הירוקה מעל כותרת הבונוס.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.intro.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.intro.description","name":"תיאור הבונוס","description":"הטקסט של תיאור הבונוס.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.intro.image","name":"תמונת הבונוס","description":"התמונה שמופיעה חצי בתוך התיבה וחצי מעליה.","type":"image"},
+  {"class":"ravxx_var_offer.bonuses.item1","name":"בונוס 1","type":"group"},
+  {"class":"ravxx_var_offer.bonuses.item1.description","name":"תיאור הבונוס","description":"הטקסט של תיאור הבונוס.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item1.image","name":"תמונת הבונוס","description":"התמונה שמופיעה חצי בתוך התיבה וחצי מעליה.","type":"image"},
+  {"class":"ravxx_var_offer.bonuses.item1.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item2","name":"בונוס 2","type":"group"},
+  {"class":"ravxx_var_offer.bonuses.item2.description","name":"תיאור הבונוס","description":"הטקסט של תיאור הבונוס.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item2.image","name":"תמונת הבונוס","description":"התמונה שמופיעה חצי בתוך התיבה וחצי מעליה.","type":"image"},
+  {"class":"ravxx_var_offer.bonuses.item2.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item3","name":"בונוס 3","type":"group"},
+  {"class":"ravxx_var_offer.bonuses.item3.description","name":"תיאור הבונוס","description":"הטקסט של תיאור הבונוס.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item3.image","name":"תמונת הבונוס","description":"התמונה שמופיעה חצי בתוך התיבה וחצי מעליה.","type":"image"},
+  {"class":"ravxx_var_offer.bonuses.item3.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item4","name":"בונוס 4","type":"group"},
+  {"class":"ravxx_var_offer.bonuses.item4.description","name":"תיאור הבונוס","description":"הטקסט של תיאור הבונוס.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item4.image","name":"תמונת הבונוס","description":"התמונה שמופיעה חצי בתוך התיבה וחצי מעליה.","type":"image"},
+  {"class":"ravxx_var_offer.bonuses.item4.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item5","name":"בונוס 5","type":"group"},
+  {"class":"ravxx_var_offer.bonuses.item5.description","name":"תיאור הבונוס","description":"הטקסט של תיאור הבונוס.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item5.image","name":"תמונת הבונוס","description":"התמונה שמופיעה חצי בתוך התיבה וחצי מעליה.","type":"image"},
+  {"class":"ravxx_var_offer.bonuses.item5.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item6","name":"בונוס מיוחד – קהילת אמא שיודעת","type":"group"},
+  {"class":"ravxx_var_offer.bonuses.item6.tag","name":"תווית בונוס מיוחד","description":"התווית מעל כותרת הבונוס המיוחד.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item6.description","name":"תיאור הבונוס","description":"הטקסט המתאר את ההצטרפות לקהילת אמא שיודעת.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.item6.image","name":"מוקאפ הקהילה","description":"תמונת המוקאפ של קהילת אמא שיודעת. ניתן להחליף בכל יחס גובה־רוחב.","type":"image"},
+  {"class":"ravxx_var_offer.bonuses.item6.title","name":"כותרת הבונוס","description":"כותרת בונוס ההצטרפות לקהילה.","type":"text"},
+  {"class":"ravxx_var_offer.bonuses.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.description","name":"תיאור","description":"הטקסט של תיאור.","type":"text"},
+  {"class":"ravxx_var_offer.eyebrow","name":"כותרת מקדימה","description":"הטקסט של כותרת מקדימה.","type":"text"},
+  {"class":"ravxx_var_offer.features","name":"מה מקבלים","type":"group"},
+  {"class":"ravxx_var_offer.features.item1","name":"פריט 1","description":"הטקסט של פריט 1.","type":"text"},
+  {"class":"ravxx_var_offer.features.item2","name":"פריט 2","description":"הטקסט של פריט 2.","type":"text"},
+  {"class":"ravxx_var_offer.features.item3","name":"פריט 3","description":"הטקסט של פריט 3.","type":"text"},
+  {"class":"ravxx_var_offer.features.item4","name":"פריט 4","description":"הטקסט של פריט 4.","type":"text"},
+  {"class":"ravxx_var_offer.features.item5","name":"פריט 5","description":"הטקסט של פריט 5.","type":"text"},
+  {"class":"ravxx_var_offer.features.item6","name":"פריט 6","description":"הטקסט של פריט 6.","type":"text"},
+  {"class":"ravxx_var_offer.preprice","name":"לפני המחיר","type":"group"},
+  {"class":"ravxx_var_offer.preprice.paragraph1","name":"פסקה 1","description":"הטקסט של פסקה 1.","type":"text"},
+  {"class":"ravxx_var_offer.preprice.paragraph2","name":"פסקה 2","description":"הטקסט של פסקה 2.","type":"text"},
+  {"class":"ravxx_var_offer.preprice.paragraph3","name":"פסקה 3","description":"הטקסט של פסקה 3.","type":"text"},
+  {"class":"ravxx_var_offer.preprice.paragraph4","name":"פסקה 4","description":"הטקסט של פסקה 4.","type":"text"},
+  {"class":"ravxx_var_offer.pricing","name":"תמחור","type":"group"},
+  {"class":"ravxx_var_offer.pricing.but","name":"כותרת אבל","description":"הטקסט של כותרת אבל.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.countdown_label","name":"כותרת הספירה לאחור","description":"הטקסט של כותרת הספירה לאחור.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.current_label","name":"כותרת מחיר ההטבה","description":"הטקסט של כותרת מחיר ההטבה.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.current_price","name":"מחיר ההטבה","description":"הטקסט של מחיר ההטבה.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.deadline","name":"תאריך סיום ההטבה","description":"הטקסט של תאריך סיום ההטבה.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.limit","name":"הערת מקומות","description":"הטקסט של הערת מקומות.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.not_now","name":"מסר המחיר המיוחד","description":"הטקסט של מסר המחיר המיוחד.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.note","name":"הערה","description":"הטקסט של הערה.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.price","name":"המחיר המלא","description":"הטקסט של המחיר המלא.","type":"text"},
+  {"class":"ravxx_var_offer.pricing.return_text","name":"טקסט חזרת המחיר","description":"הטקסט של טקסט חזרת המחיר.","type":"text"},
+  {"class":"ravxx_var_offer.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.topics","name":"נושאי הלימוד","type":"group"},
+  {"class":"ravxx_var_offer.topics.item1","name":"נושא 1","type":"group"},
+  {"class":"ravxx_var_offer.topics.item1.description","name":"תיאור הנושא","description":"הטקסט של תיאור הנושא.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item1.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item2","name":"נושא 2","type":"group"},
+  {"class":"ravxx_var_offer.topics.item2.description","name":"תיאור הנושא","description":"הטקסט של תיאור הנושא.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item2.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item3","name":"נושא 3","type":"group"},
+  {"class":"ravxx_var_offer.topics.item3.description","name":"תיאור הנושא","description":"הטקסט של תיאור הנושא.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item3.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item4","name":"נושא 4","type":"group"},
+  {"class":"ravxx_var_offer.topics.item4.description","name":"תיאור הנושא","description":"הטקסט של תיאור הנושא.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item4.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item5","name":"נושא 5","type":"group"},
+  {"class":"ravxx_var_offer.topics.item5.description","name":"תיאור הנושא","description":"הטקסט של תיאור הנושא.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item5.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item6","name":"נושא 6","type":"group"},
+  {"class":"ravxx_var_offer.topics.item6.description","name":"תיאור הנושא","description":"הטקסט של תיאור הנושא.","type":"text"},
+  {"class":"ravxx_var_offer.topics.item6.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_offer.topics.note","name":"הערה","description":"הטקסט של הערה.","type":"text"},
+  {"class":"ravxx_var_offer.topics.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_pain","name":"הצפת הכאב","type":"group"},
+  {"class":"ravxx_var_pain.closing","name":"פסקת סיום","description":"הטקסט של פסקת סיום.","type":"text"},
+  {"class":"ravxx_var_pain.point1","name":"נקודה 1","description":"הטקסט של נקודה 1.","type":"text"},
+  {"class":"ravxx_var_pain.point2","name":"נקודה 2","description":"הטקסט של נקודה 2.","type":"text"},
+  {"class":"ravxx_var_pain.point3","name":"נקודה 3","description":"הטקסט של נקודה 3.","type":"text"},
+  {"class":"ravxx_var_pain.point4","name":"נקודה 4","description":"הטקסט של נקודה 4.","type":"text"},
+  {"class":"ravxx_var_pain.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_paths","name":"שני מסלולים","type":"group"},
+  {"class":"ravxx_var_paths.after","name":"המצב אחרי","type":"group"},
+  {"class":"ravxx_var_paths.after.list","name":"רשימה","description":"הטקסט של רשימה.","type":"text"},
+  {"class":"ravxx_var_paths.after.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_paths.before","name":"המצב לפני","type":"group"},
+  {"class":"ravxx_var_paths.before.list","name":"רשימה","description":"הטקסט של רשימה.","type":"text"},
+  {"class":"ravxx_var_paths.before.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_paths.closing","name":"פסקת סיום","description":"הטקסט של פסקת סיום.","type":"text"},
+  {"class":"ravxx_var_paths.cta","name":"כפתור פעולה","description":"כתובת היעד של כפתור פעולה. גם כיתוב הכפתור ניתן לעריכה.","type":"link"},
+  {"class":"ravxx_var_paths.intro","name":"פתיח","description":"הטקסט של פתיח.","type":"text"},
+  {"class":"ravxx_var_paths.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_quote","name":"ציטוט","type":"group"},
+  {"class":"ravxx_var_quote.source","name":"מקור הציטוט","description":"הטקסט של מקור הציטוט.","type":"text"},
+  {"class":"ravxx_var_quote.text","name":"טקסט הציטוט","description":"הטקסט של טקסט הציטוט.","type":"text"},
+  {"class":"ravxx_var_steps","name":"שלבי התהליך","type":"group"},
+  {"class":"ravxx_var_steps.cta","name":"כפתור פעולה","description":"כתובת היעד של כפתור פעולה. גם כיתוב הכפתור ניתן לעריכה.","type":"link"},
+  {"class":"ravxx_var_steps.description","name":"תיאור","description":"הטקסט של תיאור.","type":"text"},
+  {"class":"ravxx_var_steps.eyebrow","name":"כותרת מקדימה","description":"הטקסט של כותרת מקדימה.","type":"text"},
+  {"class":"ravxx_var_steps.step1","name":"שלב 1","type":"group"},
+  {"class":"ravxx_var_steps.step1.description","name":"תיאור","description":"הטקסט של תיאור.","type":"text"},
+  {"class":"ravxx_var_steps.step1.image","name":"תמונת למידה","description":"התמונה המוצגת בין התיבות באזור שלב הלמידה. כל יחס גובה־רוחב מתאים.","type":"image"},
+  {"class":"ravxx_var_steps.step1.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_steps.step2","name":"שלב 2","type":"group"},
+  {"class":"ravxx_var_steps.step2.description","name":"תיאור","description":"הטקסט של תיאור.","type":"text"},
+  {"class":"ravxx_var_steps.step2.image","name":"תמונת הפנמה","description":"התמונה המוצגת בין התיבות באזור שלב ההפנמה. כל יחס גובה־רוחב מתאים.","type":"image"},
+  {"class":"ravxx_var_steps.step2.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_steps.step3","name":"שלב 3","type":"group"},
+  {"class":"ravxx_var_steps.step3.description","name":"תיאור","description":"הטקסט של תיאור.","type":"text"},
+  {"class":"ravxx_var_steps.step3.image","name":"תמונת פעולה","description":"התמונה המוצגת בין התיבות באזור שלב הפעולה. כל יחס גובה־רוחב מתאים.","type":"image"},
+  {"class":"ravxx_var_steps.step3.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_steps.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_story","name":"סיפור הסחלב","type":"group"},
+  {"class":"ravxx_var_story.conclusion","name":"תוכן","description":"הטקסט של תוכן.","type":"text"},
+  {"class":"ravxx_var_story.image","name":"תמונה","description":"תמונה ניתנת להחלפה. ניתן להשתמש בכל יחס גובה־רוחב.","type":"image"},
+  {"class":"ravxx_var_story.intro","name":"פתיח","description":"הטקסט של פתיח.","type":"text"},
+  {"class":"ravxx_var_story.paragraph1","name":"פסקה 1","description":"הטקסט של פסקה 1.","type":"text"},
+  {"class":"ravxx_var_story.paragraph2","name":"פסקה 2","description":"הטקסט של פסקה 2.","type":"text"},
+  {"class":"ravxx_var_story.paragraph3","name":"פסקה 3","description":"הטקסט של פסקה 3.","type":"text"},
+  {"class":"ravxx_var_story.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_transformation","name":"השינוי","type":"group"},
+  {"class":"ravxx_var_transformation.after","name":"המצב אחרי","type":"group"},
+  {"class":"ravxx_var_transformation.after.list","name":"רשימה","description":"הטקסט של רשימה.","type":"text"},
+  {"class":"ravxx_var_transformation.after.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_transformation.before","name":"המצב לפני","type":"group"},
+  {"class":"ravxx_var_transformation.before.list","name":"רשימה","description":"הטקסט של רשימה.","type":"text"},
+  {"class":"ravxx_var_transformation.before.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"},
+  {"class":"ravxx_var_transformation.description","name":"תיאור","description":"הטקסט של תיאור.","type":"text"},
+  {"class":"ravxx_var_transformation.eyebrow","name":"כותרת מקדימה","description":"הטקסט של כותרת מקדימה.","type":"text"},
+  {"class":"ravxx_var_transformation.title","name":"כותרת","description":"הטקסט של כותרת.","type":"text"}
+]
+-->
