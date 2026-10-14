@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>תודה שהצטרפתם - הורות של החיים עצמם</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{background:#FFFDF7}
+html{scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#FFFDF7;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+
+.np-ty{background:#FFFDF7;color:#2B2522;font-family:'Assistant','Segoe UI',Tahoma,sans-serif;font-size:19px;line-height:1.65;text-align:right;overflow-x:hidden;position:relative}
+.np-ty .np-k{font-family:'Karantina','Rubik',sans-serif;font-weight:700}
+.np-ty .np-wrap{max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px}
+.np-ty .np-mark{background:linear-gradient(180deg,transparent 56%,#F8DDA0 56%);padding:0 4px}
+
+/* header */
+.np-ty .np-head{padding-top:10px;padding-bottom:10px;display:flex;align-items:center;justify-content:center;border-bottom:2px solid #2B2522}
+.np-ty .np-head img{height:48px;width:auto;display:block}
+
+/* hero */
+.np-ty .np-hero{background:#4F5639;color:#FFFDF7}
+.np-ty .np-hero .np-wrap{padding-top:40px;padding-bottom:40px;text-align:center}
+.np-ty .np-hero-text{display:flex;flex-direction:column;gap:12px;align-items:center}
+.np-ty .np-hero h1{margin:0;font-size:clamp(60px,9vw,112px);line-height:.9;color:#FFFDF7}
+.np-ty .np-hero h1 span{color:#E0B14A}
+.np-ty .np-hero-sub{margin:0;font-size:clamp(20px,2.2vw,25px);max-width:560px;line-height:1.45}
+.np-ty .np-hero-sub strong{color:#F8DDA0}
+
+/* schedule */
+.np-ty .np-sched .np-wrap{max-width:860px;padding-top:36px;padding-bottom:16px}
+.np-ty .np-sched-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:6px 32px;padding-bottom:14px}
+.np-ty .np-sched h2{margin:0;font-weight:400;font-size:clamp(32px,3.8vw,46px);line-height:1;letter-spacing:.5px}
+.np-ty .np-ics{font-family:'Assistant',sans-serif;font-size:17px;font-weight:800;color:#2B2522;background:transparent;border:0;border-bottom:3px solid #E0B14A;padding:8px 2px 4px;min-height:44px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s ease}
+.np-ty .np-ics:hover{border-bottom-color:#2B2522}
+.np-ty .np-ics svg{flex-shrink:0}
+.np-ty .np-row{display:flex;gap:14px 24px;padding:14px 0;border-top:2px solid #2B2522;align-items:center}
+.np-ty .np-num{font-size:64px;line-height:.8;color:#E0B14A;flex:0 0 64px;transition:transform .3s ease}
+.np-ty .np-row:hover .np-num{transform:rotate(-4deg) scale(1.05)}
+.np-ty .np-row-main{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px}
+.np-ty .np-date{margin:0;font-size:16px;font-weight:800;color:#9E4A2E;letter-spacing:.5px}
+.np-ty .np-row h3{margin:0;font-size:clamp(30px,3.6vw,42px);line-height:1}
+.np-ty .np-cal{font-family:'Assistant',sans-serif;font-size:17px;font-weight:800;text-decoration:none;color:#2B2522;background:#FFFDF7;border:2px solid #2B2522;box-shadow:4px 4px 0 #2B2522;padding:6px 14px;min-height:44px;flex-shrink:0;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
+.np-ty .np-cal:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #2B2522;background:#F8DDA0}
+.np-ty .np-cal.np-added{background:#E4EADF}
+.np-ty .np-bonus{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding:16px 20px;border:2px dashed #2B2522;margin-top:4px}
+.np-ty .np-bonus-tag{font-size:26px;background:#C8694A;color:#FFFDF7;padding:4px 18px 0}
+.np-ty .np-bonus-text{font-size:clamp(28px,3.4vw,38px);line-height:1;flex:1 1 200px}
+.np-ty .np-bonus-text span{color:#9E4A2E}
+
+/* zoom + whatsapp */
+.np-ty .np-zoom .np-wrap{max-width:860px;padding-top:28px;padding-bottom:44px}
+.np-ty .np-zoom-box{background:#E0B14A;border:2px solid #2B2522;box-shadow:8px 8px 0 #2B2522;padding:clamp(22px,3.4vw,36px);display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.np-ty .np-zoom-box p{margin:0;font-size:clamp(19px,2.2vw,24px);font-weight:700;line-height:1.5;max-width:640px}
+.np-ty .np-wa{font-size:28px;letter-spacing:.5px;text-decoration:none;color:#FFFDF7;background:#2B2522;padding:10px 32px 8px;border:2px solid #2B2522;box-shadow:5px 5px 0 #FFFDF7;min-height:56px;display:inline-flex;align-items:center;gap:12px;transition:transform .2s ease}
+.np-ty .np-wa:hover{transform:translate(-3px,-3px)}
+.np-ty .np-wa:active{transform:translate(2px,2px)}
+
+/* sign-off */
+.np-ty .np-bye{background:#F5E0D6;border-top:2px solid #2B2522;border-bottom:2px solid #2B2522}
+.np-ty .np-bye .np-wrap{padding-top:36px;padding-bottom:40px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 32px;text-align:center}
+.np-ty .np-bye-text{display:flex;flex-direction:column;align-items:center;gap:4px}
+.np-ty .np-avatar{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:center 22%;border:3px solid #2B2522;box-shadow:5px 5px 0 #E0B14A;flex-shrink:0;transition:transform .35s ease}
+.np-ty .np-avatar:hover{transform:rotate(-5deg) scale(1.05)}
+.np-ty .np-bye h2{margin:0;font-size:clamp(48px,6vw,72px);line-height:.9}
+.np-ty .np-bye p{margin:0;font-size:22px;font-weight:700;color:#4A3A32}
+.np-ty .np-sign{font-size:clamp(44px,5vw,60px);line-height:.9;color:#9E4A2E;display:inline-block;margin-top:6px}
+
+/* footer */
+.np-ty .np-foot{padding-top:20px;padding-bottom:32px;border-top:2px solid #2B2522;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.np-ty .np-foot img{height:64px;width:auto}
+.np-ty .np-foot-mid{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.np-ty .np-foot-mid p{margin:0;font-size:16px;color:#5E5048}
+.np-ty .np-foot a{font-weight:800;text-decoration:none;color:#2B2522;min-height:44px;display:inline-flex;align-items:center}
+.np-ty a:focus-visible,.np-ty button:focus-visible{outline:3px solid #4F5639;outline-offset:3px}
+
+/* confetti */
+.np-ty .np-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.np-ty .np-confetti i{position:absolute;top:-20px;width:10px;height:14px;opacity:0;animation:np-fall 2.8s cubic-bezier(.25,.6,.4,1) forwards}
+@keyframes np-fall{0%{opacity:1;transform:translate3d(0,0,0) rotate(0)}100%{opacity:0;transform:translate3d(var(--dx),var(--dy),0) rotate(var(--r))}}
+
+/* reveal */
+.np-ty [data-np-r]{transition:opacity .6s ease,transform .6s ease}
+.np-ty [data-np-r].np-wait{opacity:0;transform:translateY(18px)}
+
+@media (max-width:600px){
+  .np-ty{font-size:18px}
+  .np-ty .np-wrap{padding-left:16px;padding-right:16px}
+  .np-ty .np-hero .np-wrap{padding-top:28px;padding-bottom:30px}
+  .np-ty .np-num{font-size:44px;flex-basis:40px}
+  .np-ty .np-row{gap:10px 12px}
+  .np-ty .np-cal-g{display:none}
+  .np-ty .np-wa{width:100%;justify-content:center}
+  .np-ty .np-avatar{width:104px;height:104px}
+  .np-ty .np-wa{font-size:26px}
+  .np-ty .np-zoom-box{box-shadow:6px 6px 0 #2B2522}
+  .np-ty .np-foot{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .np-ty *,.np-ty *::before,.np-ty *::after{transition:none!important;animation:none!important}
+  .np-ty [data-np-r].np-wait{opacity:1!important;transform:none!important}
+  .np-ty .np-confetti{display:none}
+}
+</style>
+</head>
+<body>
+<div class="np-ty" dir="rtl">
+
+<header class="np-wrap np-head">
+<img src="LOGO_SRC" alt="נעה פלד יעקבי">
+</header>
+
+<section class="np-hero">
+<div class="np-confetti" aria-hidden="true"></div>
+<div class="np-wrap">
+<div class="np-hero-text">
+<h1 class="np-k" data-np-r>איזה כיף <span>שהצטרפתם!</span></h1>
+<p class="np-hero-sub" data-np-r>סדרת המפגשים שלנו הולכת להיות <strong>סופר פרקטית</strong></p>
+</div>
+</div>
+</section>
+
+<section class="np-sched">
+<div class="np-wrap">
+<div class="np-sched-head" data-np-r>
+<h2 class="np-k">תכניסו כבר עכשיו <span class="np-mark">ליומנים:</span></h2>
+<button type="button" class="np-ics" data-np-ics><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>הוספת כל המפגשים ליומן</button>
+</div>
+
+<div class="np-row" data-np-r>
+<span class="np-num np-k">01</span>
+<div class="np-row-main">
+<p class="np-date">יום ראשון · 15/11</p>
+<h3 class="np-k">גבולות ללא צעקות</h3>
+</div>
+<a class="np-cal" data-np-cal="0" href="#" target="_blank" rel="noopener">+ ליומן<span class="np-cal-g"> גוגל</span></a>
+</div>
+
+<div class="np-row" data-np-r>
+<span class="np-num np-k">02</span>
+<div class="np-row-main">
+<p class="np-date">יום ראשון · 22/11</p>
+<h3 class="np-k">ממאבקים לשיתוף פעולה</h3>
+</div>
+<a class="np-cal" data-np-cal="1" href="#" target="_blank" rel="noopener">+ ליומן<span class="np-cal-g"> גוגל</span></a>
+</div>
+
+<div class="np-row" data-np-r>
+<span class="np-num np-k">03</span>
+<div class="np-row-main">
+<p class="np-date">יום ראשון · 29/11</p>
+<h3 class="np-k">ממריבות לחברות: יחסי אחים</h3>
+</div>
+<a class="np-cal" data-np-cal="2" href="#" target="_blank" rel="noopener">+ ליומן<span class="np-cal-g"> גוגל</span></a>
+</div>
+
+<div class="np-bonus" data-np-r>
+<span class="np-bonus-tag np-k">והבונוס שלנו:</span>
+<span class="np-bonus-text np-k">לייב שאלות ותשובות <span>ב-13.12</span></span>
+<a class="np-cal" data-np-cal="3" href="#" target="_blank" rel="noopener">+ ליומן<span class="np-cal-g"> גוגל</span></a>
+</div>
+</div>
+</section>
+
+<section class="np-zoom">
+<div class="np-wrap">
+<div class="np-zoom-box" data-np-r>
+<p>הלינק לזום יישלח בבוקר המפגשים במייל ובקבוצת הווצאפ השקטה שלנו</p>
+<a class="np-wa np-k" href="https://chat.whatsapp.com/GSMEIb9bSxVERrBY9HGrcc?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4" target="_blank" rel="noopener"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>להצטרפות לקבוצת הווצאפ</a>
+</div>
+</div>
+</section>
+
+<section class="np-bye">
+<div class="np-wrap">
+<img class="np-avatar" src="AVATAR_SRC" alt="נעה פלד יעקבי" data-np-r>
+<div class="np-bye-text">
+<h2 class="np-k" data-np-r>עוד רגע <span class="np-mark">נפגשים!</span></h2>
+<p data-np-r>מחכה לכם</p>
+<span class="np-sign np-k" data-np-r>נעה</span>
+</div>
+</div>
+</section>
+
+<footer class="np-wrap np-foot">
+<img src="LOGO_SRC" alt="נעה פלד יעקבי">
+<div class="np-foot-mid">
+<p>ייעוץ והדרכה להורים וצוותי חינוך וטיפול<br>הדרכה פרטנית | סדנאות | קורסים | הרצאות</p>
+<a href="tel:0507234323" dir="ltr" style="font-size:18px">050-7234323</a>
+</div>
+<a href="https://www.instagram.com/noa.peled.yacoby" dir="ltr" style="font-size:17px;color:#4F5639">@noa.peled.yacoby</a>
+</footer>
+
+</div>
+<script>
+(function(){
+  var EVENTS=[
+    {t:'הורות של החיים עצמם: גבולות ללא צעקות',d:'20261115'},
+    {t:'הורות של החיים עצמם: ממאבקים לשיתוף פעולה',d:'20261122'},
+    {t:'הורות של החיים עצמם: ממריבות לחברות - יחסי אחים',d:'20261129'},
+    {t:'הורות של החיים עצמם: לייב שאלות ותשובות',d:'20261213'}
+  ];
+  var START='203000',END='220000',TZ='Asia/Jerusalem';
+  var DESC='הלינק לזום יישלח בבוקר המפגשים במייל ובקבוצת הווצאפ השקטה שלנו';
+  Array.prototype.forEach.call(document.querySelectorAll('.np-ty'),function(wrap){
+    // google calendar links
+    Array.prototype.forEach.call(wrap.querySelectorAll('[data-np-cal]'),function(a){
+      var e=EVENTS[+a.getAttribute('data-np-cal')];
+      if(!e)return;
+      a.href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(e.t)+'&dates='+e.d+'T'+START+'/'+e.d+'T'+END+'&ctz='+TZ+'&details='+encodeURIComponent(DESC);
+      a.addEventListener('click',function(){a.classList.add('np-added')});
+    });
+    // ics with all events (apple / outlook / gmail)
+    var btn=wrap.querySelector('[data-np-ics]');
+    if(btn)btn.addEventListener('click',function(){
+      var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//noa//thanks//HE','CALSCALE:GREGORIAN',
+        'BEGIN:VTIMEZONE','TZID:Asia/Jerusalem','BEGIN:STANDARD','DTSTART:20261025T020000','TZOFFSETFROM:+0300','TZOFFSETTO:+0200','END:STANDARD','END:VTIMEZONE'];
+      EVENTS.forEach(function(e,i){
+        L.push('BEGIN:VEVENT','UID:noa-'+e.d+'-'+i+'@np','DTSTAMP:20261011T000000Z',
+          'DTSTART;TZID=Asia/Jerusalem:'+e.d+'T'+START,'DTEND;TZID=Asia/Jerusalem:'+e.d+'T'+END,
+          'SUMMARY:'+e.t,'DESCRIPTION:'+DESC,
+          'BEGIN:VALARM','TRIGGER:-PT30M','ACTION:DISPLAY','DESCRIPTION:'+e.t,'END:VALARM','END:VEVENT');
+      });
+      L.push('END:VCALENDAR');
+      var blob=new Blob([L.join('\r\n')],{type:'text/calendar;charset=utf-8'});
+      var url=URL.createObjectURL(blob),a=document.createElement('a');
+      a.href=url;a.download='horut-hachaim-atzmam.ics';document.body.appendChild(a);a.click();
+      setTimeout(function(){URL.revokeObjectURL(url);a.remove()},1000);
+    });
+
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce)return;
+    // confetti
+    var box=wrap.querySelector('.np-confetti');
+    if(box){
+      var C=['#E0B14A','#F8DDA0','#C8694A','#FFFDF7','#E4EADF'];
+      for(var i=0;i<46;i++){
+        var p=document.createElement('i');
+        p.style.left=(Math.random()*100)+'%';
+        p.style.background=C[i%C.length];
+        p.style.setProperty('--dx',(Math.random()*160-80)+'px');
+        p.style.setProperty('--dy',(260+Math.random()*420)+'px');
+        p.style.setProperty('--r',(Math.random()*720-360)+'deg');
+        p.style.animationDelay=(Math.random()*.6)+'s';
+        if(i%3===0)p.style.borderRadius='50%';
+        box.appendChild(p);
+      }
+      setTimeout(function(){box.innerHTML=''},4000);
+    }
+    // reveal on scroll
+    if(!('IntersectionObserver' in window))return;
+    var els=wrap.querySelectorAll('[data-np-r]');
+    Array.prototype.forEach.call(els,function(el){el.classList.add('np-wait')});
+    var io=new IntersectionObserver(function(entries){
+      var n=0;
+      entries.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var el=e.target,d=Math.min(n,6)*100;n++;
+        el.style.transitionDelay=d+'ms';el.classList.remove('np-wait');
+        setTimeout(function(){el.style.transitionDelay=''},d+700);
+        io.unobserve(el);
+      });
+    },{threshold:.15,rootMargin:'0px 0px -30px 0px'});
+    Array.prototype.forEach.call(els,function(el){io.observe(el)});
+  });
+})();
+</script>
+</body>
+</html>
