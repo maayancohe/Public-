@@ -247,8 +247,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 <style>
 .mc-reg{width:100%;max-width:560px;margin:0 auto;direction:rtl;text-align:right;font-family:'Assistant','Segoe UI',Tahoma,sans-serif}
 .mc-reg *,.mc-reg *::before,.mc-reg *::after{box-sizing:border-box}
-.mc-reg form{display:flex;flex-direction:column;gap:14px;margin:0}
-.mc-reg label{display:flex;flex-direction:column;gap:6px;font-size:1.05rem;font-weight:700;color:#2B2522}
+.mc-reg-form{display:flex;flex-direction:column;gap:14px;margin:0}
+.mc-reg-field{display:flex;flex-direction:column;gap:6px;font-size:1.05rem;font-weight:700;color:#2B2522}
 .mc-reg input[type=text],.mc-reg input[type=email],.mc-reg input[type=tel]{width:100%;min-height:52px;padding:10px 14px;border:2px solid #2B2522;border-radius:0;background:#FFFDF8;color:#2B2522;font:inherit;font-size:1.1rem;font-weight:400;box-shadow:3px 3px 0 #2B2522;-webkit-appearance:none;appearance:none}
 .mc-reg input[type=tel],.mc-reg input[type=email]{direction:ltr;text-align:right}
 .mc-reg input:focus{outline:3px solid #6E7753;outline-offset:1px}
@@ -269,32 +269,13 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 @media (max-width:600px){.mc-reg-btn{font-size:1.8rem}}
 @media (prefers-reduced-motion:reduce){.mc-reg-btn{transition:none}}
 </style>
-<form novalidate>
-<label>שם מלא
-<input type="text" name="name" autocomplete="name" required>
-<span class="mc-reg-err" aria-live="polite"></span>
-</label>
-<label>אימייל
-<input type="email" name="email" autocomplete="email" inputmode="email" required>
-<span class="mc-reg-err" aria-live="polite"></span>
-</label>
-<label>טלפון
-<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required>
-<span class="mc-reg-err" aria-live="polite"></span>
-</label>
-<label class="mc-reg-consent">
-<span class="mc-reg-consent-row"><input type="checkbox" name="consent" value="yes" required><span>אני מאשר/ת את ההרשמה להדרכה וקבלת דיוור ועדכונים מנעה פלד יעקבי. אפשר להסיר את עצמי בכל עת.</span></span>
-<span class="mc-reg-err" aria-live="polite"></span>
-</label>
-<div class="mc-reg-hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
-<button type="submit" class="mc-reg-btn">להרשמה חינמית</button>
-<div class="mc-reg-status" role="status" aria-live="polite"></div>
-</form>
+<div class="mc-reg-form" role="form" aria-label="הרשמה להדרכה"></div>
 <div class="mc-reg-done" role="status">תודה, נרשמת להדרכה. קישור הזום יישלח אליך במייל.</div>
 <script>
 (function(){
   var WEBHOOK = 'https://hook.us2.make.com/33385a4js6vl7inkwxfvk2jqv881zoq7';
   var THANKS = 'https://noapeledyacoby.ravpage.co.il/todahadrha';
+  var CONSENT = 'אני מאשר/ת את ההרשמה להדרכה וקבלת דיוור ועדכונים מנעה פלד יעקבי. אפשר להסיר את עצמי בכל עת.';
 
   var scripts = document.getElementsByTagName('script');
   var me = document.currentScript || scripts[scripts.length - 1];
@@ -302,13 +283,51 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
   if (!root || root.getAttribute('data-mc-ready')) return;
   root.setAttribute('data-mc-ready', '1');
 
-  var form = root.querySelector('form');
-  var btn = root.querySelector('.mc-reg-btn');
-  var status = root.querySelector('.mc-reg-status');
+  var box = root.querySelector('.mc-reg-form');
   var done = root.querySelector('.mc-reg-done');
+  var fields = {};
+
+  // בניית הטופס בדפדפן, כדי שבקוד השמור לא יהיו תגיות טופס
+  function el(tag, attrs, text){
+    var e = document.createElement(tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text) e.textContent = text;
+    return e;
+  }
+  function addField(name, label, type, ac, mode){
+    var wrap = el('label', {'class': 'mc-reg-field'}, label);
+    var inp = el('input', {type: type, name: name, autocomplete: ac});
+    if (mode) inp.setAttribute('inputmode', mode);
+    wrap.appendChild(inp);
+    wrap.appendChild(el('span', {'class': 'mc-reg-err', 'aria-live': 'polite'}));
+    box.appendChild(wrap);
+    fields[name] = inp;
+  }
+  addField('name', 'שם מלא', 'text', 'name');
+  addField('email', 'אימייל', 'email', 'email', 'email');
+  addField('phone', 'טלפון', 'tel', 'tel', 'tel');
+
+  var cWrap = el('label', {'class': 'mc-reg-field mc-reg-consent'});
+  var cRow = el('span', {'class': 'mc-reg-consent-row'});
+  var cBox = el('input', {type: 'checkbox', name: 'consent', value: 'yes'});
+  cRow.appendChild(cBox);
+  cRow.appendChild(el('span', {}, CONSENT));
+  cWrap.appendChild(cRow);
+  cWrap.appendChild(el('span', {'class': 'mc-reg-err', 'aria-live': 'polite'}));
+  box.appendChild(cWrap);
+  fields.consent = cBox;
+
+  var hp = el('div', {'class': 'mc-reg-hp', 'aria-hidden': 'true'});
+  var hpIn = el('input', {type: 'text', name: 'website', tabindex: '-1', autocomplete: 'off'});
+  hp.appendChild(hpIn);
+  box.appendChild(hp);
+
+  var btn = el('button', {type: 'button', 'class': 'mc-reg-btn'}, 'להרשמה חינמית');
+  box.appendChild(btn);
+  var status = el('div', {'class': 'mc-reg-status', role: 'status', 'aria-live': 'polite'});
+  box.appendChild(status);
   var btnText = btn.textContent;
 
-  function field(n){ return form.elements[n]; }
   function setErr(input, msg){
     var err = input.closest('label').querySelector('.mc-reg-err');
     if (err) err.textContent = msg || '';
@@ -322,19 +341,19 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
   }
   function validate(){
     var ok = true, first = null;
-    var n = field('name'), e = field('email'), p = field('phone');
+    var n = fields.name, e = fields.email, p = fields.phone, c = fields.consent;
     if (n.value.trim().length < 2) { setErr(n, 'נא למלא שם'); ok = false; first = first || n; } else setErr(n);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e.value.trim())) { setErr(e, 'נא למלא כתובת מייל תקינה'); ok = false; first = first || e; } else setErr(e);
     if (!/^0\d{8,9}$/.test(cleanPhone(p.value))) { setErr(p, 'נא למלא מספר טלפון תקין'); ok = false; first = first || p; } else setErr(p);
-    var c = field('consent');
     if (!c.checked) { setErr(c, 'יש לאשר כדי להירשם'); ok = false; first = first || c; } else setErr(c);
     if (first) first.focus();
     return ok;
   }
-  field('consent').addEventListener('change', function(){ if (this.checked) setErr(this); });
-  ['name','email','phone'].forEach(function(n){
-    field(n).addEventListener('input', function(){ if (this.getAttribute('aria-invalid') === 'true') setErr(this); });
+  ['name', 'email', 'phone'].forEach(function(n){
+    fields[n].addEventListener('input', function(){ if (this.getAttribute('aria-invalid') === 'true') setErr(this); });
+    fields[n].addEventListener('keydown', function(ev){ if (ev.key === 'Enter') { ev.preventDefault(); submit(); } });
   });
+  cBox.addEventListener('change', function(){ if (this.checked) setErr(this); });
 
   function params(){
     var q = {}, s = location.search.replace(/^\?/, '').split('&');
@@ -348,7 +367,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
   function send(body, tries){
     return fetch(WEBHOOK, {method: 'POST', body: body, keepalive: true})
       .then(function(r){ if (!r.ok && r.status !== 0) throw new Error('HTTP ' + r.status); })
-      .catch(function(err){
+      .catch(function(){
         if (tries > 1) return new Promise(function(res){ setTimeout(res, 1200); }).then(function(){ return send(body, tries - 1); });
         // ניסיון אחרון בלי קריאת תשובה, למקרה שהדפדפן חוסם את קריאת התשובה מ-Make
         return fetch(WEBHOOK, {method: 'POST', body: body, mode: 'no-cors', keepalive: true});
@@ -357,22 +376,23 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 
   function success(){
     if (THANKS) { location.href = THANKS; return; }
-    form.style.display = 'none';
+    box.style.display = 'none';
     done.style.display = 'block';
   }
 
-  form.addEventListener('submit', function(ev){
-    ev.preventDefault();
+  var busy = false;
+  function submit(){
+    if (busy) return;
     status.textContent = ''; status.className = 'mc-reg-status';
-    if (field('website').value) { success(); return; }
+    if (hpIn.value) { success(); return; }
     if (!validate()) return;
 
     var data = {
-      name: field('name').value.trim(),
-      email: field('email').value.trim().toLowerCase(),
-      phone: cleanPhone(field('phone').value),
+      name: fields.name.value.trim(),
+      email: fields.email.value.trim().toLowerCase(),
+      phone: cleanPhone(fields.phone.value),
       consent: 'yes',
-      consent_text: root.querySelector('.mc-reg-consent-row span').textContent,
+      consent_text: CONSENT,
       page: location.href.split('#')[0],
       submitted_at: new Date().toISOString()
     };
@@ -380,13 +400,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
     var body = new URLSearchParams();
     for (var key in data) body.append(key, data[key]);
 
-    btn.disabled = true; btn.textContent = 'שולחים...';
+    busy = true; btn.disabled = true; btn.textContent = 'שולחים...';
     send(body, 3).then(success, function(){
-      btn.disabled = false; btn.textContent = btnText;
+      busy = false; btn.disabled = false; btn.textContent = btnText;
       status.className = 'mc-reg-status is-error';
       status.textContent = 'משהו השתבש בשליחה. בדקו את החיבור לאינטרנט ונסו שוב.';
     });
-  });
+  }
+  btn.addEventListener('click', submit);
 })();
 </script>
 </div>
