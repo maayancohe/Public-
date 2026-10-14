@@ -253,6 +253,10 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 .mc-reg input[type=tel],.mc-reg input[type=email]{direction:ltr;text-align:right}
 .mc-reg input:focus{outline:3px solid #6E7753;outline-offset:1px}
 .mc-reg input[aria-invalid=true]{border-color:#A3321F;background:#FFF3EF}
+.mc-reg-consent{font-weight:400!important;font-size:1rem!important}
+.mc-reg-consent-row{display:flex;align-items:flex-start;gap:10px;cursor:pointer;line-height:1.5}
+.mc-reg-consent input{flex:0 0 auto;width:24px;height:24px;margin:2px 0 0;accent-color:#6E7753;cursor:pointer}
+.mc-reg-consent input[aria-invalid=true]{outline:2px solid #A3321F;outline-offset:2px}
 .mc-reg-err{min-height:1.2em;font-size:.95rem;font-weight:700;color:#A3321F}
 .mc-reg{position:relative}.mc-reg-hp{position:absolute!important;top:0;right:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;opacity:0;pointer-events:none}
 .mc-reg-btn{margin-top:6px;width:100%;min-height:60px;display:inline-flex;align-items:center;justify-content:center;padding:6px 24px 2px;border:2px solid #2B2522;border-radius:0;background:#C8694A;color:#FFFFFF;box-shadow:5px 5px 0 #2B2522;font-family:'Karantina','Rubik',sans-serif;font-weight:700;font-size:2rem;line-height:1;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
@@ -278,6 +282,10 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required>
 <span class="mc-reg-err" aria-live="polite"></span>
 </label>
+<label class="mc-reg-consent">
+<span class="mc-reg-consent-row"><input type="checkbox" name="consent" value="yes" required><span>אני מאשר/ת את ההרשמה להדרכה וקבלת דיוור ועדכונים מנעה פלד יעקבי. אפשר להסיר את עצמי בכל עת.</span></span>
+<span class="mc-reg-err" aria-live="polite"></span>
+</label>
 <div class="mc-reg-hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
 <button type="submit" class="mc-reg-btn">להרשמה חינמית</button>
 <div class="mc-reg-status" role="status" aria-live="polite"></div>
@@ -285,7 +293,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 <div class="mc-reg-done" role="status">תודה, נרשמת להדרכה. קישור הזום יישלח אליך במייל.</div>
 <script>
 (function(){
-  var WEBHOOK = 'https://hook.us2.make.com/p24kkd6yrq4nnm6crcn1a9f3691pno0w';
+  var WEBHOOK = 'https://hook.us2.make.com/33385a4js6vl7inkwxfvk2jqv881zoq7';
   var THANKS = 'https://noapeledyacoby.ravpage.co.il/todahadrha';
 
   var scripts = document.getElementsByTagName('script');
@@ -302,7 +310,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 
   function field(n){ return form.elements[n]; }
   function setErr(input, msg){
-    var err = input.parentNode.querySelector('.mc-reg-err');
+    var err = input.closest('label').querySelector('.mc-reg-err');
     if (err) err.textContent = msg || '';
     input.setAttribute('aria-invalid', msg ? 'true' : 'false');
   }
@@ -318,9 +326,12 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
     if (n.value.trim().length < 2) { setErr(n, 'נא למלא שם'); ok = false; first = first || n; } else setErr(n);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e.value.trim())) { setErr(e, 'נא למלא כתובת מייל תקינה'); ok = false; first = first || e; } else setErr(e);
     if (!/^0\d{8,9}$/.test(cleanPhone(p.value))) { setErr(p, 'נא למלא מספר טלפון תקין'); ok = false; first = first || p; } else setErr(p);
+    var c = field('consent');
+    if (!c.checked) { setErr(c, 'יש לאשר כדי להירשם'); ok = false; first = first || c; } else setErr(c);
     if (first) first.focus();
     return ok;
   }
+  field('consent').addEventListener('change', function(){ if (this.checked) setErr(this); });
   ['name','email','phone'].forEach(function(n){
     field(n).addEventListener('input', function(){ if (this.getAttribute('aria-invalid') === 'true') setErr(this); });
   });
@@ -360,6 +371,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
       name: field('name').value.trim(),
       email: field('email').value.trim().toLowerCase(),
       phone: cleanPhone(field('phone').value),
+      consent: 'yes',
+      consent_text: root.querySelector('.mc-reg-consent-row span').textContent,
       page: location.href.split('#')[0],
       submitted_at: new Date().toISOString()
     };
