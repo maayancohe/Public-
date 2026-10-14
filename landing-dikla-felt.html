@@ -541,6 +541,35 @@ cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease
 }
 .mc-felt.a11y-motion .fit-list li::before,.mc-felt.a11y-motion .fit-list li::after{animation:none!important}
 .mc-felt.a11y-motion .mcf-steps-fill,.mc-felt.a11y-motion .mcf-step-dot{transition:none}
+/* ============================================================
+27. תמונות חופשיות (mcf-natural): צורה מקורית, בלי מסגרת ובלי חיתוך.
+   בגודל אחיד נשארים רק "ואני לא היחידה" והגיפים בסילבוס.
+============================================================ */
+.mc-felt .hero-img{width:min(100%,320px)}
+.mc-felt .hero-slot.mcf-frame{--img-w:320px;--free-w:320px}
+.mc-felt .portrait .mcf-frame{--free-w:260px}
+.mc-felt .mockup.mcf-frame{--free-w:560px}
+.mc-felt .gif-grid.mcf-single{display:block;width:auto;max-width:560px;margin-inline:auto}
+.mc-felt .gif-grid.mcf-single .mcf-frame{--free-w:560px}
+.mc-felt .gift-slot.mcf-frame{--img-w:200px;--free-w:200px}
+.mc-felt .mcf-frame.mcf-natural:has(> .mcf-img:not([src^="data:"])){aspect-ratio:auto!important;width:min(100%,var(--free-w,560px))!important;
+border:0;padding:0;background:none;display:block;overflow:visible;border-radius:0;box-shadow:none}
+.mc-felt .mcf-frame.mcf-natural > .mcf-img:not([src^="data:"]){position:static;inset:auto;display:block;width:auto;max-width:100%;height:auto;max-height:min(80vh,720px);margin-inline:auto;object-fit:contain;border-radius:0;transform:none!important}
+
+/* סילבוס: כתב גדול יותר */
+.mc-felt .syl-card-title{font-size:22px}
+.mc-felt .syl-card-title small{font-size:18px;line-height:1.45}
+.mc-felt .syl-card-body p{font-size:18px}
+
+/* מתנות: קטן ומאוורר יותר */
+.mc-felt .gift-grid{max-width:320px;gap:10px}
+.mc-felt .gift-card{padding:12px 12px 14px}
+.mc-felt .gift-num{width:28px;height:28px;font-size:15px;margin-bottom:8px}
+.mc-felt .gift-slot.mcf-frame{margin-bottom:10px!important}
+
+/* קישור לתקנון */
+.mc-felt .mcf-footer .mcf-terms{display:inline-block;padding:10px 6px;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.mc-felt .consent a{text-decoration:underline;text-underline-offset:3px}
 </style>
 
 <div class="mcf-progress" aria-hidden="true"></div>
@@ -620,10 +649,8 @@ cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease
 
 <section class="sec paper">
 <div class="wrap narrow">
-<div class="gif-grid reveal">
-<div class="gif-slot mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_process.gif1" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="תהליך הליבוד" loading="lazy"></div>
-<div class="gif-slot mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_process.gif2" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="תהליך הליבוד" loading="lazy"></div>
-<div class="gif-slot mcf-frame"><span class="mcf-ph">[גיף: לא סופק]</span><img class="mcf-img ravxx_var_process.gif3" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="תהליך הליבוד" loading="lazy"></div>
+<div class="gif-grid mcf-single reveal">
+<div class="gif-slot mcf-frame mcf-natural"><span class="mcf-ph">[תמונה: לא סופקה]</span><img class="mcf-img ravxx_var_process.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="תהליך הליבוד" loading="lazy"></div>
 </div>
 </div>
 </section>
@@ -771,19 +798,19 @@ cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease
 <div class="gift-grid reveal">
 <div class="gift-card">
 <div class="gift-num">1</div>
-<div class="gift-slot mcf-frame"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift1.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 1" loading="lazy"></div>
+<div class="gift-slot mcf-frame mcf-natural"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift1.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 1" loading="lazy"></div>
 <h3 class="ravxx_var_services.gifts.gift1.title">מתנה 1: מדריך מצולם עם כל שלבי הסדנה</h3>
 <p class="ravxx_var_services.gifts.gift1.body">כל התהליך מסודר לך בתמונות, כדי שתוכלי לחזור לכל שלב ולעבוד בביטחון גם לבד</p>
 </div>
 <div class="gift-card">
 <div class="gift-num">2</div>
-<div class="gift-slot mcf-frame"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift2.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 2" loading="lazy"></div>
+<div class="gift-slot mcf-frame mcf-natural"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift2.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 2" loading="lazy"></div>
 <h3 class="ravxx_var_services.gifts.gift2.title">מתנה 2: קבוצת וואטסאפ לתמיכה ושאלות</h3>
 <p class="ravxx_var_services.gifts.gift2.body">נתקעת? לא בטוחה אם עשית נכון? שולחת שאלה בקבוצה ומקבלת הכוונה לאורך הדרך</p>
 </div>
 <div class="gift-card">
 <div class="gift-num">3</div>
-<div class="gift-slot mcf-frame"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift3.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 3" loading="lazy"></div>
+<div class="gift-slot mcf-frame mcf-natural"><span class="mcf-ph">[תמונה/אלמנט: לא סופק]</span><img class="mcf-img ravxx_var_services.gifts.gift3.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="מתנה 3" loading="lazy"></div>
 <h3 class="ravxx_var_services.gifts.gift3.title">מתנה 3: קובץ השראה לנעלי בית מלובדות</h3>
 <p class="ravxx_var_services.gifts.gift3.body">אוסף תמונות של נעלי בית שאני ונשים שלקחו חלק בסדנאות שלי יצרו, כדי לקבל רעיונות לצבעים, שילובים ודוגמאות לזוג שלך.</p>
 </div>
@@ -1003,7 +1030,7 @@ cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease
 </script>
 <!-- ===== סוף טופס ההרשמה ===== -->
 
-<p class="consent">לחיצה על הכפתור מהווה הסכמה לתנאי השימוש ולמדיניות הפרטיות.</p>
+<p class="consent">לחיצה על הכפתור מהווה הסכמה ל<a class="ravxx_var_footer.terms" href="https://artbiografycourse.ravpage.co.il/takanonnew" target="_blank" rel="noopener">תנאי השימוש</a> ולמדיניות הפרטיות.</p>
 </div>
 </div>
 </section>
@@ -1016,7 +1043,8 @@ cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease
 <span>האתר משתמש בעוגיות לצורך תפעול ומדידה בלבד.</span>
 <button type="button" data-mcf="cookie-ok">הבנתי</button>
 </div>
-<p class="legal-note">עמודי תקנון, מדיניות פרטיות והצהרת נגישות מלאה <span class="fill">[יתווספו בשלב הבא של הפרויקט]</span>.</p>
+<p class="legal-note"><a class="mcf-terms ravxx_var_footer.terms" href="https://artbiografycourse.ravpage.co.il/takanonnew" target="_blank" rel="noopener"><span class="ravxx_var_footer.terms_caption">תקנון</span></a></p>
+<p class="legal-note">מדיניות פרטיות והצהרת נגישות מלאה <span class="fill">[יתווספו בשלב הבא של הפרויקט]</span>.</p>
 <p class="rights ravxx_var_footer.rights">© 2026 דקלה דון · Feltherapy. כל הזכויות שמורות.</p>
 </footer>
 </div>
@@ -1320,7 +1348,7 @@ save();
   {"class": "ravxx_var_hero.kicker", "name": "כותרת קטנה", "description": "השורה הקטנה מעל הכותרת הראשית.", "type": "text"},
   {"class": "ravxx_var_hero.title", "name": "כותרת ראשית", "description": "טקסט הכותרת הראשית של הדף.", "type": "text"},
   {"class": "ravxx_var_hero.subtitle", "name": "כותרת משנה", "description": "המשפט שמתחת לכותרת הראשית.", "type": "text"},
-  {"class": "ravxx_var_hero.image", "name": "תמונה ראשית", "description": "התמונה הראשית באזור העליון. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_hero.image", "name": "תמונה ראשית", "description": "התמונה הראשית באזור העליון. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_hero.pills", "name": "תגיות פרטי הסדנה", "type": "group"},
   {"class": "ravxx_var_hero.pills.pill1", "name": "תגית 1", "description": "טקסט התגית הראשונה.", "type": "text"},
   {"class": "ravxx_var_hero.pills.pill2", "name": "תגית 2", "description": "טקסט התגית השנייה.", "type": "text"},
@@ -1330,21 +1358,19 @@ save();
   {"class": "ravxx_var_author", "name": "על דקלה", "type": "group"},
   {"class": "ravxx_var_author.name", "name": "שורת היכרות", "description": "השורה עם השם של דקלה.", "type": "text"},
   {"class": "ravxx_var_author.role", "name": "תפקיד", "description": "התיאור המקצועי מתחת לשם.", "type": "text"},
-  {"class": "ravxx_var_author.photo", "name": "תמונה של דקלה", "description": "תמונת הפרופיל. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_author.photo", "name": "תמונה של דקלה", "description": "תמונת הפרופיל. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_author.bio1", "name": "ביוגרפיה, פסקה 1", "description": "הפסקה הראשונה על הניסיון.", "type": "text"},
   {"class": "ravxx_var_author.bio2", "name": "ביוגרפיה, פסקה 2", "description": "הפסקה על שיטת Feltherapy.", "type": "text"},
-  {"class": "ravxx_var_process", "name": "גיפים של התהליך", "type": "group"},
-  {"class": "ravxx_var_process.gif1", "name": "גיף 1", "description": "גיף או תמונה ברשת שמתחת להיכרות. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
-  {"class": "ravxx_var_process.gif2", "name": "גיף 2", "description": "גיף או תמונה ברשת שמתחת להיכרות. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
-  {"class": "ravxx_var_process.gif3", "name": "גיף 3", "description": "גיף או תמונה ברשת שמתחת להיכרות. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_process", "name": "תמונה מתחת להיכרות", "type": "group"},
+  {"class": "ravxx_var_process.image", "name": "תמונה", "description": "התמונה שמתחת להיכרות עם דקלה. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_proof", "name": "תוצרים של משתתפות", "type": "group"},
-  {"class": "ravxx_var_proof.photo1", "name": "תמונת תוצר 1", "description": "תמונה של נעלי בית שיצרה משתתפת. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
-  {"class": "ravxx_var_proof.photo2", "name": "תמונת תוצר 2", "description": "תמונה של נעלי בית שיצרה משתתפת. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
-  {"class": "ravxx_var_proof.photo3", "name": "תמונת תוצר 3", "description": "תמונה של נעלי בית שיצרה משתתפת. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_proof.photo1", "name": "תמונת תוצר 1", "description": "תמונה של נעלי בית שיצרה משתתפת. שלוש התמונות באזור הזה מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_proof.photo2", "name": "תמונת תוצר 2", "description": "תמונה של נעלי בית שיצרה משתתפת. שלוש התמונות באזור הזה מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_proof.photo3", "name": "תמונת תוצר 3", "description": "תמונה של נעלי בית שיצרה משתתפת. שלוש התמונות באזור הזה מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services", "name": "הסדנה", "type": "group"},
   {"class": "ravxx_var_services.name", "name": "שם הסדנה", "description": "כותרת שם הסדנה.", "type": "text"},
   {"class": "ravxx_var_services.subtitle", "name": "תיאור קצר", "description": "השורה שמתחת לשם הסדנה.", "type": "text"},
-  {"class": "ravxx_var_services.mockup", "name": "מוקאפ הסדנה", "description": "התמונה מעל שם הסדנה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_services.mockup", "name": "מוקאפ הסדנה", "description": "התמונה מעל שם הסדנה. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_services.date1", "name": "מפגש 1: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש הראשון.", "type": "text"},
   {"class": "ravxx_var_services.date2", "name": "מפגש 2: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש השני.", "type": "text"},
   {"class": "ravxx_var_services.date3", "name": "מפגש 3: תאריך ושעה", "description": "היום, התאריך והשעה של המפגש השלישי.", "type": "text"},
@@ -1353,30 +1379,30 @@ save();
   {"class": "ravxx_var_services.syllabus.session1", "name": "מפגש 1", "type": "group"},
   {"class": "ravxx_var_services.syllabus.session1.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 1.", "type": "text"},
   {"class": "ravxx_var_services.syllabus.session1.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 1.", "type": "text"},
-  {"class": "ravxx_var_services.syllabus.session1.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 1. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_services.syllabus.session1.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 1. שלוש התמונות באזור הזה מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.syllabus.session2", "name": "מפגש 2", "type": "group"},
   {"class": "ravxx_var_services.syllabus.session2.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 2.", "type": "text"},
   {"class": "ravxx_var_services.syllabus.session2.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 2.", "type": "text"},
-  {"class": "ravxx_var_services.syllabus.session2.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 2. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_services.syllabus.session2.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 2. שלוש התמונות באזור הזה מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.syllabus.session3", "name": "מפגש 3", "type": "group"},
   {"class": "ravxx_var_services.syllabus.session3.title", "name": "כותרת", "description": "כותרת הכרטיס של מפגש 3.", "type": "text"},
   {"class": "ravxx_var_services.syllabus.session3.body", "name": "פירוט", "description": "הטקסט שנפתח בלחיצה על כרטיס מפגש 3.", "type": "text"},
-  {"class": "ravxx_var_services.syllabus.session3.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 3. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_services.syllabus.session3.gif", "name": "גיף", "description": "הגיף בכרטיס של מפגש 3. שלוש התמונות באזור הזה מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
   {"class": "ravxx_var_services.gifts", "name": "מתנות", "type": "group"},
   {"class": "ravxx_var_services.gifts.heading", "name": "כותרת המתנות", "description": "כותרת אזור המתנות.", "type": "text"},
   {"class": "ravxx_var_services.gifts.intro", "name": "פתיח המתנות", "description": "המשפט שמתחת לכותרת המתנות.", "type": "text"},
   {"class": "ravxx_var_services.gifts.gift1", "name": "מתנה 1", "type": "group"},
   {"class": "ravxx_var_services.gifts.gift1.title", "name": "כותרת", "description": "כותרת המתנה הראשונה.", "type": "text"},
   {"class": "ravxx_var_services.gifts.gift1.body", "name": "תיאור", "description": "תיאור המתנה הראשונה.", "type": "text"},
-  {"class": "ravxx_var_services.gifts.gift1.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_services.gifts.gift1.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_services.gifts.gift2", "name": "מתנה 2", "type": "group"},
   {"class": "ravxx_var_services.gifts.gift2.title", "name": "כותרת", "description": "כותרת המתנה השנייה.", "type": "text"},
   {"class": "ravxx_var_services.gifts.gift2.body", "name": "תיאור", "description": "תיאור המתנה השנייה.", "type": "text"},
-  {"class": "ravxx_var_services.gifts.gift2.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_services.gifts.gift2.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_services.gifts.gift3", "name": "מתנה 3", "type": "group"},
   {"class": "ravxx_var_services.gifts.gift3.title", "name": "כותרת", "description": "כותרת המתנה השלישית.", "type": "text"},
   {"class": "ravxx_var_services.gifts.gift3.body", "name": "תיאור", "description": "תיאור המתנה השלישית.", "type": "text"},
-  {"class": "ravxx_var_services.gifts.gift3.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_services.gifts.gift3.image", "name": "תמונה", "description": "התמונה הקטנה בכרטיס המתנה. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_offer", "name": "תמחור והרשמה", "type": "group"},
   {"class": "ravxx_var_offer.heading", "name": "כותרת התמחור", "description": "הכותרת של אזור ההשקעה.", "type": "text"},
   {"class": "ravxx_var_offer.value", "name": "שווי כולל", "description": "השורה עם השווי המקורי (מוצגת עם קו חוצה).", "type": "text"},
@@ -1388,7 +1414,7 @@ save();
   {"class": "ravxx_var_offer.steps.step1", "name": "שלב 1", "description": "טקסט השלב הראשון.", "type": "text"},
   {"class": "ravxx_var_offer.steps.step2", "name": "שלב 2", "description": "טקסט השלב השני.", "type": "text"},
   {"class": "ravxx_var_offer.steps.step3", "name": "שלב 3", "description": "טקסט השלב השלישי.", "type": "text"},
-  {"class": "ravxx_var_offer.mockup", "name": "מוקאפ לפני הכפתור", "description": "התמונה מעל כפתור ההרשמה. כל התמונות בדף מוצגות באותו גודל, ביחס 4:5 (לאורך); תמונה בצורה אחרת תיחתך מעט בשוליים.", "type": "image"},
+  {"class": "ravxx_var_offer.mockup", "name": "מוקאפ לפני הכפתור", "description": "התמונה מעל כפתור ההרשמה. מוצגת בצורה ובגודל המקוריים שלה, בלי מסגרת ובלי חיתוך. כל יחס גובה-רוחב מתאים.", "type": "image"},
   {"class": "ravxx_var_offer.cta", "name": "כפתור הרשמה ראשי", "description": "כתובת היעד של כפתור ההרשמה הראשי. כרגע גולל לטופס ההרשמה (#mcf-form).", "type": "link"},
   {"class": "ravxx_var_offer.ctaNote", "name": "הערה מתחת לכפתור", "description": "השורה הקטנה מתחת לכפתור ההרשמה.", "type": "text"},
   {"class": "ravxx_var_fit", "name": "למי זה מתאים", "type": "group"},
@@ -1422,6 +1448,7 @@ save();
   {"class": "ravxx_var_sticky.cta", "name": "כפתור בפס", "description": "כתובת היעד של הכפתור בפס הדביק. כרגע גולל לטופס ההרשמה (#mcf-form).", "type": "link"},
   {"class": "ravxx_var_footer", "name": "פוטר", "type": "group"},
   {"class": "ravxx_var_footer.brand", "name": "שם המותג", "description": "שם המותג בפוטר.", "type": "text"},
+  {"class": "ravxx_var_footer.terms", "name": "קישור לתקנון", "description": "כתובת עמוד התקנון. משמשת גם לקישור \"תנאי השימוש\" מתחת לטופס.", "type": "link"},
   {"class": "ravxx_var_footer.rights", "name": "זכויות יוצרים", "description": "שורת זכויות היוצרים בתחתית.", "type": "text"}
 ]
 -->
