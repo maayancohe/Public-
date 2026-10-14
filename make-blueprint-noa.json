@@ -1,0 +1,22 @@
+{
+  "name": "עוגן בסערה - טופס לרב מסר",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {"maxResults": 1},
+      "mapper": {},
+      "metadata": {"designer": {"x": 0, "y": 0}}
+    },
+    {
+      "id": 2,
+      "module": "rav-messer:subscribeNewUser",
+      "version": 3,
+      "parameters": {},
+      "mapper": {"name": "{{1.name}}", "email": "{{1.email}}", "phone": "{{1.phone}}", "notify": 2, "limit": 500},
+      "metadata": {"designer": {"x": 300, "y": 0}}
+    }
+  ],
+  "metadata": {"version": 1, "scenario": {"roundtrips": 1, "maxErrors": 3, "autoCommit": true, "sequential": false}}
+}
