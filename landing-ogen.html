@@ -4,7 +4,7 @@
 
   כל התמונות כבר נמצאות בתוך הקובץ, לא צריך להעלות אותן בנפרד.
 
-  טופס ההרשמה: מסומן בהערה "טופס ההרשמה". מוטמע טופס רב מסר (סקריפט עם טעינה עוקפת וכפתור גיבוי).
+  טופס ההרשמה: מסומן בהערה "טופס ההרשמה". מוטמע טופס רב מסר (סקריפט עם טעינה מחוזקת).
   הטופס מוטמע פעם אחת בלבד, שאר הכפתורים בדף גוללים אליו.
 -->
 <html lang="he" dir="rtl">
@@ -239,94 +239,116 @@ a:focus-visible,button:focus-visible{outline:3px solid #E0B14A;outline-offset:3p
 <div style="width: 100%; max-width: 900px">
 <!-- ===== טופס ההרשמה: טופס רב מסר ===== -->
 <!--
-  הטופס נטען בעזרת קוד שעוקף את הבעיה של document.write בדפים שנבנו בעורך:
-  הקוד טוען את הסקריפט של רב מסר, תופס את מה שהוא מנסה לכתוב לדף ומכניס את זה לתוך המסגרת.
-  אם אחרי 10 שניות עדיין אין טופס, מוצג כפתור הרשמה ישיר.
+  טעינה מחוזקת של טופס רב מסר:
+  1. הסקריפט של רב מסר נטען בתוך המסגרת של הטופס עצמו.
+  2. כל מה שהסקריפט כותב לדף (document.write) נכנס למסגרת, גם אם זה קורה באיחור.
+  3. אם הטופס נוצר במקום אחר בדף, הוא מועבר אוטומטית לכאן.
+  4. אם הטעינה נכשלת, יש עד 3 ניסיונות נוספים.
 -->
 <style>
 #rm-form-wrap{width:100%;max-width:900px;margin:0 auto;direction:rtl;min-height:120px}
-#rm-form-wrap iframe,#rm-form-wrap form,#rm-form-wrap table{width:100%!important;max-width:100%!important}
-#rm-form-wrap iframe{border:0;min-height:420px}
-#rm-form-wrap input,#rm-form-wrap select,#rm-form-wrap textarea{max-width:100%;box-sizing:border-box}
+#rm-form-target iframe{width:100%!important;max-width:100%!important;border:0;min-height:420px;display:block}
+#rm-form-target form,#rm-form-target table{width:100%!important;max-width:100%!important}
+#rm-form-target input,#rm-form-target select,#rm-form-target textarea{max-width:100%;box-sizing:border-box}
 #rm-loading{text-align:center;padding:36px 0;font-size:1.1rem;color:#7A6A5E}
-#rm-fallback{display:none;text-align:center;padding:24px 0}
-#rm-fallback p{margin:0 0 14px;font-size:1.1rem}
-#rm-fallback a{display:inline-block;padding:16px 40px;border-radius:40px;background:#6E7753;color:#FFFDF8;font-size:1.25rem;font-weight:700;text-decoration:none}
-#rm-fallback a:hover{background:#4F5639;color:#FFFDF8}
+#rm-retry{display:none;text-align:center;padding:24px 0}
+#rm-retry p{margin:0 0 14px;font-size:1.1rem}
+#rm-retry button{padding:14px 36px;border:0;border-radius:40px;background:#6E7753;color:#FFFDF8;font:inherit;font-size:1.15rem;font-weight:700;cursor:pointer}
+#rm-retry button:hover{background:#4F5639}
 </style>
 <div id="rm-form-wrap">
 <div id="rm-form-target"></div>
 <div id="rm-loading">הטופס נטען...</div>
-<div id="rm-fallback">
-<p>הטופס לא נטען? אפשר להירשם בלחיצה כאן:</p>
-<a id="rm-fallback-link" href="https://form2.ravpage.co.il/2e4709a1bbd2b044bf10b4c8f25384796ACCCBFF" target="_blank" rel="noopener">להרשמה להדרכה</a>
+<div id="rm-retry">
+<p>הטופס לא נטען. נסו לרענן את הדף:</p>
+<button type="button" onclick="location.reload()">רענון הדף</button>
 </div>
 </div>
 <script>
 (function(){
   var SRC = 'https://form2.ravpage.co.il/2e4709a1bbd2b044bf10b4c8f25384796ACCCBFF';
+  var MAX_TRIES = 4, WAIT_MS = 12000;
   var target = document.getElementById('rm-form-target');
   var loading = document.getElementById('rm-loading');
-  var fallback = document.getElementById('rm-fallback');
-  if (!target || target.getAttribute('data-started')) return;
-  target.setAttribute('data-started', '1');
+  var retry = document.getElementById('rm-retry');
+  if (!target || window.__rmFormStarted) return;
+  window.__rmFormStarted = true;
 
-  var origWrite = document.write, origWriteln = document.writeln;
-  var buffer = '';
-  function capture(){ buffer += Array.prototype.join.call(arguments, ''); }
-
-  // הרצת סקריפטים שהגיעו בתוך ה-HTML שרב מסר כתב
-  function runScripts(container, done){
-    var scripts = Array.prototype.slice.call(container.querySelectorAll('script'));
-    (function next(){
-      if (!scripts.length) return done();
-      var old = scripts.shift();
-      var s = document.createElement('script');
-      for (var i = 0; i < old.attributes.length; i++) s.setAttribute(old.attributes[i].name, old.attributes[i].value);
-      if (old.src) {
-        s.onload = s.onerror = function(){ flush(container); next(); };
-        old.parentNode.replaceChild(s, old);
-      } else {
-        s.text = old.text;
-        old.parentNode.replaceChild(s, old);
-        flush(container);
-        next();
-      }
-    })();
+  // מעתיק תגית script כדי שהדפדפן יריץ אותה (סקריפט שנכנס דרך innerHTML לא רץ)
+  function cloneScript(old){
+    var s = document.createElement('script');
+    for (var i = 0; i < old.attributes.length; i++) s.setAttribute(old.attributes[i].name, old.attributes[i].value);
+    if (!old.src) s.text = old.text;
+    return s;
   }
-  function flush(container){
-    if (!buffer) return;
-    var html = buffer; buffer = '';
+  function insertHTML(html){
     var tmp = document.createElement('div');
     tmp.innerHTML = html;
-    while (tmp.firstChild) container.appendChild(tmp.firstChild);
+    var scripts = [];
+    while (tmp.firstChild) {
+      var n = tmp.firstChild;
+      target.appendChild(n);
+      if (n.nodeType === 1) {
+        if (n.tagName === 'SCRIPT') scripts.push(n);
+        else scripts = scripts.concat(Array.prototype.slice.call(n.querySelectorAll('script')));
+      }
+    }
+    scripts.forEach(function(old){ old.parentNode.replaceChild(cloneScript(old), old); });
   }
-  function restore(){ document.write = origWrite; document.writeln = origWriteln; }
 
-  document.write = capture;
-  document.writeln = function(){ capture.apply(null, arguments); capture('\n'); };
+  // אחרי שהדף נטען document.write מוחק את כל הדף, לכן מפנים אותו למסגרת של הטופס
+  var buf = '', flushTimer = null;
+  function write(){
+    buf += Array.prototype.join.call(arguments, '');
+    clearTimeout(flushTimer);
+    flushTimer = setTimeout(function(){ var h = buf; buf = ''; if (h) insertHTML(h); }, 0);
+  }
+  document.write = write;
+  document.writeln = function(){ write(Array.prototype.join.call(arguments, '') + '\n'); };
 
-  var main = document.createElement('script');
-  main.src = SRC;
-  main.charset = 'UTF-8';
-  main.onload = function(){
-    var holder = document.createElement('div');
-    var html = buffer; buffer = '';
-    holder.innerHTML = html;
-    while (holder.firstChild) target.appendChild(holder.firstChild);
-    runScripts(target, function(){ setTimeout(restore, 1500); });
-  };
-  main.onerror = function(){ restore(); showFallback(); };
-  (document.head || document.body).appendChild(main);
+  // אם רב מסר יוצר את הטופס במקום אחר בדף, מעבירים אותו לכאן
+  var RAV = /ravpage|responder|ravmesser|rav-messer/i;
+  function isRav(el){
+    var u = el.getAttribute('src') || el.getAttribute('action') || '';
+    return RAV.test(u);
+  }
+  function adopt(){
+    var els = document.querySelectorAll('iframe, form');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (!target.contains(el) && isRav(el)) target.appendChild(el);
+    }
+  }
+  if (window.MutationObserver) {
+    new MutationObserver(adopt).observe(document.documentElement, {childList: true, subtree: true});
+  }
 
-  function hasForm(){ return target.querySelector('iframe, form, input'); }
-  function showFallback(){ loading.style.display = 'none'; fallback.style.display = 'block'; }
-  var tries = 0;
-  var timer = setInterval(function(){
+  function hasForm(){ adopt(); return target.querySelector('iframe, form, input'); }
+
+  var tries = 0, watch = null;
+  function load(){
     tries++;
-    if (hasForm()) { clearInterval(timer); loading.style.display = 'none'; return; }
-    if (tries >= 20) { clearInterval(timer); showFallback(); }
-  }, 500);
+    var s = document.createElement('script');
+    s.src = SRC + (tries > 1 ? (SRC.indexOf('?') < 0 ? '?' : '&') + 'r=' + Date.now() : '');
+    s.charset = 'UTF-8';
+    s.async = false;
+    s.onerror = function(){ next(); };
+    target.appendChild(s);
+    var start = Date.now();
+    clearInterval(watch);
+    watch = setInterval(function(){
+      if (hasForm()) { clearInterval(watch); loading.style.display = 'none'; retry.style.display = 'none'; return; }
+      if (Date.now() - start > WAIT_MS) next();
+    }, 400);
+  }
+  function next(){
+    clearInterval(watch);
+    if (hasForm()) { loading.style.display = 'none'; return; }
+    if (tries < MAX_TRIES) { setTimeout(load, 800); return; }
+    loading.style.display = 'none';
+    retry.style.display = 'block';
+  }
+  load();
 })();
 </script>
 <p style="margin: 14px 0 0; font-size: 1rem; font-weight: 700">קישור הזום יישלח אליכם במייל</p>
