@@ -409,16 +409,15 @@ color:var(--ink);font-family:inherit;font-size:14.4px;font-weight:700;cursor:poi
 }
 /* ============================================================
 24. תמונות להחלפה: כל עוד אין תמונה (src שקוף) מוצג המקום הריק כמו קודם.
-   תמונה אמיתית ממלאת את המסגרת; בהירו, בפרופיל ובמוקאפים היא נשארת ביחס המקורי שלה.
+   תמונה אמיתית מוצגת חופשית: ביחס המקורי שלה, בלי מסגרת, בלי צל ובלי חיתוך.
 ============================================================ */
 .mc-felt .mcf-frame{position:relative;overflow:hidden}
 .mc-felt .mcf-frame > .mcf-img{position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);max-width:none;object-fit:cover;border-radius:inherit}
 .mc-felt .mcf-frame > .mcf-img[src^="data:"]{box-shadow:none!important;animation:none!important}
-.mc-felt .mcf-frame:has(> .mcf-img:not([src^="data:"])) > .mcf-ph{visibility:hidden}
-.mc-felt .mcf-frame.mcf-natural:has(> .mcf-img:not([src^="data:"])){aspect-ratio:auto!important;border:0;padding:0;background:none;display:block;overflow:visible}
-.mc-felt .mcf-frame.mcf-natural:has(> .mcf-img:not([src^="data:"])) > .mcf-ph{display:none}
-.mc-felt .mcf-frame.mcf-natural > .mcf-img:not([src^="data:"]){position:static;inset:auto;width:100%;height:auto;object-fit:contain}
-.mc-felt .mockup.mcf-natural > .mcf-img:not([src^="data:"]){border-radius:var(--r)}
+.mc-felt .mcf-frame > .mcf-img:not([src^="data:"]){position:static;inset:auto;width:100%;height:auto;max-width:100%;object-fit:contain;border-radius:0!important;box-shadow:none!important}
+.mc-felt .mcf-frame:has(> .mcf-img:not([src^="data:"])){aspect-ratio:auto!important;border:0;padding:0;background:none;box-shadow:none;border-radius:0;display:block;overflow:visible}
+.mc-felt .mcf-frame:has(> .mcf-img:not([src^="data:"])) > .mcf-ph{display:none}
+.mc-felt .portrait:has(.mcf-img:not([src^="data:"])){box-shadow:none;border-radius:0;overflow:visible}
 </style>
 
 <a class="skip" href="#main">דלג לתוכן הראשי</a>
