@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="sgd">
+<style>
+/* ===== בסיס ===== */
+.sgd{--cream:#FAF5EE;--beige:#E9D8C7;--choc:#4C342B;--mocha:#835A45;--latte:#D0B39B;--caramel:#B48C70;--shadow:0 8px 22px rgba(76,52,43,.10);
+  direction:rtl;font-family:'Assistant',sans-serif;font-size:18px;line-height:1.6;color:var(--choc);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.sgd *,.sgd *::before,.sgd *::after{box-sizing:border-box;margin:0;padding:0;}
+.sgd img{max-width:100%;}
+.sgd a{color:inherit;}
+.sgd b,.sgd strong{font-weight:700;}
+.sgd p{margin-bottom:18px;text-wrap:balance;}
+.sgd .col{max-width:560px;margin:0 auto;padding:0 16px;}
+.sgd section,.sgd .hero{position:relative;padding:56px 0;text-align:center;}
+
+/* ===== כפתור ===== */
+.sgd .kaftor{display:block;width:100%;max-width:400px;margin:0 auto;min-height:54px;padding:14px 28px;font-family:'Assistant',sans-serif;font-size:20px;font-weight:800;line-height:1.3;color:var(--cream);background:var(--mocha);border:none;border-radius:999px;text-decoration:none;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(76,52,43,.22);transition:background .25s,transform .25s,box-shadow .25s;}
+.sgd .kaftor:hover{background:var(--choc);transform:translateY(-2px);box-shadow:0 10px 22px rgba(76,52,43,.28);}
+.sgd .kaftor:focus-visible{outline:3px solid var(--caramel);outline-offset:3px;}
+
+/* ===== תווית כותרת ===== */
+.sgd .tag{display:inline-block;color:var(--cream);background:var(--choc);font-weight:800;font-size:clamp(26px,3.2vw + 14px,36px);line-height:1.3;padding:10px 32px 12px;margin-bottom:28px;text-wrap:balance;
+  clip-path:polygon(2% 12%,8% 4%,20% 9%,34% 2%,50% 7%,66% 1%,80% 8%,93% 3%,99% 14%,97% 38%,100% 62%,96% 86%,88% 97%,72% 92%,56% 99%,40% 93%,24% 99%,10% 93%,1% 86%,3% 60%,0% 36%);}
+
+/* ===== מקום לתמונה ===== */
+.sgd .img-slot{max-width:340px;margin:10px auto 28px;border:2px dashed var(--caramel);border-radius:14px;background:rgba(250,245,238,.6);display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;font-weight:700;font-size:15px;line-height:1.5;}
+
+/* ===== פס עליון ===== */
+.sgd .topbar{background:var(--choc);color:var(--cream);font-size:14px;line-height:1.55;padding:9px 16px;text-align:center;}
+
+/* ===== פתיח ===== */
+.sgd .hero{background:var(--cream);padding:28px 0 60px;}
+.sgd .hero .pre{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:12px;}
+.sgd .temp-ptiach{max-width:420px;margin:4px auto 20px;border:2px dashed var(--caramel);border-radius:18px;background:var(--beige);padding:44px 20px;font-weight:800;font-size:28px;line-height:1.25;}
+.sgd .temp-ptiach small{display:block;font-size:15px;font-weight:700;margin-top:12px;}
+.sgd .hero .sub-lead{font-size:clamp(23px,2vw + 16px,28px);font-weight:800;line-height:1.35;margin:8px 0 12px;}
+.sgd .hero .sub{margin:4px 0 22px;}
+.sgd .hero .live-line{font-size:20px;font-weight:700;margin-bottom:8px;}
+.sgd .info{display:grid;gap:22px;justify-items:center;margin:0 0 34px;}
+.sgd .info .card{position:relative;width:100%;max-width:280px;margin-top:48px;padding:58px 16px 18px;line-height:1.45;background:var(--latte);border-radius:16px;box-shadow:var(--shadow);transition:box-shadow .25s;}
+.sgd .info .card:hover{box-shadow:0 12px 28px rgba(76,52,43,.16);}
+.sgd .info .card img{position:absolute;top:-48px;left:50%;transform:translateX(-50%);width:92px;}
+.sgd .info .card b{display:block;font-size:21px;}
+.sgd .info .card span{display:block;}
+
+/* ===== כאב ===== */
+.sgd .pain{background:var(--beige);clip-path:polygon(0 2.5%,50% 0,100% 2.5%,100% 100%,0 100%);padding-top:76px;}
+.sgd .pain .big-quote{display:block;font-size:clamp(24px,2vw + 17px,30px);font-weight:800;line-height:1.35;margin:14px 0 2px;}
+.sgd .eduyot{margin:26px auto 30px;max-width:440px;display:flex;flex-direction:column;gap:14px;}
+.sgd .eduyot img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:var(--shadow);}
+
+/* ===== מי אני ===== */
+.sgd .host{background:var(--cream) url('https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/f634faa356703126a3a3a97afed37ff8.jpg') center/700px repeat;padding-top:44px;}
+.sgd .host .round{display:block;width:170px;height:170px;object-fit:cover;object-position:center 30%;border-radius:50%;margin:0 auto -85px;position:relative;z-index:2;border:5px solid var(--cream);box-shadow:var(--shadow);}
+.sgd .host .kard{background:var(--cream);border:3px dotted var(--caramel);border-radius:12px;padding:104px 14px 32px;box-shadow:var(--shadow);}
+.sgd .host .kard .tagimg{display:block;width:190px;margin:-18px auto 18px;}
+.sgd .host .kard p{margin-bottom:16px;}
+.sgd .host .kard h4{font-size:20px;font-weight:800;line-height:1.35;margin:24px 0 4px;}
+.sgd .host .logo{display:block;margin:4px auto 10px;max-height:74px;max-width:60%;}
+
+/* ===== למי מתאים ===== */
+.sgd .fit{background:var(--beige);}
+.sgd .fit .item{display:flex;gap:12px;align-items:flex-start;text-align:right;background:var(--latte);border-radius:14px;padding:14px 16px;margin:0 auto 12px;box-shadow:var(--shadow);transition:box-shadow .25s;}
+.sgd .fit .item:hover{box-shadow:0 12px 28px rgba(76,52,43,.16);}
+.sgd .fit .item i{flex-shrink:0;width:30px;height:30px;margin-top:-1px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;}
+.sgd .fit .item i svg{width:18px;height:18px;fill:none;stroke:var(--choc);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.sgd .fit .item i path{stroke-dasharray:24;stroke-dashoffset:0;}
+.sgd .fit .item span{text-wrap:balance;}
+
+/* ===== מה תקבלי ===== */
+.sgd .gains{background:var(--cream);}
+.sgd .gains .row{display:flex;gap:14px;align-items:flex-start;text-align:right;margin-bottom:22px;}
+.sgd .gains .row i{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--latte);color:var(--choc);font-style:normal;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+.sgd .gains .row b{display:block;font-size:21px;line-height:1.4;margin-bottom:2px;}
+.sgd .gains .row span{display:block;text-wrap:balance;}
+.sgd .bonus{background:var(--beige);border:1.5px solid var(--latte);border-radius:16px;padding:26px 22px;margin:34px auto 0;transition:box-shadow .25s;}
+.sgd .bonus:hover{box-shadow:var(--shadow);}
+.sgd .bonus b{display:block;font-size:24px;font-weight:800;margin-bottom:6px;}
+.sgd .bonus p{margin:0;}
+
+/* ===== הרשמה ===== */
+.sgd .reg{background:var(--beige);}
+.sgd .form-card{background:var(--cream);border-radius:18px;box-shadow:var(--shadow);padding:30px 20px 26px;margin-top:20px;}
+.sgd .form-card .t1{margin:0;}
+.sgd .form-card .t2{font-size:clamp(26px,3.2vw + 14px,36px);font-weight:800;line-height:1.3;margin-bottom:6px;}
+.sgd .form-card .t3{margin-bottom:6px;}
+.sgd .form-card .t4{margin-bottom:6px;}
+.sgd .tofes{display:flex;flex-direction:column;align-items:stretch;margin-top:10px;}
+.sgd .sgd-form{width:100%;max-width:400px;margin:6px auto 0;display:flex;flex-direction:column;gap:12px;text-align:right;}
+.sgd .sgd-f span{display:block;font-size:16px;font-weight:700;margin-bottom:4px;}
+.sgd .sgd-f input{display:block;width:100%;min-height:50px;padding:10px 14px;font-size:18px;font-family:'Assistant',sans-serif;color:var(--choc);background:#fff;border:1.5px solid var(--latte);border-radius:12px;text-align:right;outline:none;transition:border-color .2s,box-shadow .2s;}
+.sgd .sgd-f input:focus{border-color:var(--mocha);box-shadow:0 0 0 3px rgba(131,90,69,.18);}
+.sgd .sgd-f input.bad{border-color:#b3261e;}
+.sgd .sgd-ok{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;cursor:pointer;min-height:44px;}
+.sgd .sgd-ok input{flex-shrink:0;width:20px;height:20px;margin-top:2px;accent-color:var(--mocha);}
+.sgd .sgd-err{margin:0;font-size:15px;color:#b3261e;text-align:center;}
+.sgd .sgd-err:empty{display:none;}
+.sgd .sgd-form .kaftor{margin-top:4px;max-width:none;}
+.sgd .sgd-form .kaftor[disabled]{opacity:.6;cursor:default;transform:none;}
+.sgd .sgd-thanks{padding:18px 10px 6px;font-size:20px;}
+
+/* ===== שאלות נפוצות ===== */
+.sgd .faq{background:var(--cream);}
+.sgd .faq details{text-align:right;margin-bottom:12px;}
+.sgd .faq summary{display:block;cursor:pointer;list-style:none;position:relative;min-height:54px;padding:14px 18px 14px 50px;font-size:20px;font-weight:700;line-height:1.4;background:var(--beige);border-radius:14px;transition:background .25s;text-wrap:balance;}
+.sgd .faq summary:hover{background:var(--latte);}
+.sgd .faq summary::-webkit-details-marker{display:none;}
+.sgd .faq summary::after{content:"+";position:absolute;left:18px;top:50%;width:24px;height:24px;margin-top:-12px;font-size:28px;font-weight:400;line-height:24px;text-align:center;transition:transform .3s ease;}
+.sgd .faq details[open] summary::after{transform:rotate(45deg);}
+.sgd .faq summary:focus-visible{outline:3px solid var(--caramel);outline-offset:2px;}
+.sgd .faq details p{padding:12px 18px 6px;margin:0;}
+
+/* ===== סיום ===== */
+.sgd .closing{background:var(--choc);padding-bottom:110px;}
+.sgd .closing .inner{background:var(--cream);border-radius:18px;padding:30px 18px;box-shadow:0 12px 28px rgba(0,0,0,.18);}
+.sgd .closing .meet{font-size:clamp(26px,3.2vw + 14px,36px);font-weight:800;line-height:1.3;margin-bottom:14px;text-wrap:balance;}
+.sgd .closing .inner p{margin-bottom:10px;}
+.sgd .shaon{display:flex;justify-content:center;gap:8px;margin:18px 0 6px;}
+.sgd .shaon > div{background:var(--beige);border-radius:12px;min-width:66px;padding:8px 4px;line-height:1.2;}
+.sgd .shaon b{display:block;font-size:30px;font-weight:800;}
+.sgd .shaon span{font-size:14px;}
+.sgd .shaon-end{font-size:22px;font-weight:800;margin:18px 0 6px;}
+.sgd .closing .img-slot{margin-top:44px;color:var(--cream);background:rgba(250,245,238,.06);}
+.sgd .closing .form-card{margin-top:0;}
+.sgd .footer{font-size:14px;color:var(--beige);margin-top:30px;}
+
+/* ===== כפתור דביק במובייל ===== */
+.sgd .dvik{position:fixed;bottom:0;right:0;left:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(250,245,238,.97);box-shadow:0 -6px 20px rgba(76,52,43,.12);transform:translateY(110%);transition:transform .3s;z-index:10;text-align:center;}
+.sgd .dvik.on{transform:none;}
+.sgd .dvik .kaftor{box-shadow:none;}
+
+/* ===== מחשב ===== */
+@media (min-width:600px){
+  .sgd{font-size:20px;}
+  .sgd .kaftor{display:inline-block;width:auto;min-width:340px;padding:15px 40px;}
+  .sgd .sgd-form .kaftor{display:block;width:100%;}
+  .sgd .dvik{display:none;}
+  .sgd .host .kard{padding:104px 28px 32px;}
+  .sgd .form-card{padding:34px 32px 30px;}
+  .sgd .info{grid-template-columns:repeat(3,1fr);gap:16px;}
+  .sgd .info .card{padding:56px 12px 16px;}
+  .sgd .info .card span{font-size:18px;}
+}
+@media (min-width:900px){
+  .sgd .info{margin-left:-110px;margin-right:-110px;gap:22px;}
+  .sgd .info .card span{font-size:20px;}
+}
+
+/* ===== אנימציה ===== */
+.sgd.anim .rv{opacity:0;transform:translateY(-16px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+.sgd.anim .rv.in{opacity:1;transform:none;}
+.sgd.anim .fit .item.rv path{stroke-dashoffset:24;transition:stroke-dashoffset .6s ease .35s;}
+.sgd.anim .fit .item.in path{stroke-dashoffset:0;}
+@media (prefers-reduced-motion:reduce){
+  .sgd.anim .rv{opacity:1 !important;transform:none !important;transition:none !important;}
+  .sgd.anim .fit .item path{stroke-dashoffset:0 !important;transition:none !important;}
+  .sgd .kaftor,.sgd .faq summary::after{transition:none;}
+}
+</style>
+
+<div class="ravxx_var_topbar topbar"><span class="ravxx_var_page.1">שרי גת · מפתחת הגישה הנוירו-הוליסטית להורות</span><br><span class="ravxx_var_page.2">19 שנות ניסיון · אלפי משפחות</span></div>
+
+<header class="hero section">
+  <div class="col">
+    <p class="ravxx_var_hero.pre pre ravxx_var_hero.1">הדרכה לאמהות לילדים בגילאי 3 עד 10</p>
+    <div class="temp-ptiach ravxx_var_hero.2">📷 תמונה 1 - פתיח מעוצב<small>התמונה שלך + [השם] + "הדרכה חינמית בלייב", כמו בחוצפה</small></div>
+    <p class="ravxx_var_hero.sub_lead sub-lead"><span class="ravxx_var_hero.3">איך לעזור לרגישות של הילד שלך</span><br><span class="ravxx_var_hero.4">להיות עוצמה, ולא חולשה.</span></p>
+    <p class="ravxx_var_hero.sub sub"><span class="ravxx_var_hero.5">בדרך מבוססת מחקר</span><br><span class="ravxx_var_hero.6">(שעובדת באמת).</span></p>
+    <p class="ravxx_var_hero.live live-line ravxx_var_hero.7">הדרכה חינמית בלייב</p>
+    <div class="info">
+      <div class="card"><img src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/734d45f4d45c99e47e90f4141a5f8881.png" alt="" class="ravxx_var_hero.8"><b class="ravxx_var_hero.9">מאיפה?</b><span class="ravxx_var_hero.10">מהמחשב או מהטלפון, מהבית</span></div>
+      <div class="card"><img src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/339608a1cde58bf4b9f734e6a88f80c6.png" alt="" class="ravxx_var_hero.11"><b class="ravxx_var_hero.12">מתי?</b><span class="ravxx_var_hero.13">יום ראשון, 15.11</span></div>
+      <div class="card"><img src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/74ee3c3e3214792d570ec5a7be533213.png" alt="" class="ravxx_var_hero.14"><b class="ravxx_var_hero.15">באיזו שעה?</b><span class="ravxx_var_hero.16">בשעה 20:45</span></div>
+    </div>
+    <a class="kaftor ravxx_var_hero.17" href="#form">שרי, ברור שאני מצטרפת</a>
+  </div>
+</header>
+
+<section class="pain">
+  <div class="col">
+    <p class="ravxx_var_pain.p1"><span class="ravxx_var_section.1">יש לך ילד מקסים.</span><br><span class="ravxx_var_section.2">את מכירה את החוזקות שלו, אבל..</span><br><span class="big-quote ravxx_var_section.3">את דואגת..</span></p>
+    <p class="ravxx_var_pain.p2"><span class="ravxx_var_section.4">את דואגת כי במסגרת מרגיש שקשה לו יותר,</span><br><span class="ravxx_var_section.5">והוא חוזר הביתה ומתפרק.</span><br><span class="ravxx_var_section.6">כל פרידה מורכבת יותר,</span><br><span class="ravxx_var_section.7">וכל תגובה גדולה יותר.</span><br><span class="ravxx_var_section.8">ועם החברים, זה קצת יותר מורכב.</span><br><span class="ravxx_var_section.9">והאמת היא שפשוט מרגיש שהכל קצת יותר עניין איתו..</span></p>
+    <p class="ravxx_var_pain.p3"><span class="ravxx_var_section.10">מצד אחד, את רוצה לגונן עליו.</span><br><span class="ravxx_var_section.11">מצד שני, את יודעת שהוא חי בעולם הזה.</span><br><b class="ravxx_var_section.12">ואת מבולבלת. מה את אמורה לעשות?<br>איך לעזור לו?</b></p>
+    <p class="ravxx_var_pain.p4"><span class="ravxx_var_section.13">וכשאת חושבת קדימה..</span><br><span class="big-quote ravxx_var_section.14">אמאל'ה, ככה זה יהיה תמיד?</span></p>
+    <div class="img-slot ravxx_var_section.15" style="height:220px"><span>📷 תמונה 2 - פולארויד, תמונת אווירה: ילד ברגע של הצפה (מכסה אוזניים, מתכנס)</span></div>
+    <p class="ravxx_var_pain.normal ravxx_var_section.16"><b>אז קודם כל, את במקום הנכון.</b></p>
+    <p class="ravxx_var_pain.p5"><span class="ravxx_var_section.17">נעים מאוד, אני שרי גת,</span><br><span class="ravxx_var_section.18">אשת חינוך ומדריכת הורים מומחית בנושא הרגישות הגבוהה.</span><br><span class="ravxx_var_section.19">ואני רוצה להגיד לך באופן חד משמעי:</span><br><b class="ravxx_var_section.20">רגישות גבוהה היא לא בהכרח חולשה.<br>אבל היא כן יכולה להיות..</b></p>
+    <p class="ravxx_var_pain.p6"><span class="ravxx_var_section.21">כי כן, יש ילדים שקולטים את העולם לעומק,</span><br><span class="ravxx_var_section.22">ומגיבים אליו לעומק.</span><br><span class="ravxx_var_section.23">ובעולם מציף, יכול להיות להם הרבה יותר קשה.</span><br><b class="ravxx_var_section.24">אבל אצל הילדים האלה, הרגישות יכולה להפוך לעוצמה גדולה.</b></p>
+    <p class="ravxx_var_pain.p7"><span class="ravxx_var_section.25">ובדיוק בשביל זה יצרתי את ההדרכה</span><br><b class="ravxx_var_section.26">[השם]</b><br><span class="ravxx_var_section.27">כדי לתת לכמה שיותר אמהות כלים והבנה,</span><br><span class="ravxx_var_section.28">איך לראות את הילד בעיניים אמיתיות,</span><br><span class="ravxx_var_section.29">ואיך לעזור לילדים שלהן ליהנות מעוצמת הרגישות,</span><br><span class="ravxx_var_section.30">במקום לסבול מחולשת הרגישות.</span></p>
+    <p class="ravxx_var_pain.p8"><span class="ravxx_var_section.31">הרבה מדברים על כך שרגישות היא לא חולשה, ושהיא יפה.</span><br><span class="ravxx_var_section.32">אבל ביומיום, להתמודד איתה זה קשה.</span><br><span class="ravxx_var_section.33">הכלים שאני מביאה מבוססים על מחקר, ועל ניסיון של ליווי אלפי הורים.</span><br><b class="ravxx_var_section.34">והם באמת מייצרים שינוי.</b></p>
+    <div class="eduyot"><div class="img-slot ravxx_var_section.35">📷 עדות 1 (eduyot-1.jpg)</div><div class="img-slot ravxx_var_section.36">📷 עדות 2 (eduyot-2.jpg)</div></div>
+    <a class="kaftor ravxx_var_section.37" href="#form">שרי, ברור שאני מצטרפת</a>
+  </div>
+</section>
+
+<section class="host">
+  <div class="col">
+    <img class="round ravxx_var_section-2.1" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/c17da76b69cecd8386ed76f508961e47.jpg" alt="שרי גת">
+    <div class="kard">
+      <img class="tagimg ravxx_var_section-2.2" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/d0158d7580ffefbdabae3e1d5ada2e3d.png" alt="שנכיר רגע?">
+      <p><span class="ravxx_var_section-2.3">האמת היא שכל חיי</span><br><span class="ravxx_var_section-2.4">התעסקתי בעבודה עם ילדים</span><br><span class="ravxx_var_section-2.5">(ממש התחלתי בגיל 8..)</span><br><span class="ravxx_var_section-2.6">במשך עשור הייתי גננת ומחנכת,</span><br><span class="ravxx_var_section-2.7">בחינוך אנתרופוסופי, בארץ ובחו"ל.</span></p>
+      <p><span class="ravxx_var_section-2.8">ואז הבנתי,</span><br><span class="ravxx_var_section-2.9">שאם אני רוצה לייצר שינוי משמעותי עבור ילדים,</span><br><span class="ravxx_var_section-2.10">אני צריכה לעבוד עם המבוגרים</span><br><span class="ravxx_var_section-2.11">שמגדלים ומחנכים אותם.</span></p>
+      <p class="ravxx_var_section-2.12">העמקתי בלמידה משמעותית ואינטנסיבית</p>
+      <p class="ravxx_var_section-2.13">עם המורים המובילים בעולם:</p>
+      <h4 class="ravxx_var_section-2.14">פרופ' דניאל סיגל</h4><p class="ravxx_var_section-2.15">חוקר מוח מ-UCLA ומחבר "ילדי המוח השלם"</p>
+      <img class="logo ravxx_var_section-2.16" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/432502cf26d36ffa4abf1f9353860d5d.png" alt="">
+      <h4 class="ravxx_var_section-2.17">המכון לתיאוריה הפוליוואגלית</h4><p class="ravxx_var_section-2.18">עם פרופ' סטיבן פורג'ס ודב דנה</p>
+      <img class="logo ravxx_var_section-2.19" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/8286da89d29fd180ff0f76d6fe9bee1d.png" alt="">
+      <h4 class="ravxx_var_section-2.20">ד"ר בקי קנדי</h4><p class="ravxx_var_section-2.21">פסיכולוגית המתמחה בהתפתחות ילדים וויסות רגשי</p>
+      <img class="logo ravxx_var_section-2.22" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/9d7302806aa8e8239ff882748bbba7a5.png" alt="">
+      <h4 class="ravxx_var_section-2.23">המכון לפסיכולוגיה של הילד</h4>
+      <img class="logo ravxx_var_section-2.24" src="https://images.ravpages.co.il/xsite_resources/user_content/cp_new_production/88/4a/75/e1/884a75e1638724181450eef4aead4609/images/8936ba62380fbccbf2daa36496bed9e3.png" alt="">
+      <p style="margin-top:22px"><span class="ravxx_var_section-2.25">והרגישות הגבוהה היא התחום</span><br><span class="ravxx_var_section-2.26">שהעמקתי בו יותר מכל.</span><br><br><span class="ravxx_var_section-2.27">הבן שלי היה הילד הכי ביישן בגן.</span><br><span class="ravxx_var_section-2.28">היום הוא מוביל קבוצות שלמות של ילדים.</span><br><span class="ravxx_var_section-2.29">הוא לא הפסיק להיות רגיש.</span><br><span class="ravxx_var_section-2.30">הרגישות שלו קיבלה מקום.</span><br><br><b class="ravxx_var_section-2.31">ואני אמא לילדים רגישים.</b></p>
+    </div>
+  </div>
+</section>
+
+<section class="fit">
+  <div class="col">
+    <div class="tag ravxx_var_section-3.1">למי זה מתאים?</div>
+    <div class="item ravxx_var_section-3.2"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="ravxx_var_fit.yes1">יש לך ילד בגילאי 3 עד 10 שמרגיש את העולם חזק</span></div>
+    <div class="item ravxx_var_section-3.3"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span class="ravxx_var_fit.yes2">ואת רוצה לחזק אותו, ולא לשנות אותו</span></div>
+  </div>
+</section>
+
+<section class="gains">
+  <div class="col">
+    <div class="img-slot ravxx_var_section-4.1" style="height:220px"><span>📷 תמונה 3 - פולארויד, תמונת אווירה של אמא וילד: רגע של חיבור וקרבה</span></div>
+    <div class="tag"><span class="ravxx_var_section-4.2">עם מה תצאי תכלס</span><br><span class="ravxx_var_section-4.3">מההדרכה?</span></div>
+    <div class="row"><i class="ravxx_var_section-4.4">1</i><div class="ravxx_var_section-4.5"><b class="ravxx_var_gains.item1_title">תביני מה הופך את הרגישות שלו לחולשה</b><span class="ravxx_var_gains.item1_text">ומה הופך אותה לכוח.</span></div></div>
+    <div class="row"><i class="ravxx_var_section-4.6">2</i><div class="ravxx_var_section-4.7"><b class="ravxx_var_gains.item2_title">שלושה כלים שמחזקים אותו</b><span class="ravxx_var_gains.item2_text">כבר מחר בבוקר.</span></div></div>
+    <div class="row"><i class="ravxx_var_section-4.8">3</i><div class="ravxx_var_section-4.9"><b class="ravxx_var_gains.item3_title">איך זה נראה בגיל שלו</b><span class="ravxx_var_gains.item3_text">בגיל 3 עד 5, 5 עד 7 ו-7 עד 10.</span></div></div>
+    <div class="bonus">
+      <div class="img-slot ravxx_var_section-4.10" style="height:170px"><span>📷 תמונה 4 - הדמיה של בונוס 1: "דף סדר מול המסגרת" עם מתנה, כמו ערכת הוויסות בחוצפה</span></div>
+      <b class="ravxx_var_bonus.title ravxx_var_section-4.11">בונוס!</b>
+      <p class="ravxx_var_bonus.text"><span class="ravxx_var_section-4.12">דף שיעזור לך לעשות סדר מול המסגרת:</span><br><span class="ravxx_var_section-4.13">איך לעבוד מולה, ואיך לבקש התאמה.</span><br><span class="ravxx_var_section-4.14">נשלח לכל מי שתגיע ללייב.</span></p>
+    </div>
+    <div class="bonus">
+      <div class="img-slot ravxx_var_section-4.15" style="height:170px"><span>📷 תמונה 6 - הדמיה של בונוס 2: "דף ליווי למציאת החוזקות של הילד" עם מתנה</span></div>
+      <b class="ravxx_var_bonus2.title ravxx_var_section-4.11">בונוס!</b>
+      <p class="ravxx_var_bonus2.text"><span class="ravxx_var_section-4.16">דף ליווי שיעזור לך למצוא את החוזקות של הילד שלך,</span><br><span class="ravxx_var_section-4.17">ולעזור לו לפתח אותן.</span><br><span class="ravxx_var_section-4.14">נשלח לכל מי שתגיע ללייב.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="reg" id="form">
+  <div class="col">
+    <div class="img-slot ravxx_var_form.1" style="height:190px"><span>📷 תמונה 5 - הדמיה: מחשב וטלפון עם הפתיח של ההדרכה, כמו בחוצפה</span></div>
+    <div class="form-card">
+      <p class="t1 ravxx_var_form.2">להרשמה להדרכה:</p>
+      <p class="t2 ravxx_var_form.3">"[השם]"</p>
+      <p class="t3 ravxx_var_form.date ravxx_var_form.4">שתתקיים ביום ראשון | 15.11 | בשעה 20:45</p>
+      <p class="t4 ravxx_var_form.text1"><span class="ravxx_var_form.5">הכניסי את הפרטים שלך פה</span><br><span class="ravxx_var_form.6">ותשרייני לעצמך מקום בלייב.</span><br><b class="ravxx_var_form.7">המקומות מוגבלים!</b></p>
+      <div class="tofes"><form class="sgd-form" novalidate>
+        <label class="sgd-f"><span>שם מלא</span><input type="text" name="full_name" autocomplete="name" required></label>
+        <label class="sgd-f"><span>מייל</span><input type="email" name="email" autocomplete="email" inputmode="email" dir="ltr" required></label>
+        <label class="sgd-f"><span>טלפון</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" required></label>
+        <label class="sgd-ok"><input type="checkbox" name="consent" value="yes" required><span>אני מאשרת קבלת תוכן ועדכונים במייל ובוואטסאפ</span></label>
+        <p class="sgd-err" aria-live="polite"></p>
+        <button type="submit" class="kaftor">שרי, ברור שאני מצטרפת</button>
+      </form><div class="sgd-thanks" hidden><b>נרשמת בהצלחה!</b></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="col">
+    <div class="tag ravxx_var_faq.1">שאלות נפוצות</div>
+    <details><summary class="ravxx_var_faq.q1 ravxx_var_faq.2">זה עולה משהו?</summary><p class="ravxx_var_faq.a1 ravxx_var_faq.3">לא. ההדרכה חינמית.</p></details>
+    <details><summary class="ravxx_var_faq.q2 ravxx_var_faq.4">כמה זמן זה?</summary><p class="ravxx_var_faq.a2 ravxx_var_faq.5">בערך שעה ורבע, כולל זמן לשאלות.</p></details>
+    <details><summary class="ravxx_var_faq.q3 ravxx_var_faq.6">איפה מקבלים את הקישור ללייב?</summary><p class="ravxx_var_faq.a3 ravxx_var_faq.7">בקבוצת הוואטסאפ של ההדרכה, שאליה תגיעי מיד אחרי ההרשמה.</p></details>
+    <details><summary class="ravxx_var_faq.q4 ravxx_var_faq.8">איך מקבלים את הבונוסים?</summary><p class="ravxx_var_faq.a4 ravxx_var_faq.9">שני הבונוסים נשלחים רק למי שתגיע ללייב.</p></details>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="col">
+    <div class="inner">
+      <div class="meet ravxx_var_closing.title"><span class="ravxx_var_section-5.1">ניפגש ללייב ביום ראשון, 15.11</span><br><span class="ravxx_var_section-5.2">בשעה 20:45</span></div>
+      <p class="ravxx_var_closing.p1"><span class="ravxx_var_section-5.3">ערב אחד, ותצאי ממנו עם הבנה של מה הוא באמת צריך,</span><br><span class="ravxx_var_section-5.4">ועם שלושה כלים שמחזקים אותו.</span></p>
+      <p class="ravxx_var_closing.p2 ravxx_var_section-5.5"><b>ההדרכה חינמית, ומתקיימת פעם אחת בלייב.</b></p>
+      <div class="shaon" data-target="2026-11-15T20:45:00+02:00" data-end="הלייב התחיל!">
+        <div class="ravxx_var_section-5.6"><b class="t-d">0</b><span>ימים</span></div>
+        <div class="ravxx_var_section-5.7"><b class="t-h">0</b><span>שעות</span></div>
+        <div class="ravxx_var_section-5.8"><b class="t-m">0</b><span>דקות</span></div>
+        <div class="ravxx_var_section-5.9"><b class="t-s">0</b><span>שניות</span></div>
+      </div>
+    </div>
+    <div class="img-slot ravxx_var_section-5.10" style="height:150px"><span>📷 תמונה 5 שוב - אותה הדמיה מעל הטופס השני</span></div>
+    <div class="form-card">
+      <p class="t4 ravxx_var_form.text2"><span class="ravxx_var_section-5.11">כדי לשמור לעצמך מקום,</span><br><span class="ravxx_var_section-5.12">תמלאי את הפרטים שלך כאן למטה.</span></p>
+      <div class="tofes"><form class="sgd-form" novalidate>
+        <label class="sgd-f"><span>שם מלא</span><input type="text" name="full_name" autocomplete="name" required></label>
+        <label class="sgd-f"><span>מייל</span><input type="email" name="email" autocomplete="email" inputmode="email" dir="ltr" required></label>
+        <label class="sgd-f"><span>טלפון</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" required></label>
+        <label class="sgd-ok"><input type="checkbox" name="consent" value="yes" required><span>אני מאשרת קבלת תוכן ועדכונים במייל ובוואטסאפ</span></label>
+        <p class="sgd-err" aria-live="polite"></p>
+        <button type="submit" class="kaftor">שרי, ברור שאני מצטרפת</button>
+      </form><div class="sgd-thanks" hidden><b>נרשמת בהצלחה!</b></div></div>
+    </div>
+    <p class="footer ravxx_var_section-5.13">שרי גת · <a href="https://saraigat.ravpage.co.il/privacypolicy" target="_blank" rel="noopener">מדיניות פרטיות</a></p>
+  </div>
+</section>
+
+<div class="dvik ravxx_var_page.3"><a class="kaftor" href="#form">שרי, ברור שאני מצטרפת</a></div>
+
+<script>
+(function(){
+  var HOOK='https://hook.eu1.make.com/7i6qe8a406bg1dhesy5tcdmuxyb3s58h';
+  var REDIRECT='https://saraigat.ravpage.co.il/todahadraha';
+
+  function setup(root){
+    if(root.getAttribute('data-sgd-ready'))return;
+    root.setAttribute('data-sgd-ready','1');
+
+    /* כפתור דביק במובייל */
+    var dvik=root.querySelector('.dvik'),hero=root.querySelector('.hero'),cards=root.querySelectorAll('.form-card');
+    if(dvik&&hero){
+      var upd=function(){
+        var past=hero.getBoundingClientRect().bottom<0,atForm=false;
+        cards.forEach(function(f){var r=f.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0)atForm=true;});
+        dvik.classList.toggle('on',past&&!atForm);
+      };
+      window.addEventListener('scroll',upd,{passive:true});upd();
+    }
+
+    /* טיימר */
+    root.querySelectorAll('.shaon').forEach(function(sh){
+      var target=new Date(sh.getAttribute('data-target')).getTime(),timer;
+      var el=function(c){return sh.querySelector(c);};
+      function tick(){
+        var s=Math.floor((target-Date.now())/1000);
+        if(s<=0){
+          clearInterval(timer);
+          var end=document.createElement('p');end.className='shaon-end';end.textContent=sh.getAttribute('data-end');
+          sh.parentNode.replaceChild(end,sh);return;
+        }
+        el('.t-d').textContent=Math.floor(s/86400);
+        el('.t-h').textContent=Math.floor(s%86400/3600);
+        el('.t-m').textContent=Math.floor(s%3600/60);
+        el('.t-s').textContent=s%60;
+      }
+      timer=setInterval(tick,1000);tick();
+    });
+
+    /* אנימציית כניסה */
+    if('IntersectionObserver' in window){
+      var groups=['.info .card','.pain .col > p','.pain .img-slot','.host .round','.host .kard','.tag','.fit .item','.gains .row','.bonus','.form-card','.faq details','.closing .inner'];
+      groups.forEach(function(sel){
+        root.querySelectorAll(sel).forEach(function(el){
+          if(el.classList.contains('rv'))return;
+          el.classList.add('rv');
+          var sib=0,p=el.previousElementSibling;
+          while(p){if(p.classList.contains('rv'))sib++;p=p.previousElementSibling;}
+          el.style.transitionDelay=Math.min(sib,4)*0.12+'s';
+        });
+      });
+      root.classList.add('anim');
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+      root.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+    }
+
+    /* טפסים */
+    var q=new URLSearchParams(location.search);
+    root.querySelectorAll('.sgd-form').forEach(function(f){
+      var err=f.querySelector('.sgd-err'),btn=f.querySelector('button');
+      f.addEventListener('submit',function(e){
+        e.preventDefault();
+        var n=f.full_name,m=f.email,p=f.phone,c=f.consent,msg='';
+        [n,m,p].forEach(function(i){i.classList.remove('bad');});
+        var phone=p.value.replace(/[^\d+]/g,'').replace(/^\+972/,'0');
+        if(n.value.trim().length<2){n.classList.add('bad');msg='נא למלא שם מלא';}
+        else if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m.value.trim())){m.classList.add('bad');msg='נא למלא כתובת מייל תקינה';}
+        else if(!/^0\d{8,9}$/.test(phone)){p.classList.add('bad');msg='נא למלא מספר טלפון תקין';}
+        else if(!c.checked){msg='נא לאשר קבלת תוכן ועדכונים';}
+        err.textContent=msg;if(msg)return;
+        btn.disabled=true;
+        var d=new URLSearchParams();
+        d.append('full_name',n.value.trim());d.append('email',m.value.trim());d.append('phone',phone);d.append('consent','yes');
+        ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){if(q.get(k))d.append(k,q.get(k));});
+        d.append('page',location.href.split('#')[0]);
+        fetch(HOOK,{method:'POST',mode:'no-cors',body:d}).then(function(){
+          if(REDIRECT){location.href=REDIRECT;return;}
+          f.hidden=true;f.parentNode.querySelector('.sgd-thanks').hidden=false;
+        }).catch(function(){btn.disabled=false;err.textContent='משהו השתבש, נסי שוב';});
+      });
+    });
+  }
+
+  function init(){document.querySelectorAll('.sgd').forEach(setup);}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
+</div>
+</body></html>
