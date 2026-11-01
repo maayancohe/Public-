@@ -174,6 +174,20 @@
 .sgd .gains{background:#efe2cb}
 .sgd .reg{background:#f6eeea}
 .sgd .closing .inner{background:#fbf6f2}
+.sgd .tofes{flex-direction:column;align-items:stretch;}
+.sgd .sgd-form{width:100%;max-width:400px;margin:6px auto 0;display:flex;flex-direction:column;gap:12px;text-align:right;}
+.sgd .sgd-f span{display:block;font-size:16px;font-weight:700;margin-bottom:4px;color:#4a3426;}
+.sgd .sgd-f input{display:block;width:100%;min-height:50px;padding:10px 14px;font-size:18px;font-family:'Assistant',sans-serif;color:#000;background:#fff;border:1.5px solid #d8c6b8;border-radius:12px;text-align:right;outline:none;transition:border-color .2s,box-shadow .2s;}
+.sgd .sgd-f input:focus{border-color:#9b4a2c;box-shadow:0 0 0 3px rgba(155,74,44,.15);}
+.sgd .sgd-f input.bad{border-color:#c0392b;}
+.sgd .sgd-ok{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;cursor:pointer;}
+.sgd .sgd-ok input{flex-shrink:0;width:20px;height:20px;margin-top:2px;accent-color:#9b4a2c;}
+.sgd .sgd-err{min-height:0;margin:0;font-size:15px;color:#c0392b;text-align:center;}
+.sgd .sgd-err:empty{display:none;}
+.sgd .sgd-form .kaftor{display:block;width:100%;margin-top:4px;transition:transform .2s,opacity .2s;}
+.sgd .sgd-form .kaftor:hover{transform:translateY(-2px);}
+.sgd .sgd-form .kaftor[disabled]{opacity:.6;cursor:default;transform:none;}
+.sgd .sgd-thanks{padding:18px 10px 6px;font-size:20px;color:#7c4120;}
 </style>
   </head>
   <body class="sgd">
@@ -271,7 +285,14 @@
       <p class="t2 ravxx_var_form.3">"[השם]"</p>
       <p class="t3 ravxx_var_form.date ravxx_var_form.4">שתתקיים ביום ראשון | 15.11 | בשעה 20:45</p>
       <p class="t4 ravxx_var_form.text1"><span class="ravxx_var_form.5">הכניסי את הפרטים שלך פה</span><br><span class="ravxx_var_form.6">ותשרייני לעצמך מקום בלייב.</span><br><b class="ravxx_var_form.7">המקומות מוגבלים!</b></p>
-      <div class="tofes"><!-- הטופס החדש ברב מסר --></div>
+      <div class="tofes"><form class="sgd-form" novalidate>
+        <label class="sgd-f"><span>שם מלא</span><input type="text" name="full_name" autocomplete="name" required></label>
+        <label class="sgd-f"><span>מייל</span><input type="email" name="email" autocomplete="email" inputmode="email" dir="ltr" required></label>
+        <label class="sgd-f"><span>טלפון</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" required></label>
+        <label class="sgd-ok"><input type="checkbox" name="consent" value="yes" required><span>אני מאשרת קבלת תוכן ועדכונים במייל ובוואטסאפ</span></label>
+        <p class="sgd-err" aria-live="polite"></p>
+        <button type="submit" class="kaftor">שרי, ברור שאני מצטרפת</button>
+      </form><div class="sgd-thanks" hidden><b>נרשמת בהצלחה!</b></div></div>
     </div>
   </div>
 </section>
@@ -302,7 +323,14 @@
     <div class="img-slot ravxx_var_section-5.10" style="height:150px"><span>📷 תמונה 5 שוב - אותה הדמיה מעל הטופס השני</span></div>
     <div class="form-card">
       <p class="t4 ravxx_var_form.text2"><span class="ravxx_var_section-5.11">כדי לשמור לעצמך מקום,</span><br><span class="ravxx_var_section-5.12">תמלאי את הפרטים שלך כאן למטה.</span></p>
-      <div class="tofes"><!-- הטופס החדש ברב מסר --></div>
+      <div class="tofes"><form class="sgd-form" novalidate>
+        <label class="sgd-f"><span>שם מלא</span><input type="text" name="full_name" autocomplete="name" required></label>
+        <label class="sgd-f"><span>מייל</span><input type="email" name="email" autocomplete="email" inputmode="email" dir="ltr" required></label>
+        <label class="sgd-f"><span>טלפון</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" required></label>
+        <label class="sgd-ok"><input type="checkbox" name="consent" value="yes" required><span>אני מאשרת קבלת תוכן ועדכונים במייל ובוואטסאפ</span></label>
+        <p class="sgd-err" aria-live="polite"></p>
+        <button type="submit" class="kaftor">שרי, ברור שאני מצטרפת</button>
+      </form><div class="sgd-thanks" hidden><b>נרשמת בהצלחה!</b></div></div>
     </div>
     <p class="footer ravxx_var_section-5.13">שרי גת · <a href="https://saraigat.ravpage.co.il/privacypolicy" target="_blank" rel="noopener">מדיניות פרטיות</a></p>
   </div>
@@ -353,6 +381,38 @@ function sgdInit(){
 })();
 }
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',sgdInit);}else{sgdInit();}
+(function(){
+  var HOOK='https://hook.eu1.make.com/7i6qe8a406bg1dhesy5tcdmuxyb3s58h';
+  var REDIRECT=''; /* כתובת דף תודה או קישור לוואטסאפ. ריק = הודעת תודה בדף */
+  function init(){
+    var q=new URLSearchParams(location.search);
+    document.querySelectorAll('.sgd .sgd-form').forEach(function(f){
+      if(f.dataset.ready)return;f.dataset.ready='1';
+      var err=f.querySelector('.sgd-err'),btn=f.querySelector('button');
+      f.addEventListener('submit',function(e){
+        e.preventDefault();
+        var n=f.full_name,m=f.email,p=f.phone,c=f.consent,msg='';
+        [n,m,p].forEach(function(i){i.classList.remove('bad');});
+        var phone=p.value.replace(/[^\d+]/g,'').replace(/^\+972/,'0');
+        if(n.value.trim().length<2){n.classList.add('bad');msg='נא למלא שם מלא';}
+        else if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m.value.trim())){m.classList.add('bad');msg='נא למלא כתובת מייל תקינה';}
+        else if(!/^0\d{8,9}$/.test(phone)){p.classList.add('bad');msg='נא למלא מספר טלפון תקין';}
+        else if(!c.checked){msg='נא לאשר קבלת תוכן ועדכונים';}
+        err.textContent=msg;if(msg)return;
+        btn.disabled=true;
+        var d=new URLSearchParams();
+        d.append('full_name',n.value.trim());d.append('email',m.value.trim());d.append('phone',phone);d.append('consent','yes');
+        ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){if(q.get(k))d.append(k,q.get(k));});
+        d.append('page',location.href.split('#')[0]);
+        fetch(HOOK,{method:'POST',mode:'no-cors',body:d}).then(function(){
+          if(REDIRECT){location.href=REDIRECT;return;}
+          f.hidden=true;f.parentNode.querySelector('.sgd-thanks').hidden=false;
+        }).catch(function(){btn.disabled=false;err.textContent='משהו השתבש, נסי שוב';});
+      });
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
 </script>
 
 </body></html>
